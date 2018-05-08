@@ -1,13 +1,40 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+/**
+ * 
+ * @author Johanna Švugerová, Markéta Halíková, Martin Weisser
+ *
+ */
 public class Recept {
 
-	private char nazev;
+	private String nazev;
 
-	private char postup;
+	private String postup;
 
-	private char kategorie;
+	private String kategorie;
 
-	private Surovina seznamSurovin;
+	public String getNazev() {
+		return nazev;
+	}
+
+	public void setNazev(String nazev) {
+		this.nazev = nazev;
+	}
+
+	public String getPostup() {
+		return postup;
+	}
+
+	public void setPostup(String postup) {
+		this.postup = postup;
+	}
+
+	public String getKategorie() {
+		return kategorie;
+	}
+
+	public void setKategorie(String kategorie) {
+		this.kategorie = kategorie;
+	}
 
 }
