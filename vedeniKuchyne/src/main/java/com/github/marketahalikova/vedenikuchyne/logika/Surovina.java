@@ -6,4 +6,20 @@ public class Surovina {
 
 	private char jednotka;
 
+	public char getNazev() {
+		return nazev;
+	}
+
+	public void setNazev(char nazev) {
+		this.nazev = nazev;
+	}
+
+	public char getJednotka() {
+		return jednotka;
+	}
+
+	public void setJednotka(char jednotka) {
+		this.jednotka = jednotka;
+	}
+
 }
