@@ -15,4 +15,8 @@ public class Sklad {
 	public List<Surovina> getSeznamSurovin() {
 	return seznamSurovin;
 }
+	
+	public void setSeznamSurovin(List<Surovina> seznamSurovin) {
+		this.seznamSurovin = seznamSurovin;
+	}
 }
