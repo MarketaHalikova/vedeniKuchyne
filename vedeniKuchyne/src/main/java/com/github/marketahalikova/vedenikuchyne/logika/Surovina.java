@@ -24,16 +24,26 @@ public class Surovina {
 	/**
 	 * Metoda stanovující název suroviny.
 	 * 
-	 * @param nazev Název dané suroviny
+	 * @param nazev název dané suroviny
 	 */
 	public void setNazev(String nazev) {
 		this.nazev = nazev;
 	}
 
+	/**
+	 * Metoda vracící jednotku dané suroviny.
+	 * 
+	 * @return řetezec se jménem jednotky
+	 */
 	public String getJednotka() {
 		return jednotka;
 	}
 
+	/**
+	 * Metoda nastavující jednotku dané suroviny.
+	 * 
+	 * @param jednotka řetezec se jménem suroviny
+	 */
 	public void setJednotka(String jednotka) {
 		this.jednotka = jednotka;
 	}
