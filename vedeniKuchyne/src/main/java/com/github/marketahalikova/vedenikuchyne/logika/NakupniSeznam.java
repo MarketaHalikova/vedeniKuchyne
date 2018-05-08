@@ -9,9 +9,6 @@ import java.util.List;
  *
  */
 public class NakupniSeznam {
-
-	private Surovina seznamSuroviny;
-
 	
 	private List<Surovina> seznamSurovin;
 
@@ -19,5 +16,9 @@ public class NakupniSeznam {
 	public List<Surovina> getSeznamSurovin() {
 	return seznamSurovin;
 }
+	public void setSeznamSurovin(List<Surovina> seznamSurovin) {
+		this.seznamSurovin = seznamSurovin;
+	}
+
 	
 }
