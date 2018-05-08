@@ -1,24 +1,40 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+/**
+ * 
+ * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
+ *
+ * Třída znázorňující jednotlivou surovinu, uchovávající její název a příslušnou jednotku.
+ */
 public class Surovina {
 
-	private char nazev;
+	private String nazev;
 
-	private char jednotka;
+	private String jednotka;
 
-	public char getNazev() {
+	/**
+	 * Metoda získávající název suroviny.
+	 * 
+	 * @return řetezec s názvem suroviny
+	 */
+	public String getNazev() {
 		return nazev;
 	}
 
-	public void setNazev(char nazev) {
+	/**
+	 * Metoda stanovující název suroviny.
+	 * 
+	 * @param nazev Název dané suroviny
+	 */
+	public void setNazev(String nazev) {
 		this.nazev = nazev;
 	}
 
-	public char getJednotka() {
+	public String getJednotka() {
 		return jednotka;
 	}
 
-	public void setJednotka(char jednotka) {
+	public void setJednotka(String jednotka) {
 		this.jednotka = jednotka;
 	}
 
