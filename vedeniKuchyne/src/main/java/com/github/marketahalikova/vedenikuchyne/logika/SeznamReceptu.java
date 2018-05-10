@@ -32,6 +32,11 @@ public class SeznamReceptu {
 		this.seznamReceptu = seznamReceptu;
 	}
 	
+	/**
+	 * Metoda vkládá recept z parametru do seznamu receptů
+	 * 
+	 * @param Recept
+	 */
 	public void vlozitRecept(Recept recept){
 		seznamReceptu.add(recept);
 	}
