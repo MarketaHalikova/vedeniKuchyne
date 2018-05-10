@@ -24,7 +24,14 @@ public class Kuchyne extends Observable{
         this.menu = new Menu();
         this.nakupniSeznam = new NakupniSeznam();
         this.sklad = new Sklad();
+        
+        naplneniDaty();
     }
 	
+	
+	private void naplneniDaty() {
+		
+		// tady bude naplneni provizornimi daty
+	}
 	
 }
