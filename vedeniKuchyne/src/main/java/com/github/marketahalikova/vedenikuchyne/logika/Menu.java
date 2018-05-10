@@ -11,7 +11,7 @@ public class Menu {
 
 	private String datum;
 	
-	private List<Recept> seznamReceptu;
+	private List<Recept> seznamReceptuMenu;
 
 	public String getDatum() {
 		return datum;
@@ -22,11 +22,15 @@ public class Menu {
 	}
 
 	public List<Recept> getSeznamReceptu() {
-		return seznamReceptu;
+		return seznamReceptuMenu;
 	}
 
-	public void setSeznamReceptu(List<Recept> seznamReceptu) {
-		this.seznamReceptu = seznamReceptu;
+	public void setSeznamReceptu(List<Recept> seznamReceptuMenu) {
+		this.seznamReceptuMenu = seznamReceptuMenu;
+	}
+	
+	public void vlozitRecept(Recept recept){
+		seznamReceptuMenu.add(recept);
 	}
 
 }

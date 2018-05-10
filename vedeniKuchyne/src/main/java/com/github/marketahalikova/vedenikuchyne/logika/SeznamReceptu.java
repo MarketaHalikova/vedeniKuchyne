@@ -32,4 +32,8 @@ public class SeznamReceptu {
 		this.seznamReceptu = seznamReceptu;
 	}
 	
+	public void vlozitRecept(Recept recept){
+		seznamReceptu.add(recept);
+	}
+	
 }

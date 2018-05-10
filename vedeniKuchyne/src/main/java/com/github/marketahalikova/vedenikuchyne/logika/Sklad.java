@@ -9,14 +9,18 @@ import java.util.List;
  */
 public class Sklad {
 
-	private List<Surovina> seznamSurovin;
+	private List<Surovina> seznamSurovinSkladu;
 
 
-	public List<Surovina> getSeznamSurovin() {
-	return seznamSurovin;
+	public List<Surovina> getSeznamSurovinSkladu() {
+	return seznamSurovinSkladu;
 }
 	
-	public void setSeznamSurovin(List<Surovina> seznamSurovin) {
-		this.seznamSurovin = seznamSurovin;
+	public void setSeznamSurovin(List<Surovina> seznamSurovinSkladu) {
+		this.seznamSurovinSkladu = seznamSurovinSkladu;
+	}
+	
+	public void vlozitSurovinu(Surovina surovina){
+		seznamSurovinSkladu.add(surovina);
 	}
 }
