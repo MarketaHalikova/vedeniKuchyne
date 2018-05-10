@@ -1,5 +1,9 @@
 package com.github.marketahalikova.vedenikuchyne.ui;
 
-public class HomeController {
+import javafx.scene.layout.GridPane;
+
+public class HomeController extends GridPane {
+	
+	
 
 }

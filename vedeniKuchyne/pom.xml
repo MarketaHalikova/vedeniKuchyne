@@ -45,7 +45,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<mainClass>
-	com.github.marketahalikova.vedenikuchyne.main.Start</mainClass>
+	com.github.marketahalikova.vedenikuchyne.main.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
