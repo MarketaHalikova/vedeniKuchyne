@@ -10,15 +10,18 @@ import java.util.List;
  */
 public class NakupniSeznam {
 	
-	private List<Surovina> seznamSurovin;
+	private List<Surovina> seznamSurovinNakupu;
 
 
-	public List<Surovina> getSeznamSurovin() {
-	return seznamSurovin;
-}
-	public void setSeznamSurovin(List<Surovina> seznamSurovin) {
-		this.seznamSurovin = seznamSurovin;
+	public List<Surovina> getSeznamSurovinNakupu() {
+		return seznamSurovinNakupu;
+	}
+	
+	public void setSeznamSurovin(List<Surovina> seznamSurovinNakupu) {
+		this.seznamSurovinNakupu = seznamSurovinNakupu;
 	}
 
-	
+	public void vlozitSurovinu(Surovina surovina){
+		seznamSurovinNakupu.add(surovina);
+	}
 }
