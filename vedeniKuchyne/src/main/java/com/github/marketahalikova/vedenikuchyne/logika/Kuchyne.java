@@ -37,17 +37,18 @@ public class Kuchyne extends Observable{
 		// tady bude naplneni provizornimi daty
 	}
 	
+	
 	 /**
-     * Metoda vrací aktuální menu
-     * @return    Menu
+     * Metoda vrací aktuální nákupní seznam
+     * @return    NakupniSeznam
      */
     public NakupniSeznam getAktualniNakupniSeznam() {
         return nakupniSeznam;
     }
     
 	 /**
-     * Metoda vrací aktuální menu
-     * @return    Menu
+     * Metoda vrací aktuální stav skladu
+     * @return    Sklad
      */
     public Sklad getAktualniSklad() {
         return sklad;
@@ -62,8 +63,8 @@ public class Kuchyne extends Observable{
     }
     
 	 /**
-     * Metoda vrací aktuální menu
-     * @return    Menu
+     * Metoda vrací aktuální seznam všech receptů
+     * @return    seznamReceptů
      */
     public SeznamReceptu getAktualniSeznamReceptu() {
         return seznamReceptu;
