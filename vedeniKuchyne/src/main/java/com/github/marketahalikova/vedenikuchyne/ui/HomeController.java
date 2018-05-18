@@ -8,6 +8,7 @@ import java.util.Observer;
 import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 import com.github.marketahalikova.vedenikuchyne.logika.Recept;
 import com.github.marketahalikova.vedenikuchyne.logika.SeznamReceptu;
+import com.github.marketahalikova.vedenikuchyne.logika.Surovina;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,15 +35,24 @@ public class HomeController extends GridPane implements Observer {
 		seznamZakrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("zakrm"));
 		seznamKrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("krm"));
 		seznamPredkrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
-		seznamSklad.getItems().addAll(kuchyne.getAktualniSklad().getSkladAsString().values());
+		seznamSklad.getItems().addAll(kuchyne.getAktualniSklad().getSkladAsString().keySet());
 
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
+		kuchyne.getAktualniSklad().addObserver(this);
 
 	}
 
 	public void pridejRecept() {
 		// to do
 		kuchyne.getAktualniSeznamReceptu().vlozitRecept(new Recept("Smažáček", "Hmmm...dezertíček", "zakrm"));
+	}
+	
+	public void odstranSurovinu() {
+		String vybrana = seznamSklad.getSelectionModel().getSelectedItem();
+		Surovina hledana = kuchyne.getAktualniSklad().najdiSurovinu(vybrana);
+		kuchyne.getAktualniSklad().odstranSurovinu(hledana);
+		
+		//to do
 	}
 
 	@Override
@@ -56,11 +66,10 @@ public class HomeController extends GridPane implements Observer {
 		ObservableList<String> zakrmyList = FXCollections.observableArrayList();
 		zakrmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("zakrm"));
 		seznamZakrmu.setItems(zakrmyList);
-		/*
-		 * ObservableList<String> skladList = FXCollections.observableArrayList();
-		 * skladList.addAll(kuchyne.getAktualniSklad().getSkladAsString().values());
-		 * seznamSklad.setItems(skladList);
-		 */
+		ObservableList<String> skladList = FXCollections.observableArrayList();
+		skladList.addAll(kuchyne.getAktualniSklad().getSkladAsString().keySet());
+		seznamSklad.setItems(skladList);
+		
 
 	}
 
