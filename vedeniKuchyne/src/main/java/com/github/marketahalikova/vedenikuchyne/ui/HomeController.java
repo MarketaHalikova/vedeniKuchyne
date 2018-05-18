@@ -14,6 +14,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
 
 public class HomeController extends GridPane implements Observer {
@@ -26,6 +29,8 @@ public class HomeController extends GridPane implements Observer {
 	private ListView<String> seznamZakrmu;
 	@FXML
 	private ListView<String> seznamSklad;
+	@FXML
+	private TabPane tabs;
 
 	private Kuchyne kuchyne;
 
@@ -40,11 +45,17 @@ public class HomeController extends GridPane implements Observer {
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
 		kuchyne.getAktualniSklad().addObserver(this);
 
+		
 	}
 
-	public void pridejRecept() {
+	public void novyRecept() {
 		// to do
 		kuchyne.getAktualniSeznamReceptu().vlozitRecept(new Recept("Smažáček", "Hmmm...dezertíček", "zakrm"));
+	}
+	
+	public void pridatRecept() {
+		SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
+		selectionModel.select(0);
 	}
 	
 	public void odstranSurovinu() {

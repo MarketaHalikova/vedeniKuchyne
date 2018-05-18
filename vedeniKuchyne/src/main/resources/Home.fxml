@@ -51,7 +51,7 @@
 				</Menu>
 			</menus>
 		</MenuBar>
-		<TabPane prefHeight="200.0" prefWidth="200.0"
+		<TabPane fx:id="tabs" prefHeight="200.0" prefWidth="200.0"
 			tabClosingPolicy="UNAVAILABLE" GridPane.columnSpan="2"
 			GridPane.rowIndex="1" GridPane.rowSpan="2">
 			<tabs>
@@ -74,8 +74,8 @@
 										<Label layoutX="457.0" layoutY="26.0" text="Zákrmy" />
 										<Button layoutX="171.0" layoutY="274.0"
 											mnemonicParsing="false" prefHeight="43.0" prefWidth="260.0"
-											style="-fx-background-radius: 1em;" text="Přidat recept"
-											onAction="#pridejRecept" />
+											style="-fx-background-radius: 1em;" text="Nový recept"
+											onAction="#novyRecept" />
 									</children>
 								</AnchorPane>
 							</center>
@@ -129,7 +129,7 @@
 								<Label layoutX="336.0" layoutY="22.0" text="Nákupní seznam" />
 								<Button layoutX="47.0" layoutY="287.0" mnemonicParsing="false"
 									prefHeight="38.0" prefWidth="83.0" style="-fx-background-radius: 1em;"
-									text="Přidat recept">
+									text="Přidat recept" onAction="#pridatRecept">
 									<font>
 										<Font size="10.0" />
 									</font>
