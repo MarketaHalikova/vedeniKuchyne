@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.main;
 
+import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 import com.github.marketahalikova.vedenikuchyne.ui.HomeController;
 
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,7 @@ public class Application extends javafx.application.Application {
 		Parent root = loader.load();
 
 		HomeController controller = loader.getController();
+		controller.inicializuj(new Kuchyne());
 
 		
       primaryStage.setTitle("MaKitch");

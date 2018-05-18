@@ -1,5 +1,7 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -12,7 +14,15 @@ public class SeznamReceptu {
 
 	
 	private List<Recept> seznamReceptu;
-
+	private List<String> seznamKategorie;
+	
+	/**
+	 * Konstruktor třídy SeznamRecpetu
+	 */
+	public SeznamReceptu() {
+		seznamReceptu = new ArrayList<>();
+		seznamKategorie = new ArrayList<>();
+	}
 
 	/**
 	 * Metoda vrací seznam všech receptů
@@ -40,5 +50,24 @@ public class SeznamReceptu {
 	public void vlozitRecept(Recept recept){
 		seznamReceptu.add(recept);
 	}
+	
+	/**
+	 * 
+	 * Metoda vracící seznam receptů dle kategorie z parametru
+	 * 
+	 * @param kategorie 
+	 * @return List<Recept>
+	 */
+	public List<String> getPodleKategorie(String kategorie){
+		seznamKategorie.clear();
+		for(Recept recept: seznamReceptu) {
+			if( recept.getKategorie().equals(kategorie) ) {
+				seznamKategorie.add(recept.getNazev());
+			}
+		}
+		
+		return seznamKategorie;
+	}
+	
 	
 }

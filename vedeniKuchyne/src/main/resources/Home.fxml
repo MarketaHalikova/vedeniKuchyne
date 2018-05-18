@@ -50,11 +50,11 @@
                      <center>
                         <AnchorPane prefHeight="342.0" prefWidth="600.0" style="-fx-background-radius: 5em;" BorderPane.alignment="CENTER">
                            <children>
-                              <ListView layoutX="36.0" layoutY="43.0" prefHeight="214.0" prefWidth="171.0" style="-fx-background-radius: 1em;" AnchorPane.topAnchor="43.0" />
+                              <ListView layoutX="36.0" layoutY="43.0" prefHeight="214.0" prefWidth="171.0" style="-fx-background-radius: 1em;" AnchorPane.topAnchor="43.0" fx:id="seznamPredkrmu"/>
                               <Label layoutX="92.0" layoutY="26.0" text="Předkrmy" />
-                              <ListView layoutX="215.0" layoutY="43.0" prefHeight="214.0" prefWidth="171.0" style="-fx-background-radius: 1em;" />
+                              <ListView layoutX="215.0" layoutY="43.0" prefHeight="214.0" prefWidth="171.0" style="-fx-background-radius: 1em;" fx:id="seznamKrmu" />
                               <Label layoutX="284.0" layoutY="26.0" text="Krmy" />
-                              <ListView layoutX="395.0" layoutY="43.0" prefHeight="214.0" prefWidth="171.0" style="-fx-background-radius: 1em;" />
+                              <ListView layoutX="395.0" layoutY="43.0" prefHeight="214.0" prefWidth="171.0" style="-fx-background-radius: 1em;" fx:id="seznamZakrmu" />
                               <Label layoutX="457.0" layoutY="26.0" text="Zákrmy" />
                               <Button layoutX="171.0" layoutY="274.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="260.0" style="-fx-background-radius: 1em;" text="Přidat recept" />
                            </children>

@@ -12,6 +12,18 @@ public class Recept {
 	private String postup;
 
 	private String kategorie;
+	/**
+	 * Konstruktor metody Recept.
+	 * 
+	 * @param nazev - název recpetu
+	 * @param postup - postup přípravy
+	 * @param kategorie - kategorie receptu (předkrm/krm/zákrm)
+	 */
+	public Recept(String nazev, String postup, String kategorie){
+		this.nazev = nazev;
+		this.postup = postup;
+		this.kategorie = kategorie;
+	}
 
 	public String getNazev() {
 		return nazev;

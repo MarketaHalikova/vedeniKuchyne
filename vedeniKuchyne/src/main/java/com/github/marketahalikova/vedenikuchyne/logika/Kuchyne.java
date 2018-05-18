@@ -35,6 +35,9 @@ public class Kuchyne extends Observable{
 	private void naplneniDaty() {
 		
 		// tady bude naplneni provizornimi daty
+		seznamReceptu.vlozitRecept(new Recept("Svíčková", "Uvař svíčkovou.","krm"));
+		seznamReceptu.vlozitRecept(new Recept("Rajská polévka", "Udělej rajskou.","predkrm"));
+		seznamReceptu.vlozitRecept(new Recept("Tiramisu", "Udělej tiramisu.","zakrm"));
 	}
 	
 	
