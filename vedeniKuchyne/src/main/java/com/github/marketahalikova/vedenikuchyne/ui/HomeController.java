@@ -15,47 +15,45 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 
-
 public class HomeController extends GridPane implements Observer {
-	
-	@FXML private ListView<String> seznamPredkrmu;
-	@FXML private ListView<String> seznamKrmu;
-	@FXML private ListView<String> seznamZakrmu;
-	
+
+	@FXML
+	private ListView<String> seznamPredkrmu;
+	@FXML
+	private ListView<String> seznamKrmu;
+	@FXML
+	private ListView<String> seznamZakrmu;
+
 	private Kuchyne kuchyne;
-	
+
 	public void inicializuj(Kuchyne kuchyne) {
 		this.kuchyne = kuchyne;
-		
-		
+
 		seznamZakrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("zakrm"));
 		seznamKrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("krm"));
 		seznamPredkrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
-		
+
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
-		
+
 	}
-	
+
 	public void pridejRecept() {
-		// to do 
+		// to do
 		kuchyne.getAktualniSeznamReceptu().vlozitRecept(new Recept("Smažáček", "Hmmm...dezertíček", "zakrm"));
 	}
-	
+
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		ObservableList<String> predkrmyList = FXCollections.observableArrayList();
-		 predkrmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
-		 seznamPredkrmu.setItems(predkrmyList);
-		 ObservableList<String> krmyList = FXCollections.observableArrayList();
-		 krmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("krm"));
-		 seznamKrmu.setItems(krmyList);
-		 ObservableList<String> zakrmyList = FXCollections.observableArrayList();
-		 zakrmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("zakrm"));
-		 seznamZakrmu.setItems(zakrmyList);
-		 
-		
+		predkrmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
+		seznamPredkrmu.setItems(predkrmyList);
+		ObservableList<String> krmyList = FXCollections.observableArrayList();
+		krmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("krm"));
+		seznamKrmu.setItems(krmyList);
+		ObservableList<String> zakrmyList = FXCollections.observableArrayList();
+		zakrmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("zakrm"));
+		seznamZakrmu.setItems(zakrmyList);
+
 	}
-	
-	
 
 }

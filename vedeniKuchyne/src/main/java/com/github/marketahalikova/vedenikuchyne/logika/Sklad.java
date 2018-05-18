@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,6 +11,13 @@ import java.util.List;
 public class Sklad {
 
 	private List<Surovina> seznamSurovinSkladu;
+	
+	/**
+	 * Konstruktor třídy Sklad
+	 */
+	public Sklad() {
+		seznamSurovinSkladu = new ArrayList<>();
+	}
 
 
 	public List<Surovina> getSeznamSurovinSkladu() {
