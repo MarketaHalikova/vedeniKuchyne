@@ -30,6 +30,8 @@ public class HomeController extends GridPane implements Observer {
 	@FXML
 	private ListView<String> seznamSklad;
 	@FXML
+	private ListView<String> menuRecepty;
+	@FXML
 	private TabPane tabs;
 
 	private Kuchyne kuchyne;
@@ -41,9 +43,11 @@ public class HomeController extends GridPane implements Observer {
 		seznamKrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("krm"));
 		seznamPredkrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
 		seznamSklad.getItems().addAll(kuchyne.getAktualniSklad().getSkladAsString().keySet());
+		menuRecepty.getItems().addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
 
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
 		kuchyne.getAktualniSklad().addObserver(this);
+		kuchyne.getAktualniMenu().addObserver(this);
 
 		
 	}
@@ -80,6 +84,9 @@ public class HomeController extends GridPane implements Observer {
 		ObservableList<String> skladList = FXCollections.observableArrayList();
 		skladList.addAll(kuchyne.getAktualniSklad().getSkladAsString().keySet());
 		seznamSklad.setItems(skladList);
+		ObservableList<String> menuList = FXCollections.observableArrayList();
+		menuList.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
+		menuRecepty.setItems(menuList);
 		
 
 	}

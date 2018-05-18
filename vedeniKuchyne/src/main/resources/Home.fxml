@@ -121,7 +121,7 @@
 						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
 							prefWidth="200.0">
 							<children>
-								<ListView layoutX="47.0" layoutY="39.0" prefHeight="231.0"
+								<ListView fx:id="menuRecepty" layoutX="47.0" layoutY="39.0" prefHeight="231.0"
 									prefWidth="230.0" style="-fx-background-radius: 1em;" />
 								<ListView layoutX="321.0" layoutY="39.0" prefHeight="231.0"
 									prefWidth="229.0" style="-fx-background-radius: 1em;" />
