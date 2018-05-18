@@ -2,6 +2,8 @@ package com.github.marketahalikova.vedenikuchyne.logika;
 
 import java.util.Observable;
 
+import com.github.marketahalikova.vedenikuchyne.logika.Surovina.Jednotka;
+
 /**
  * Class Kuchyne
  * 
@@ -34,9 +36,9 @@ public class Kuchyne extends Observable {
 		seznamReceptu.vlozitRecept(new Recept("Rajská polévka", "Udělej rajskou.", "predkrm"));
 		seznamReceptu.vlozitRecept(new Recept("Tiramisu", "Udělej tiramisu.", "zakrm"));
 
-		sklad.vlozitSurovinu(new Surovina("jablko", "kg", 3));
-		sklad.vlozitSurovinu(new Surovina("marijanka", "g", 20));
-		sklad.vlozitSurovinu(new Surovina("vodka", "l", 10));
+		sklad.vlozitSurovinu(new Surovina("jablko", Jednotka.kg, 3));
+		sklad.vlozitSurovinu(new Surovina("marijanka", Jednotka.g, 20));
+		sklad.vlozitSurovinu(new Surovina("vodka", Jednotka.l, 10));
 	}
 
 	/**

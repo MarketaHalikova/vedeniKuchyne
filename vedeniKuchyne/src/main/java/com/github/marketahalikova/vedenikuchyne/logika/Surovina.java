@@ -10,7 +10,7 @@ package com.github.marketahalikova.vedenikuchyne.logika;
 public class Surovina {
 
 	private String nazev;
-	private String jednotka;
+	private Jednotka jednotka;
 	private int mnozstvi;
 
 	/**
@@ -19,7 +19,7 @@ public class Surovina {
 	 * @param nazev
 	 * @param jednotka
 	 */
-	public Surovina(String nazev, String jednotka) {
+	public Surovina(String nazev, Jednotka jednotka) {
 		this.nazev = nazev;
 		this.jednotka = jednotka;
 	}
@@ -31,12 +31,17 @@ public class Surovina {
 	 * @param jednotka
 	 * @param mnozstvi
 	 */
-	public Surovina(String nazev, String jednotka, int mnozstvi) {
+	public Surovina(String nazev, Jednotka jednotka, int mnozstvi) {
 		this.nazev = nazev;
 		this.jednotka = jednotka;
 		this.setMnozstvi(mnozstvi);
 	}
 
+	
+	public enum Jednotka {
+	    g, kg, l, ml, ks, 
+	}
+	
 	/**
 	 * Metoda získávající název suroviny.
 	 * 
@@ -49,8 +54,7 @@ public class Surovina {
 	/**
 	 * Metoda stanovující název suroviny.
 	 * 
-	 * @param nazev
-	 *            název dané suroviny
+	 * @param název dané suroviny
 	 */
 	public void setNazev(String nazev) {
 		this.nazev = nazev;
@@ -61,7 +65,7 @@ public class Surovina {
 	 * 
 	 * @return řetezec se jménem jednotky
 	 */
-	public String getJednotka() {
+	public Jednotka getJednotka() {
 		return jednotka;
 	}
 
@@ -71,7 +75,7 @@ public class Surovina {
 	 * @param jednotka
 	 *            řetezec se jménem suroviny
 	 */
-	public void setJednotka(String jednotka) {
+	public void setJednotka(Jednotka jednotka) {
 		this.jednotka = jednotka;
 	}
 
