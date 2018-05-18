@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.util.Observable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
  *
  */
-public class SeznamReceptu {
+public class SeznamReceptu extends Observable{
 
 	
 	private List<Recept> seznamReceptu;
@@ -49,6 +50,8 @@ public class SeznamReceptu {
 	 */
 	public void vlozitRecept(Recept recept){
 		seznamReceptu.add(recept);
+		setChanged();
+		notifyObservers();
 	}
 	
 	/**
