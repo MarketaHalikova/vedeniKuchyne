@@ -23,7 +23,7 @@ public class Surovina {
 		this.nazev = nazev;
 		this.jednotka = jednotka;
 	}
-	
+
 	/**
 	 * Konstruktor třídy Surovina s mnozstvim
 	 * 
@@ -34,7 +34,7 @@ public class Surovina {
 	public Surovina(String nazev, String jednotka, int mnozstvi) {
 		this.nazev = nazev;
 		this.jednotka = jednotka;
-		this.mnozstvi =  mnozstvi;
+		this.setMnozstvi(mnozstvi);
 	}
 
 	/**
@@ -73,6 +73,24 @@ public class Surovina {
 	 */
 	public void setJednotka(String jednotka) {
 		this.jednotka = jednotka;
+	}
+
+	/**
+	 * Metoda vracící množství dané suroviny
+	 * 
+	 * @return mnozstvi
+	 */
+	public int getMnozstvi() {
+		return mnozstvi;
+	}
+
+	/**
+	 * Metoda nastavující množství dle daného parametru
+	 * 
+	 * @param mnozstvi
+	 */
+	public void setMnozstvi(int mnozstvi) {
+		this.mnozstvi = mnozstvi;
 	}
 
 }
