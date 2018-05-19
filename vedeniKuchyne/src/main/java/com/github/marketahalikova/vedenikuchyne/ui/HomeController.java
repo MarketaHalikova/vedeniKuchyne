@@ -93,12 +93,31 @@ public class HomeController extends GridPane implements Observer {
 		Parent root = loader.load();
 		
 		Stage inventureStage = new Stage();
-		inventureStage.setTitle("Přidat Recept");
+		inventureStage.setTitle("Inventura");
 		inventureStage.setScene(new Scene(root));
 		inventureStage.initModality(Modality.APPLICATION_MODAL);
 		inventureStage.centerOnScreen();
 		inventureStage.setAlwaysOnTop(true);
 		inventureStage.show();
+    }
+	
+	/**
+	 * Metoda otevření nového okna Nova surovina
+	 * @throws IOException
+	 */
+	@FXML public void otevritNovaSurovina() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass()
+		          .getResource("/NovaSurovina.fxml"));
+		Parent root = loader.load();
+		
+		Stage NovaSurovinaStage = new Stage();
+		NovaSurovinaStage.setTitle("Přidat Surovinu");
+		NovaSurovinaStage.setScene(new Scene(root));
+		NovaSurovinaStage.initModality(Modality.APPLICATION_MODAL);
+		NovaSurovinaStage.centerOnScreen();
+		NovaSurovinaStage.setAlwaysOnTop(true);
+		NovaSurovinaStage.show();
     }
 	
 	public void pridatRecept() {

@@ -93,7 +93,7 @@
 									text="Inventura" onAction="#otevritInventura" />
 								<Button layoutX="43.0" layoutY="115.0" mnemonicParsing="false"
 									prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;"
-									text="Přidat surovinu" />
+									text="Přidat surovinu" onAction="#otevritNovaSurovina" />
 								<Button layoutX="43.0" layoutY="188.0" mnemonicParsing="false"
 									prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;"
 									text="Upravit" />
