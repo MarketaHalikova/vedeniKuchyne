@@ -82,6 +82,25 @@ public class HomeController extends GridPane implements Observer {
 		kuchyne.getAktualniSeznamReceptu().vlozitRecept(new Recept("Smažáček", "Hmmm...dezertíček", "zakrm"));
 	}*/
 	
+	/**
+	 * Metoda otevření nového okna Inventura
+	 * @throws IOException
+	 */
+	@FXML public void otevritInventura() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass()
+		          .getResource("/Inventura.fxml"));
+		Parent root = loader.load();
+		
+		Stage pridatReceptStage = new Stage();
+		pridatReceptStage.setTitle("Přidat Recept");
+		pridatReceptStage.setScene(new Scene(root));
+		pridatReceptStage.initModality(Modality.APPLICATION_MODAL);
+		pridatReceptStage.centerOnScreen();
+		pridatReceptStage.setAlwaysOnTop(true);
+		pridatReceptStage.show();
+    }
+	
 	public void pridatRecept() {
 		SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
 		selectionModel.select(0);

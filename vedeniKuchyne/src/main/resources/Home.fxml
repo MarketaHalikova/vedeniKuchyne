@@ -90,7 +90,7 @@
 									prefWidth="373.0" style="-fx-background-radius: 1em;" fx:id="seznamSklad" />
 								<Button layoutX="43.0" layoutY="64.0" mnemonicParsing="false"
 									prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;"
-									text="Inventura" />
+									text="Inventura" onAction="#otevritInventura" />
 								<Button layoutX="43.0" layoutY="115.0" mnemonicParsing="false"
 									prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;"
 									text="Přidat surovinu" />
