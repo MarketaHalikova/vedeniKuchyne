@@ -92,13 +92,13 @@ public class HomeController extends GridPane implements Observer {
 		          .getResource("/Inventura.fxml"));
 		Parent root = loader.load();
 		
-		Stage pridatReceptStage = new Stage();
-		pridatReceptStage.setTitle("Přidat Recept");
-		pridatReceptStage.setScene(new Scene(root));
-		pridatReceptStage.initModality(Modality.APPLICATION_MODAL);
-		pridatReceptStage.centerOnScreen();
-		pridatReceptStage.setAlwaysOnTop(true);
-		pridatReceptStage.show();
+		Stage inventureStage = new Stage();
+		inventureStage.setTitle("Přidat Recept");
+		inventureStage.setScene(new Scene(root));
+		inventureStage.initModality(Modality.APPLICATION_MODAL);
+		inventureStage.centerOnScreen();
+		inventureStage.setAlwaysOnTop(true);
+		inventureStage.show();
     }
 	
 	public void pridatRecept() {
