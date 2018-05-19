@@ -120,6 +120,25 @@ public class HomeController extends GridPane implements Observer {
 		NovaSurovinaStage.show();
     }
 	
+	/**
+	 * Metoda otevření nového okna Uprava surovina
+	 * @throws IOException
+	 */
+	@FXML public void otevritUpravaSuroviny() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass()
+		          .getResource("/UpravaSuroviny.fxml"));
+		Parent root = loader.load();
+		
+		Stage NovaSurovinaStage = new Stage();
+		NovaSurovinaStage.setTitle("Upravit Surovinu");
+		NovaSurovinaStage.setScene(new Scene(root));
+		NovaSurovinaStage.initModality(Modality.APPLICATION_MODAL);
+		NovaSurovinaStage.centerOnScreen();
+		NovaSurovinaStage.setAlwaysOnTop(true);
+		NovaSurovinaStage.show();
+    }
+	
 	public void pridatRecept() {
 		SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
 		selectionModel.select(0);
