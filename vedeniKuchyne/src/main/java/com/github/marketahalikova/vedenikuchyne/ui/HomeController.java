@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.ui;
 
+import java.io.IOException;
 import java.util.List;
 
 import java.util.Observable;
@@ -13,11 +14,16 @@ import com.github.marketahalikova.vedenikuchyne.logika.Surovina;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class HomeController extends GridPane implements Observer {
 
@@ -51,11 +57,30 @@ public class HomeController extends GridPane implements Observer {
 
 		
 	}
+	
+	/**
+	 * Metoda otevření nového okna Přidat recept
+	 * @throws IOException
+	 */
+	@FXML public void otevritPridatRecept() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass()
+		          .getResource("/PridatRecept.fxml"));
+		Parent root = loader.load();
+		
+		Stage pridatReceptStage = new Stage();
+		pridatReceptStage.setTitle("Přidat Recept");
+		pridatReceptStage.setScene(new Scene(root));
+		pridatReceptStage.initModality(Modality.APPLICATION_MODAL);
+		pridatReceptStage.centerOnScreen();
+		pridatReceptStage.setAlwaysOnTop(true);
+		pridatReceptStage.show();
+    }
 
-	public void novyRecept() {
+	/*public void novyRecept() {
 		// to do
 		kuchyne.getAktualniSeznamReceptu().vlozitRecept(new Recept("Smažáček", "Hmmm...dezertíček", "zakrm"));
-	}
+	}*/
 	
 	public void pridatRecept() {
 		SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
@@ -90,5 +115,4 @@ public class HomeController extends GridPane implements Observer {
 		
 
 	}
-
 }

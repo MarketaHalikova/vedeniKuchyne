@@ -75,7 +75,7 @@
 										<Button layoutX="171.0" layoutY="274.0"
 											mnemonicParsing="false" prefHeight="43.0" prefWidth="260.0"
 											style="-fx-background-radius: 1em;" text="Nový recept"
-											onAction="#novyRecept" />
+											onAction="#otevritPridatRecept" />
 									</children>
 								</AnchorPane>
 							</center>
