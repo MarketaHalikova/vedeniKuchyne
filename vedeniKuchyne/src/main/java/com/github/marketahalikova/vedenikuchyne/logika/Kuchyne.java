@@ -1,5 +1,7 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina.Jednotka;
@@ -32,15 +34,28 @@ public class Kuchyne extends Observable {
 	private void naplneniDaty() {
 
 		// tady bude naplneni provizornimi daty
-		seznamReceptu.vlozitRecept(new Recept("Svíčková", "Uvař svíčkovou.", "krm"));
-		seznamReceptu.vlozitRecept(new Recept("Rajská polévka", "Udělej rajskou.", "predkrm"));
-		seznamReceptu.vlozitRecept(new Recept("Tiramisu", "Udělej tiramisu.", "zakrm"));
+		
+		Surovina knedlik = new Surovina("knedlík", Jednotka.ks, 3);
+		Surovina marijanka = new Surovina("marijanka", Jednotka.g, 20);
+		Surovina mrkev = new Surovina("mrkev", Jednotka.ks, 3);
+		List<Surovina> seznamSurovinReceptu = new ArrayList<>();
+		seznamSurovinReceptu.add(knedlik);
+		seznamSurovinReceptu.add(marijanka);
+		seznamSurovinReceptu.add(mrkev);
+		
+		seznamReceptu.vlozitRecept(new Recept("Svíčková", "Uvař svíčkovou.", "krm", seznamSurovinReceptu));
+		seznamReceptu.vlozitRecept(new Recept("Rajská polévka", "Udělej rajskou.", "predkrm", seznamSurovinReceptu));
+		seznamReceptu.vlozitRecept(new Recept("Tiramisu", "Udělej tiramisu.", "zakrm", seznamSurovinReceptu));
+
 
 		sklad.vlozitSurovinu(new Surovina("jablko", Jednotka.kg, 3));
 		sklad.vlozitSurovinu(new Surovina("marijanka", Jednotka.g, 20));
 		sklad.vlozitSurovinu(new Surovina("vodka", Jednotka.l, 10));
 		
-		menu.vlozitRecept(new Recept("Sushi", "Zabij rybu, uvař rýži.", "krm"));
+		menu.vlozitRecept(new Recept("Sushi", "Zabij rybu, uvař rýži.", "krm", seznamSurovinReceptu ));
+		
+
+		
 	}
 
 	/**

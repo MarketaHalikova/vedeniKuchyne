@@ -1,5 +1,7 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.util.List;
+
 /**
  * 
  * @author Johanna Švugerová, Markéta Halíková, Martin Weisser
@@ -12,6 +14,8 @@ public class Recept {
 	private String postup;
 
 	private String kategorie;
+	
+	private List<Surovina> seznamSurovinReceptu;
 	/**
 	 * Konstruktor metody Recept.
 	 * 
@@ -19,10 +23,11 @@ public class Recept {
 	 * @param postup - postup přípravy
 	 * @param kategorie - kategorie receptu (předkrm/krm/zákrm)
 	 */
-	public Recept(String nazev, String postup, String kategorie){
+	public Recept(String nazev, String postup, String kategorie, List<Surovina> seznamSurovinReceptu){
 		this.nazev = nazev;
 		this.postup = postup;
 		this.kategorie = kategorie;
+		this.seznamSurovinReceptu = seznamSurovinReceptu;
 	}
 
 	public String getNazev() {
