@@ -139,6 +139,25 @@ public class HomeController extends GridPane implements Observer {
 		UpravaSurovinyStage.show();
     }
 	
+	/**
+	 * Metoda otevření nového okna Upravit Recept
+	 * @throws IOException
+	 */
+	@FXML public void otevritUpravitRecept() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass()
+		          .getResource("/UpravitRecept.fxml"));
+		Parent root = loader.load();
+		
+		Stage UpravitReceptStage = new Stage();
+		UpravitReceptStage.setTitle("Upravit Recept");
+		UpravitReceptStage.setScene(new Scene(root));
+		UpravitReceptStage.initModality(Modality.APPLICATION_MODAL);
+		UpravitReceptStage.centerOnScreen();
+		UpravitReceptStage.setAlwaysOnTop(true);
+		UpravitReceptStage.show();
+    }
+	
 	public void pridatRecept() {
 		SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
 		selectionModel.select(0);
