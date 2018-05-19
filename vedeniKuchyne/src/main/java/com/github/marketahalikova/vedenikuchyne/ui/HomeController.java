@@ -130,13 +130,13 @@ public class HomeController extends GridPane implements Observer {
 		          .getResource("/UpravaSuroviny.fxml"));
 		Parent root = loader.load();
 		
-		Stage NovaSurovinaStage = new Stage();
-		NovaSurovinaStage.setTitle("Upravit Surovinu");
-		NovaSurovinaStage.setScene(new Scene(root));
-		NovaSurovinaStage.initModality(Modality.APPLICATION_MODAL);
-		NovaSurovinaStage.centerOnScreen();
-		NovaSurovinaStage.setAlwaysOnTop(true);
-		NovaSurovinaStage.show();
+		Stage UpravaSurovinyStage = new Stage();
+		UpravaSurovinyStage.setTitle("Upravit Surovinu");
+		UpravaSurovinyStage.setScene(new Scene(root));
+		UpravaSurovinyStage.initModality(Modality.APPLICATION_MODAL);
+		UpravaSurovinyStage.centerOnScreen();
+		UpravaSurovinyStage.setAlwaysOnTop(true);
+		UpravaSurovinyStage.show();
     }
 	
 	public void pridatRecept() {
