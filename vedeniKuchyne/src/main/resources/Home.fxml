@@ -93,7 +93,7 @@
 								<ListView layoutX="321.0" layoutY="39.0" prefHeight="231.0" prefWidth="229.0" style="-fx-background-radius: 1em;" />
 								<Label layoutX="62.0" layoutY="22.0" text="Seznam receptů" />
 								<Label layoutX="336.0" layoutY="22.0" text="Nákupní seznam" />
-								<Button layoutX="47.0" layoutY="287.0" mnemonicParsing="false" onAction="#otevritPridatRecept" prefHeight="38.0" prefWidth="83.0" style="-fx-background-radius: 1em;" text="Přidat recept">
+								<Button layoutX="47.0" layoutY="287.0" mnemonicParsing="false" onAction="#pridatRecept" prefHeight="38.0" prefWidth="83.0" style="-fx-background-radius: 1em;" text="Přidat recept">
 									<font>
 										<Font size="10.0" />
 									</font>
@@ -108,7 +108,7 @@
 										<Font size="10.0" />
 									</font>
 								</Button>
-								<Button layoutX="213.0" layoutY="287.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="36.0" style="-fx-background-radius: 1em; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 1em;">
+								<Button onAction="#odstranMenuRecept" layoutX="213.0" layoutY="287.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="36.0" style="-fx-background-radius: 1em; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 1em;">
 									<font>
 										<Font size="10.0" />
 									</font>

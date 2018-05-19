@@ -49,5 +49,28 @@ public class Menu extends Observable{
 
 		return seznamNazvuReceptu;
 	}
+	
+	/**
+	 * Metoda odstraňující recept zadaný parametrem ze seznamu receptů v menu
+	 * 
+	 * @param Recept
+	 */
+	public void odstranRecept(Recept recept) {
+		seznamReceptuMenu.remove(recept);
+		setChanged();
+		notifyObservers();
+	}
+	
+	public Recept najdiRecept(String hledanyRetezec) {
+		Recept hledany = null;
+
+		int len=seznamReceptuMenu.size();
+		for(int i=0; i<len; i++) {
+		    if (seznamReceptuMenu.get(i).getNazev().equals(hledanyRetezec)) {
+		    	hledany = seznamReceptuMenu.get(i);
+		    }
+		}
+		return hledany;
+	}
 
 }

@@ -171,6 +171,13 @@ public class HomeController extends GridPane implements Observer {
 		//to do
 	}
 
+	public void odstranMenuRecept() {
+		String vybrana = menuRecepty.getSelectionModel().getSelectedItem();
+		Recept hledany = kuchyne.getAktualniMenu().najdiRecept(vybrana);
+		kuchyne.getAktualniMenu().odstranRecept(hledany);
+		
+	}
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		ObservableList<String> predkrmyList = FXCollections.observableArrayList();
