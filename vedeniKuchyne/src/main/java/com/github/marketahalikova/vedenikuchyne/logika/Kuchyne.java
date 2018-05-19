@@ -53,7 +53,7 @@ public class Kuchyne extends Observable {
 		sklad.vlozitSurovinu(new Surovina("vodka", Jednotka.l, 10));
 		
 		menu.vlozitRecept(new Recept("Sushi", "Zabij rybu, uvař rýži.", "krm", seznamSurovinReceptu ));
-		
+		menu.vlozitRecept(new Recept("Losos", "Zabij rybu.", "krm", seznamSurovinReceptu ));
 
 		
 	}

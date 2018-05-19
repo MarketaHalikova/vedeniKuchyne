@@ -1,8 +1,10 @@
 package com.github.marketahalikova.vedenikuchyne.ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -38,6 +40,9 @@ public class HomeController extends GridPane implements Observer {
 	@FXML
 	private ListView<String> menuRecepty;
 	@FXML
+	private ListView<String> nakupniSeznam;
+	
+	@FXML
 	private TabPane tabs;
 
 	private Kuchyne kuchyne;
@@ -50,6 +55,7 @@ public class HomeController extends GridPane implements Observer {
 		seznamPredkrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
 		seznamSklad.getItems().addAll(kuchyne.getAktualniSklad().getSkladAsString().keySet());
 		menuRecepty.getItems().addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
+		nakupniSeznam.getItems().addAll(porovnanySeznam());
 
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
 		kuchyne.getAktualniSklad().addObserver(this);
@@ -178,6 +184,36 @@ public class HomeController extends GridPane implements Observer {
 		
 	}
 	
+	//// budu dodelavat/////////////////////////////////////////////////////
+	public List<String> porovnanySeznam() {
+		
+		List<Surovina> listSkladSurovin = kuchyne.getAktualniSklad().getSeznamSurovinSkladu();
+		List<Recept> listMenuReceptu = kuchyne.getAktualniMenu().getSeznamReceptu();
+		List<Surovina> listMenuSurovin = new ArrayList<>();
+		
+		int len=listMenuReceptu.size();
+		for(int i=0; i<len; i++) {		    
+			listMenuSurovin.addAll(listMenuReceptu.get(i).getSeznamSurovinReceptu());	
+			System.out.println(listMenuSurovin);
+		}
+		
+		return getSurovinyAsString(listMenuSurovin);
+
+	}
+	
+	
+	public List<String> getSurovinyAsString(List<Surovina> listSurovin) {
+		List<String> surovinyJakoString = new ArrayList<>();
+
+		for (Surovina surovina : listSurovin) {
+			String retezec = surovina.getNazev() + ", " + surovina.getMnozstvi() + ", " + surovina.getJednotka();
+			surovinyJakoString.add(retezec);
+		}
+
+		return surovinyJakoString;
+	}
+	
+	
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		ObservableList<String> predkrmyList = FXCollections.observableArrayList();
@@ -194,8 +230,9 @@ public class HomeController extends GridPane implements Observer {
 		seznamSklad.setItems(skladList);
 		ObservableList<String> menuList = FXCollections.observableArrayList();
 		menuList.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
-		menuRecepty.setItems(menuList);
-		
-
+		menuRecepty.setItems(menuList);		
+		ObservableList<String> nakupList = FXCollections.observableArrayList();
+		nakupList.addAll(porovnanySeznam());
+		nakupniSeznam.setItems(nakupList);
 	}
 }

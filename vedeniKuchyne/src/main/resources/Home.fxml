@@ -90,7 +90,7 @@
 						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 							<children>
 								<ListView fx:id="menuRecepty" layoutX="47.0" layoutY="39.0" prefHeight="231.0" prefWidth="230.0" style="-fx-background-radius: 1em;" />
-								<ListView layoutX="321.0" layoutY="39.0" prefHeight="231.0" prefWidth="229.0" style="-fx-background-radius: 1em;" />
+								<ListView fx:id="nakupniSeznam" layoutX="321.0" layoutY="39.0" prefHeight="231.0" prefWidth="229.0" style="-fx-background-radius: 1em;" />
 								<Label layoutX="62.0" layoutY="22.0" text="Seznam receptů" />
 								<Label layoutX="336.0" layoutY="22.0" text="Nákupní seznam" />
 								<Button layoutX="47.0" layoutY="287.0" mnemonicParsing="false" onAction="#pridatRecept" prefHeight="38.0" prefWidth="83.0" style="-fx-background-radius: 1em;" text="Přidat recept">
