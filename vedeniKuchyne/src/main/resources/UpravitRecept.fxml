@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="385.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="385.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.marketahalikova.vedenikuchyne.ui.UpravitReceptController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="385.0" prefWidth="657.0" VBox.vgrow="ALWAYS">
          <children>
