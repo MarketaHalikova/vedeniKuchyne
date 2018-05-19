@@ -54,4 +54,12 @@ public class Recept {
 		this.kategorie = kategorie;
 	}
 
+	public void setSeznamSurovinReceptu(List<Surovina> seznamSurovinReceptu) {
+		this.seznamSurovinReceptu = seznamSurovinReceptu;
+	}
+
+	public List<Surovina> getSeznamSurovinReceptu() {
+		return seznamSurovinReceptu;
+	}
+	
 }
