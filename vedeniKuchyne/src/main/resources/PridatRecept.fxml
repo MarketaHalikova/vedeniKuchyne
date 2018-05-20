@@ -7,29 +7,37 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="385.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.marketahalikova.vedenikuchyne.ui.PridatReceptController">
+<VBox prefHeight="385.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.marketahalikova.vedenikuchyne.ui.PridatReceptController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="318.0" prefWidth="564.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="385.0" prefWidth="539.0" VBox.vgrow="ALWAYS">
          <children>
+         	<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="162.0" layoutX="24.0" layoutY="153.0" stroke="BLACK" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="492.0" />
             <TextField layoutX="30.0" layoutY="61.0" prefHeight="27.0" prefWidth="191.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <TextField layoutX="264.0" layoutY="61.0" prefHeight="70.0" prefWidth="243.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <TextField layoutX="264.0" layoutY="61.0" prefHeight="70.0" prefWidth="252.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <MenuButton layoutX="30.0" layoutY="102.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="191.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Kategorie" />
-            <ListView layoutX="222.0" layoutY="166.0" prefHeight="82.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <TextField layoutX="222.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <TextField layoutX="351.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <Button layoutX="122.0" layoutY="323.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Uložit recept" />
+            <ListView layoutX="196.0" layoutY="162.0" prefHeight="82.0" prefWidth="276.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <TextField layoutX="265.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <TextField layoutX="392.0" layoutY="275.0" prefHeight="27.0" prefWidth="78.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <Button layoutX="123.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Uložit recept" />
             <Button layoutX="481.0" layoutY="275.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="+" />
             <Label layoutX="46.0" layoutY="45.0" text="Název" />
             <Label layoutX="275.0" layoutY="45.0" text="Postup" />
-            <Label layoutX="236.0" layoutY="258.0" text="Název" />
-            <Label layoutX="365.0" layoutY="258.0" text="Množství" />
+            <Label layoutX="157.0" layoutY="258.0" text="Název" />
+            <Label layoutX="396.0" layoutY="258.0" text="Jednotka" />
             <Label layoutX="53.0" layoutY="166.0" text="Suroviny">
+            <TextField layoutX="388.0" layoutY="275.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <Label layoutX="393.0" layoutY="258.0" text="Jednotka" />
+            <Button layoutX="481.0" layoutY="198.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="-" />
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
+            <Button layoutX="481.0" layoutY="190.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="-" />
+            <TextField layoutX="137.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <Label layoutX="277.0" layoutY="258.0" text="Množství" />
          </children>
     </AnchorPane>
   </children>
