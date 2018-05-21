@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,6 +61,19 @@ public class Recept {
 
 	public List<Surovina> getSeznamSurovinReceptu() {
 		return seznamSurovinReceptu;
+	}
+	
+	/**
+	 * Metoda vrací seznam názvů surovin v receptu.
+	 * 
+	 * @return List<String>
+	 */
+	public List<String> getSeznamJakoString(){
+		List<String> seznam = new ArrayList<>();
+		for(Surovina surovina: seznamSurovinReceptu) {
+			seznam.add(surovina.getNazev());
+		}
+		return seznam;
 	}
 	
 }

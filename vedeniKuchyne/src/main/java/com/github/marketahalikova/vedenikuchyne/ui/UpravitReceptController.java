@@ -7,6 +7,7 @@ import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -22,6 +23,8 @@ public class UpravitReceptController {
 	private TextField postup;
 	@FXML
 	private ComboBox<String> kategorie;
+	@FXML 
+	private ListView<String> seznamSurovin;
 
 	/**
 	 * Metoda otevření okna nápověda jednotek
@@ -77,6 +80,8 @@ public class UpravitReceptController {
 			}
 
 		}
+		
+		seznamSurovin.getItems().addAll(kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany).getSeznamJakoString());
 
 	}
 
