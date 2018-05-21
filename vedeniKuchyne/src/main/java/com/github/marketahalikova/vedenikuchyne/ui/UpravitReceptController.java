@@ -5,7 +5,6 @@ import java.io.IOException;
 import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 
 import javafx.fxml.FXML;
-import javafx.fxml.LoadListener;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
