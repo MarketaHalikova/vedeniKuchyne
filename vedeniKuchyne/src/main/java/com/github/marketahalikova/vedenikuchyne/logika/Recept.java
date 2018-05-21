@@ -71,7 +71,7 @@ public class Recept {
 	public List<String> getSeznamJakoString(){
 		List<String> seznam = new ArrayList<>();
 		for(Surovina surovina: seznamSurovinReceptu) {
-			seznam.add(surovina.getNazev());
+			seznam.add(surovina.getNazev()+", "+surovina.getMnozstvi()+", "+surovina.getJednotka());
 		}
 		return seznam;
 	}

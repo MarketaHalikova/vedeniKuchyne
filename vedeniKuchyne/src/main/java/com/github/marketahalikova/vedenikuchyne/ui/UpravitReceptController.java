@@ -6,6 +6,9 @@ import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -23,8 +26,16 @@ public class UpravitReceptController {
 	private TextField postup;
 	@FXML
 	private ComboBox<String> kategorie;
-	@FXML 
+	@FXML
 	private ListView<String> seznamSurovin;
+	@FXML
+	private TextField surovinaNazev;
+	@FXML
+	private TextField mnozstvi;
+	@FXML
+	private TextField jednotka;
+	@FXML
+	private Alert maloInfo;
 
 	/**
 	 * Metoda otevření okna nápověda jednotek
@@ -80,9 +91,31 @@ public class UpravitReceptController {
 			}
 
 		}
-		
+
 		seznamSurovin.getItems().addAll(kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany).getSeznamJakoString());
 
+	}
+
+	/**
+	 * Metoda přídá zadanou surovinu do seznamu surovin v receptu;
+	 */
+	public void pridejSurovinu() {
+		if (!(surovinaNazev.getText().isEmpty() || mnozstvi.getText().isEmpty() || jednotka.getText().isEmpty())) {
+			seznamSurovin.getItems()
+					.add(surovinaNazev.getText() + ", " + mnozstvi.getText() + ", " + jednotka.getText());
+			
+			surovinaNazev.clear();
+			mnozstvi.clear();
+			jednotka.clear();
+		} else {
+			maloInfo = new Alert(AlertType.INFORMATION);
+			maloInfo.setTitle("Pozor!");
+			maloInfo.setHeaderText(null);
+			maloInfo.setContentText("U suroviny musí být zadaný název, množství i jednotka!");
+			Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
+			stage.setAlwaysOnTop(true);
+			maloInfo.showAndWait();
+		}
 	}
 
 }
