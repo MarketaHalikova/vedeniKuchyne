@@ -52,6 +52,21 @@ public class SeznamReceptu extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	
+	/** 
+	 * Metoda najde recept dle zadaného názvu.
+	 * @param nazev
+	 */
+	public Recept najdiRecept(String nazev) {
+		Recept hledany = null;
+		for(Recept recept : seznamReceptu) {
+			if(recept.getNazev().equals(nazev))
+				hledany = recept;
+		}
+		
+		return hledany;
+
+	}
 
 	/**
 	 * 
