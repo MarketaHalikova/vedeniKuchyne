@@ -36,7 +36,7 @@ public class Kuchyne extends Observable {
 		// tady bude naplneni provizornimi daty
 		
 		Surovina knedlik = new Surovina("knedlík", Jednotka.ks, 3);
-		Surovina marijanka = new Surovina("marijanka", Jednotka.g, 20);
+		Surovina marijanka = new Surovina("marijanka", Jednotka.kg, 20);
 		Surovina mrkev = new Surovina("mrkev", Jednotka.ks, 3);
 		List<Surovina> seznamSurovinReceptu = new ArrayList<>();
 		seznamSurovinReceptu.add(knedlik);
@@ -49,7 +49,7 @@ public class Kuchyne extends Observable {
 
 
 		sklad.vlozitSurovinu(new Surovina("jablko", Jednotka.kg, 3));
-		sklad.vlozitSurovinu(new Surovina("marijanka", Jednotka.g, 20));
+		sklad.vlozitSurovinu(new Surovina("marijanka", Jednotka.kg, 20));
 		sklad.vlozitSurovinu(new Surovina("vodka", Jednotka.l, 10));
 		
 		menu.vlozitRecept(new Recept("Sushi", "Zabij rybu, uvař rýži.", "krm", seznamSurovinReceptu ));

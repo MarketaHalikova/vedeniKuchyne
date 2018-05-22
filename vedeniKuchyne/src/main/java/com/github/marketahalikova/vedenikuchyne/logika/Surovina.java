@@ -39,7 +39,7 @@ public class Surovina {
 
 	
 	public enum Jednotka {
-	    g, kg, l, ml, ks, 
+	    kg, l, ks, 
 	}
 	
 	/**
