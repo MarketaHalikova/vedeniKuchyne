@@ -3,6 +3,7 @@ package com.github.marketahalikova.vedenikuchyne.ui;
 import java.io.IOException;
 
 import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
+import com.github.marketahalikova.vedenikuchyne.logika.Surovina.Jednotka;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -33,7 +34,7 @@ public class UpravitReceptController {
 	@FXML
 	private TextField mnozstvi;
 	@FXML
-	private TextField jednotka;
+	private ComboBox<Jednotka> jednotka;
 	@FXML
 	private Alert maloInfo;
 
@@ -100,13 +101,13 @@ public class UpravitReceptController {
 	 * Metoda přídá zadanou surovinu do seznamu surovin v receptu;
 	 */
 	public void pridejSurovinu() {
-		if (!(surovinaNazev.getText().isEmpty() || mnozstvi.getText().isEmpty() || jednotka.getText().isEmpty())) {
+		if (!(surovinaNazev.getText().isEmpty() || mnozstvi.getText().isEmpty() || jednotka.getSelectionModel().isEmpty())) {
 			seznamSurovin.getItems()
-					.add(surovinaNazev.getText() + ", " + mnozstvi.getText() + ", " + jednotka.getText());
+					.add(surovinaNazev.getText() + ", " + mnozstvi.getText() + ", " + jednotka.getSelectionModel().getSelectedItem());
 			
 			surovinaNazev.clear();
 			mnozstvi.clear();
-			jednotka.clear();
+			jednotka.getSelectionModel().clearSelection();
 		} else {
 			maloInfo = new Alert(AlertType.INFORMATION);
 			maloInfo.setTitle("Pozor!");

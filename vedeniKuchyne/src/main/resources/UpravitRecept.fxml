@@ -51,17 +51,21 @@
             </Label>
             <Button layoutX="422.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Smazat recept" />
             <Button layoutX="72.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Upravit recept" />
-            <TextField fx:id="jednotka" layoutX="388.0" layoutY="275.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;">
-               <tooltip>
-                  <Tooltip text="Pro nápovědu jednotek klikněte na &quot;Jednotka&quot;" />
-               </tooltip>
-            </TextField>
             <Label layoutX="393.0" layoutY="258.0" onMouseClicked="#otevritNapoveda" text="Jednotka">
                <tooltip>
                   <Tooltip text="Pro nápovědu jednotek klikněte" />
                </tooltip>
             </Label>
             <Button layoutX="481.0" layoutY="198.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="-" />
+            <ComboBox fx:id="jednotka" layoutX="386.0" layoutY="275.0" prefHeight="27.0" prefWidth="83.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="kg" />
+                     <String fx:value="ks" />
+                     <String fx:value="l" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
          </children>
     </AnchorPane>
   </children>
