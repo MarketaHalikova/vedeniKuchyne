@@ -19,7 +19,7 @@
             <TextField layoutX="358.0" layoutY="237.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <Label layoutX="205.0" layoutY="220.0" text="Množství" />
             <Label layoutX="358.0" layoutY="220.0" text="Jednotka" />
-            <ListView layoutX="28.0" layoutY="27.0" prefHeight="176.0" prefWidth="428.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <ListView layoutX="28.0" layoutY="27.0" prefHeight="176.0" prefWidth="428.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em; -fx-padding: 0.5em;" />
          </children>
     </AnchorPane>
   </children>

@@ -29,7 +29,7 @@
                   		</FXCollections>
                   	</items>
             </ComboBox>
-            <ListView fx:id="seznamSurovin" layoutX="192.0" layoutY="164.0" prefHeight="82.0" prefWidth="277.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <ListView fx:id="seznamSurovin" layoutX="192.0" layoutY="164.0" prefHeight="82.0" prefWidth="277.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em; -fx-padding: 0.5em;" />
             <TextField fx:id="surovinaNazev" layoutX="131.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <TextField fx:id="mnozstvi" layoutX="259.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <Button layoutX="249.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Přidat recept do menu" />
