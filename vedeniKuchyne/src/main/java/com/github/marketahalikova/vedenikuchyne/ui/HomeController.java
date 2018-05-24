@@ -1,5 +1,7 @@
 package com.github.marketahalikova.vedenikuchyne.ui;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -249,17 +251,26 @@ public class HomeController extends GridPane implements Observer {
 		return surovinyJakoString;
 	}
 	
+	
 	/*
-	 * Metoda vygeneruje PDF dokument
+	 * Metoda vygeneruje PDF dokument s obsahem nákupního listu
 	 */
 	@FXML
-	public void exportNakup() {
-		
-		//TO DO
-		
+	public void exportNakup() throws DocumentException {
+
 		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 		
+		ArrayList<String> nakupniList = new ArrayList<String>();
+		nakupniList.addAll(porovnanySeznamMenu());
+		String nakupniList1 = nakupniList.toString().replaceAll("\\,", "\n");
+		String nakupniList2 = nakupniList1.replaceAll("\\[", "");
+		String nakupniList3 = nakupniList2.replaceAll("\\]", "");
+		
+		Font nadpisFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 22, BaseColor.DARK_GRAY);
+		Font nakupFont = FontFactory.getFont(FontFactory.TIMES, 20, BaseColor.BLACK);
+		
 		Document nakup = new Document();
+		
 		try {
 			PdfWriter.getInstance(nakup, new FileOutputStream("NakupniSeznam.pdf"));
 		} catch (FileNotFoundException e) {
@@ -269,18 +280,19 @@ public class HomeController extends GridPane implements Observer {
 		}
 		 
 		nakup.open();
-		Font nakupFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 20, BaseColor.BLACK);
 		
-		Chunk nakupText = new Chunk("Nákupní seznam ke dni: " + datum, nakupFont);
-		 
-		try {
-			nakup.add(nakupText);
-		} catch (DocumentException e) {
+		nakup.add(new Paragraph("Nákupní seznam ke dni " + datum + ":", nadpisFont));
+		nakup.add(new Paragraph("\n"));
+		nakup.add(new Paragraph(nakupniList3, nakupFont));
+
+		nakup.close();
+		
+		File vygenerovanyNakup = new File("NakupniSeznam.pdf");
+        try {
+			Desktop.getDesktop().open(vygenerovanyNakup);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		nakup.close();
-
 	}
 
 	@Override
