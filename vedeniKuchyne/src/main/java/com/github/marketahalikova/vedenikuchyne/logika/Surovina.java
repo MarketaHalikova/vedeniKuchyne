@@ -96,5 +96,24 @@ public class Surovina {
 	public void setMnozstvi(double mnozstvi) {
 		this.mnozstvi = mnozstvi;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Surovina other = (Surovina) obj;
+		if (jednotka != other.jednotka)
+			return false;
+		if (nazev == null) {
+			if (other.nazev != null)
+				return false;
+		} else if (!nazev.equals(other.nazev))
+			return false;
+		return true;
+	}
 
 }
