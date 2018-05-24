@@ -1,7 +1,11 @@
 package com.github.marketahalikova.vedenikuchyne.ui;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -9,6 +13,15 @@ import java.util.Observer;
 import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 import com.github.marketahalikova.vedenikuchyne.logika.Recept;
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -234,6 +247,40 @@ public class HomeController extends GridPane implements Observer {
 		}
 
 		return surovinyJakoString;
+	}
+	
+	/*
+	 * Metoda vygeneruje PDF dokument
+	 */
+	@FXML
+	public void exportNakup() {
+		
+		//TO DO
+		
+		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+		
+		Document nakup = new Document();
+		try {
+			PdfWriter.getInstance(nakup, new FileOutputStream("NakupniSeznam.pdf"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		 
+		nakup.open();
+		Font nakupFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 20, BaseColor.BLACK);
+		
+		Chunk nakupText = new Chunk("Nákupní seznam ke dni: " + datum, nakupFont);
+		 
+		try {
+			nakup.add(nakupText);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		
+		nakup.close();
+
 	}
 
 	@Override
