@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,8 +18,16 @@
             <Label layoutX="193.0" layoutY="42.0" text="Název" />
             <Label layoutX="184.0" layoutY="113.0" text="Množství" />
             <Label layoutX="183.0" layoutY="186.0" text="Jednotka" />
-            <TextField layoutX="133.0" layoutY="203.0" prefHeight="27.0" prefWidth="157.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <TextField layoutX="133.0" layoutY="130.0" prefHeight="27.0" prefWidth="157.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <ComboBox fx:id="jednotka" layoutX="133.0" layoutY="203.0" prefHeight="27.0" prefWidth="157.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" >
+            <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="kg" />
+                     <String fx:value="ks" />
+                     <String fx:value="l" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
          </children>
     </AnchorPane>
   </children>
