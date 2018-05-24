@@ -61,25 +61,7 @@ public class UpravitReceptController extends Observable {
 	@FXML
 	private Button upravitBtn;
 
-	/**
-	 * Metoda otevření okna nápověda jednotek
-	 * 
-	 * @throws IOException
-	 */
-	@FXML
-	public void otevritNapoveda() throws IOException {
 
-		// provizorní řešení
-
-		StackPane newScene = new StackPane();
-		Scene scene = new Scene(newScene, 300, 100);
-		Stage provizorni = new Stage();
-		provizorni.setScene(scene);
-		provizorni.setAlwaysOnTop(true);
-		provizorni.centerOnScreen();
-		provizorni.show();
-
-	}
 
 	/**
 	 * Metoda načte hodnotu vyběru (vybraný recept) z HomeControlleru.
@@ -98,6 +80,7 @@ public class UpravitReceptController extends Observable {
 		hackTooltipStartTiming(tooltip);
 		postup.setTooltip(tooltip);
 		receptNazev.setTooltip(tooltip);
+		jednotka.setTooltip(new Tooltip("Zadávejte jednotky, ve kterých jsou suroviny vedené na skladě"));
 
 		vypisRecept();
 		upravitBtn.setDisable(true);
