@@ -2,7 +2,6 @@ package com.github.marketahalikova.vedenikuchyne.logika;
 
 import java.util.Observable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**

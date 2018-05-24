@@ -207,6 +207,9 @@ public class UpravitReceptController extends Observable{
 
 	public void smazatReceptBtn(ActionEvent event) {
 
+		Recept receptKOdstraneni = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
+		kuchyne.getAktualniSeznamReceptu().getSeznamReceptu().remove(receptKOdstraneni);
+		
 		setChanged();
 		notifyObservers();
 
