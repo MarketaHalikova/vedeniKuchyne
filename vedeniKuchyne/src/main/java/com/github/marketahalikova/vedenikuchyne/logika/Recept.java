@@ -58,6 +58,10 @@ public class Recept {
 	public void setSeznamSurovinReceptu(List<Surovina> seznamSurovinReceptu) {
 		this.seznamSurovinReceptu = seznamSurovinReceptu;
 	}
+	
+	public void setNovouSurovinuReceptu(Surovina surovina) {
+		this.seznamSurovinReceptu.add(surovina);
+	}
 
 	public List<Surovina> getSeznamSurovinReceptu() {
 		return seznamSurovinReceptu;

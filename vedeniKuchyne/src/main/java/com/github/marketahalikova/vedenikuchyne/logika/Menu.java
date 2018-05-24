@@ -85,6 +85,7 @@ public class Menu extends Observable {
 			}
 		}
 
+
 		// Vytvoření setříděného seznamu
 		for (Surovina surovinaMenuNetridena : seznamSurovinMenuNesetrideny) {
 			if (seznamVsechSurovinMenu.contains(surovinaMenuNetridena)) {

@@ -113,6 +113,7 @@ public class Kuchyne extends Observable {
 		nakupniSeznam.setSeznamSurovin(null);
 		List<Surovina> provizorniSeznam = new ArrayList<>();
 
+		
 
 		for (Surovina surovinaMenu : menu.vytvoreniSeznamuSurovinMenu()) {
 			if(sklad.getSeznamSurovinSkladu().contains(surovinaMenu)) {
@@ -126,6 +127,7 @@ public class Kuchyne extends Observable {
 		}
 		
 		nakupniSeznam.setSeznamSurovin(provizorniSeznam);
+
 
 		//System.out.println("nakupni listek: " + nakupniSeznam.nakupniSeznamToString()); // 3 suroviny
 																	// suroviny a by melo byt jeden kus;

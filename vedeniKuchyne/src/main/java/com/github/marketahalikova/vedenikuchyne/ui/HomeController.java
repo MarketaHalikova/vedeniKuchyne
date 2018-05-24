@@ -58,6 +58,7 @@ public class HomeController extends GridPane implements Observer {
 		kuchyne.getAktualniSklad().addObserver(this);
 		kuchyne.getAktualniMenu().addObserver(this);
 
+
 	}
 
 	/**
@@ -182,7 +183,7 @@ public class HomeController extends GridPane implements Observer {
 		
 		UpravitReceptController c1 = loader.<UpravitReceptController>getController();
 		c1.nactiHodnotu(vybrana, kuchyne);
-		
+		c1.addObserver(this);
 
 		Stage UpravitReceptStage = new Stage();
 		UpravitReceptStage.setTitle("Upravit Recept");
@@ -191,6 +192,7 @@ public class HomeController extends GridPane implements Observer {
 		UpravitReceptStage.centerOnScreen();
 		UpravitReceptStage.setAlwaysOnTop(true);
 		UpravitReceptStage.show();
+		
 
 		
 	}

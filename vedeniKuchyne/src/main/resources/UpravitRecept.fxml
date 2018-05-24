@@ -32,7 +32,7 @@
             <ListView fx:id="seznamSurovin" layoutX="192.0" layoutY="164.0" prefHeight="82.0" prefWidth="277.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em; -fx-padding: 0.5em;" />
             <TextField fx:id="surovinaNazev" layoutX="131.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <TextField fx:id="mnozstvi" layoutX="259.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <Button layoutX="249.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Přidat recept do menu" />
+            <Button onAction="#pridatReceptDoMenuBtn" layoutX="249.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Přidat recept do menu" />
             <Button layoutX="481.0" layoutY="275.0" mnemonicParsing="false" onAction="#pridejSurovinu" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="+" />
             <Label layoutX="46.0" layoutY="45.0" text="Název" />
             <Label layoutX="275.0" layoutY="46.0" text="Postup" />
@@ -43,20 +43,20 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <ListView layoutX="539.0" layoutY="54.0" prefHeight="261.0" prefWidth="99.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <ListView fx:id="chybejiciSuroviny" layoutX="539.0" layoutY="54.0" prefHeight="261.0" prefWidth="99.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <Label layoutX="539.0" layoutY="26.0" prefHeight="27.0" prefWidth="99.0" text="Chybějící suroviny &#10;na skladě" textAlignment="CENTER">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Button layoutX="422.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Smazat recept" />
+            <Button onAction="#smazatReceptBtn" layoutX="422.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Smazat recept" />
             <Button layoutX="72.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Upravit recept" />
             <Label layoutX="393.0" layoutY="258.0" onMouseClicked="#otevritNapoveda" text="Jednotka">
                <tooltip>
                   <Tooltip text="Pro nápovědu jednotek klikněte" />
                </tooltip>
             </Label>
-            <Button layoutX="481.0" layoutY="198.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="-" />
+            <Button onAction="#smazSurovinu" layoutX="481.0" layoutY="198.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="-" />
             <ComboBox fx:id="jednotka" layoutX="386.0" layoutY="275.0" prefHeight="27.0" prefWidth="83.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;">
                <items>
                   <FXCollections fx:factory="observableArrayList">
