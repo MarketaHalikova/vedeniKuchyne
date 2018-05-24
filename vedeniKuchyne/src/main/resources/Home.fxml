@@ -67,11 +67,11 @@
 					<content>
 						<AnchorPane prefHeight="200.0" prefWidth="200.0">
 							<children>
-								<ListView fx:id="seznamSklad" layoutX="193.0" layoutY="41.0" prefHeight="276.0" prefWidth="373.0" style="-fx-background-radius: 1em; -fx-padding: 0.5em;" />
+								<ListView fx:id="seznamSklad" layoutX="193.0" layoutY="41.0" onMouseClicked="#viditelnostButtonu" prefHeight="276.0" prefWidth="373.0" style="-fx-background-radius: 1em; -fx-padding: 0.5em;" />
 								<Button layoutX="43.0" layoutY="64.0" mnemonicParsing="false" onAction="#otevritInventura" prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;" text="Inventura" />
 								<Button layoutX="43.0" layoutY="115.0" mnemonicParsing="false" onAction="#otevritNovaSurovina" prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;" text="Přidat surovinu" />
-								<Button layoutX="43.0" layoutY="188.0" mnemonicParsing="false" onAction="#otevritUpravaSuroviny" prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;" text="Upravit" />
-								<Button layoutX="61.0" layoutY="241.0" mnemonicParsing="false" onAction="#odstranSurovinu" prefHeight="57.0" prefWidth="59.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 1em;">
+								<Button fx:id="upravaSuroviny" layoutX="43.0" layoutY="188.0" mnemonicParsing="false" onAction="#otevritUpravaSuroviny" prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 1em;" text="Upravit" />
+								<Button fx:id="smazaniSuroviny" layoutX="61.0" layoutY="241.0" mnemonicParsing="false" onAction="#odstranSurovinu" prefHeight="57.0" prefWidth="59.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 1em;">
 									<graphic>
 										<ImageView fitHeight="61.0" fitWidth="57.0" style="-fx-padding: 2px;">
 											<image>

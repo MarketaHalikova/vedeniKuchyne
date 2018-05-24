@@ -30,6 +30,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
@@ -55,6 +56,12 @@ public class HomeController extends GridPane implements Observer {
 
 	@FXML
 	private TabPane tabs;
+	
+	@FXML
+	private Button upravaSuroviny;
+	@FXML
+	private Button smazaniSuroviny;
+	
 
 	private Kuchyne kuchyne;
 
@@ -71,6 +78,10 @@ public class HomeController extends GridPane implements Observer {
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
 		kuchyne.getAktualniSklad().addObserver(this);
 		kuchyne.getAktualniMenu().addObserver(this);
+		
+		upravaSuroviny.setDisable(true);
+		smazaniSuroviny.setDisable(true);
+		
 
 
 	}
@@ -339,6 +350,21 @@ public class HomeController extends GridPane implements Observer {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 * Metoda nastavuje viditelnost buttonu
+	 */
+	@FXML
+	public void viditelnostButtonu() {
+
+		if (seznamSklad.getSelectionModel().isEmpty()) {
+			upravaSuroviny.setDisable(true);
+			smazaniSuroviny.setDisable(true);
+		} else {
+			upravaSuroviny.setDisable(false);
+			smazaniSuroviny.setDisable(false);
+		}
+	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
@@ -360,6 +386,7 @@ public class HomeController extends GridPane implements Observer {
 		ObservableList<String> nakupList = FXCollections.observableArrayList();
 		nakupList.addAll(porovnanySeznamMenu());
 		nakupniSeznam.setItems(nakupList);
+		
 
 	}
 }
