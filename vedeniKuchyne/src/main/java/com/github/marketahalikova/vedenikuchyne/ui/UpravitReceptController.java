@@ -1,6 +1,7 @@
 package com.github.marketahalikova.vedenikuchyne.ui;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -10,6 +11,8 @@ import com.github.marketahalikova.vedenikuchyne.logika.Recept;
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina;
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina.Jednotka;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,9 +25,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputEvent;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 public class UpravitReceptController extends Observable{
@@ -89,6 +93,11 @@ public class UpravitReceptController extends Observable{
 		listNovychSurReceptu.clear();
 		listNovychSurReceptu.addAll(kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany).getSeznamSurovinReceptu());
 
+		Tooltip tooltip = new Tooltip("Stiskněte ENTER aby se změna uložila");
+		hackTooltipStartTiming(tooltip);
+		postup.setTooltip(tooltip);
+		receptNazev.setTooltip(tooltip);
+		
 		vypisRecept();
 	}
 
@@ -207,6 +216,28 @@ public class UpravitReceptController extends Observable{
 	public void lzeJenUprvit(){
 		smazatBtn.setDisable(true);
 		menuBtn.setDisable(true);
+	}
+	
+	
+	/**
+	 * Metoda zrychluje zobrazení tooltipu
+	 * @param Tooltip
+	 */
+	public static void hackTooltipStartTiming(Tooltip tooltip) {
+	    try {
+	        Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
+	        fieldBehavior.setAccessible(true);
+	        Object objBehavior = fieldBehavior.get(tooltip);
+
+	        Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+	        fieldTimer.setAccessible(true);
+	        Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+
+	        objTimer.getKeyFrames().clear();
+	        objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 
 }
