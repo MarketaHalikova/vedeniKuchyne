@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,5 +37,13 @@ public class NakupniSeznam {
 	 */
 	public void vlozitSurovinu(Surovina surovina){
 		seznamSurovinNakupu.add(surovina);
+	}
+	
+	public List<String> nakupniSeznamToString(){
+		List<String> nakupniSeznamToString = new ArrayList<>();
+		for (Surovina surovina : seznamSurovinNakupu) {
+			nakupniSeznamToString.add(surovina.getNazev() + " " + surovina.getMnozstvi() + surovina.getJednotka());
+		}
+		return nakupniSeznamToString;
 	}
 }
