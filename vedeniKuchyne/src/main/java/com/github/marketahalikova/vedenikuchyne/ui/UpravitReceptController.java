@@ -30,8 +30,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
-public class UpravitReceptController extends Observable{
+public class UpravitReceptController extends Observable {
 
 	private String vybrany;
 	private Kuchyne kuchyne;
@@ -97,7 +96,7 @@ public class UpravitReceptController extends Observable{
 		hackTooltipStartTiming(tooltip);
 		postup.setTooltip(tooltip);
 		receptNazev.setTooltip(tooltip);
-		
+
 		vypisRecept();
 	}
 
@@ -149,6 +148,7 @@ public class UpravitReceptController extends Observable{
 		if (!(surovinaNazev.getText().isEmpty() || mnozstvi.getText().isEmpty()
 				|| jednotka.getSelectionModel().isEmpty()
 				|| !mnozstvi.getText().matches(regexDecimal + "|" + regexInteger))) {
+
 			seznamSurovin.getItems().add(surovinaNazev.getText() + ", " + mnozstvi.getText() + ", "
 					+ jednotka.getSelectionModel().getSelectedItem());
 
@@ -158,7 +158,6 @@ public class UpravitReceptController extends Observable{
 
 			// pridani suroviny do novyho seznamu surovin receptu
 			listNovychSurReceptu.add(new Surovina(nazev, Jednotka.valueOf(jedn), mnoz));
-
 
 		} else {
 			maloInfo = new Alert(AlertType.INFORMATION);
@@ -170,14 +169,14 @@ public class UpravitReceptController extends Observable{
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();
 		}
-		
+
 		// update seznamu chybějících surovin na skladě
 		Recept aktualni = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
 		ObservableList<String> listChybejicich = FXCollections.observableArrayList();
-		listChybejicich.addAll(
-				kuchyne.srovnaniSurovinReceptuSeSkladem(new Recept(aktualni.getNazev(), aktualni.getPostup(), aktualni.getKategorie(), listNovychSurReceptu)));
+		listChybejicich.addAll(kuchyne.srovnaniSurovinReceptuSeSkladem(
+				new Recept(aktualni.getNazev(), aktualni.getPostup(), aktualni.getKategorie(), listNovychSurReceptu)));
 		chybejiciSuroviny.setItems(listChybejicich);
-		
+
 		lzeJenUprvit();
 	}
 
@@ -193,62 +192,91 @@ public class UpravitReceptController extends Observable{
 		lzeJenUprvit();
 	}
 
-	// pripojit
 	public void upravitReceptBtn(ActionEvent event) {
-		kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany).setSeznamSurovinReceptu(listNovychSurReceptu);
 
+		if (!(postup.getText().isEmpty() || receptNazev.getText().isEmpty())) {
 
-		((Node)(event.getSource())).getScene().getWindow().hide();
+			String kat = "" + kategorie.getSelectionModel().getSelectedItem();
+			String newKat = null;
+			switch (kat) {
+			case "Krm":
+				newKat = "krm";
+				break;
+			case "Předkrm":
+				newKat = "predkrm";
+				break;
+			case "Zákrm":
+				newKat = "zakrm";
+			}
+
+			Recept upraveny = new Recept(receptNazev.getText(), postup.getText(), newKat, listNovychSurReceptu);
+			kuchyne.getAktualniSeznamReceptu().getSeznamReceptu()
+					.remove(kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany));
+			kuchyne.getAktualniSeznamReceptu().vlozitRecept(upraveny);
+
+			setChanged();
+			notifyObservers();
+
+		} else {
+			maloInfo = new Alert(AlertType.INFORMATION);
+			maloInfo.setTitle("Pozor!");
+			maloInfo.setHeaderText(null);
+			maloInfo.setContentText(
+					"U suroviny musí být zadaný název, množství i jednotka! Množství musé být zadané jako celé nebo desetinné číslo!");
+			Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
+			stage.setAlwaysOnTop(true);
+			maloInfo.showAndWait();
+		}
+
+		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
 	public void pridatReceptDoMenuBtn(ActionEvent event) {
 		Recept receptNaMenu = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
 		receptNaMenu.setSeznamSurovinReceptu(listNovychSurReceptu);
 
-		
-		
 		kuchyne.getAktualniMenu().vlozitRecept(receptNaMenu);
 		setChanged();
 		notifyObservers();
-		((Node)(event.getSource())).getScene().getWindow().hide();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
 	public void smazatReceptBtn(ActionEvent event) {
 
 		Recept receptKOdstraneni = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
 		kuchyne.getAktualniSeznamReceptu().getSeznamReceptu().remove(receptKOdstraneni);
-		
+
 		setChanged();
 		notifyObservers();
 
-		((Node)(event.getSource())).getScene().getWindow().hide();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
-	
-	public void lzeJenUprvit(){
+
+	public void lzeJenUprvit() {
 		smazatBtn.setDisable(true);
 		menuBtn.setDisable(true);
 	}
-	
-	
+
 	/**
 	 * Metoda zrychluje zobrazení tooltipu
+	 * 
 	 * @param Tooltip
 	 */
 	public static void hackTooltipStartTiming(Tooltip tooltip) {
-	    try {
-	        Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
-	        fieldBehavior.setAccessible(true);
-	        Object objBehavior = fieldBehavior.get(tooltip);
+		try {
+			Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
+			fieldBehavior.setAccessible(true);
+			Object objBehavior = fieldBehavior.get(tooltip);
 
-	        Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
-	        fieldTimer.setAccessible(true);
-	        Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+			Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+			fieldTimer.setAccessible(true);
+			Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
 
-	        objTimer.getKeyFrames().clear();
-	        objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+			objTimer.getKeyFrames().clear();
+			objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
