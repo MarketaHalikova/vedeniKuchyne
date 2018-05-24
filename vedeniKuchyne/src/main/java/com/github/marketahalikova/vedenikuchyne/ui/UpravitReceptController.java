@@ -170,6 +170,14 @@ public class UpravitReceptController extends Observable{
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();
 		}
+		
+		// update seznamu chybějících surovin na skladě
+		Recept aktualni = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
+		ObservableList<String> listChybejicich = FXCollections.observableArrayList();
+		listChybejicich.addAll(
+				kuchyne.srovnaniSurovinReceptuSeSkladem(new Recept(aktualni.getNazev(), aktualni.getPostup(), aktualni.getKategorie(), listNovychSurReceptu)));
+		chybejiciSuroviny.setItems(listChybejicich);
+		
 		lzeJenUprvit();
 	}
 
