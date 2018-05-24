@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -12,15 +15,13 @@
 
 <VBox prefHeight="385.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.marketahalikova.vedenikuchyne.ui.PridatReceptController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="385.0" prefWidth="539.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
          	<Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="162.0" layoutX="24.0" layoutY="153.0" stroke="BLACK" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="492.0" />
             <TextField layoutX="30.0" layoutY="61.0" prefHeight="27.0" prefWidth="191.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <TextField layoutX="264.0" layoutY="61.0" prefHeight="70.0" prefWidth="252.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <MenuButton layoutX="30.0" layoutY="102.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="191.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Kategorie" />
             <ListView layoutX="196.0" layoutY="162.0" prefHeight="82.0" prefWidth="276.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em; -fx-padding: 0.5em;" />
             <TextField layoutX="265.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <TextField layoutX="392.0" layoutY="275.0" prefHeight="27.0" prefWidth="78.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <Button layoutX="123.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Uložit recept" />
             <Button layoutX="481.0" layoutY="275.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="+" />
             <Label layoutX="46.0" layoutY="45.0" text="Název" />
@@ -38,6 +39,24 @@
             <Button layoutX="481.0" layoutY="190.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="-" />
             <TextField layoutX="137.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <Label layoutX="277.0" layoutY="258.0" text="Množství" />
+            <ComboBox layoutX="30.0" layoutY="104.0" prefHeight="27.0" prefWidth="191.0" promptText="Kategorie" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" >
+            <items>
+                  		<FXCollections fx:factory="observableArrayList">
+                  			<String fx:value="Předkrm" />
+                  			<String fx:value="Krm" />
+                  			<String fx:value="Zákrm" />
+                  		</FXCollections>
+                  	</items>
+            </ComboBox>
+            <ComboBox fx:id="jednotka" layoutX="392.0" layoutY="275.0" prefHeight="27.0" prefWidth="78.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" >
+            <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="kg" />
+                     <String fx:value="ks" />
+                     <String fx:value="l" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
          </children>
     </AnchorPane>
   </children>
