@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -50,6 +51,10 @@ public class UpravitReceptController extends Observable{
 	private ComboBox<Jednotka> jednotka;
 	@FXML
 	private Alert maloInfo;
+	@FXML
+	private Button smazatBtn;
+	@FXML
+	private Button menuBtn;
 
 	/**
 	 * Metoda otevření okna nápověda jednotek
@@ -145,8 +150,6 @@ public class UpravitReceptController extends Observable{
 			// pridani suroviny do novyho seznamu surovin receptu
 			listNovychSurReceptu.add(new Surovina(nazev, Jednotka.valueOf(jedn), mnoz));
 
-			System.out.println(kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany).getSeznamJakoString());
-			System.out.println(listNovychSurReceptu);
 
 		} else {
 			maloInfo = new Alert(AlertType.INFORMATION);
@@ -158,6 +161,7 @@ public class UpravitReceptController extends Observable{
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();
 		}
+		lzeJenUprvit();
 	}
 
 	public void smazSurovinu() {
@@ -169,7 +173,7 @@ public class UpravitReceptController extends Observable{
 
 		listNovychSurReceptu.remove(surovinaKeSmazani);
 		seznamSurovin.getItems().remove(seznamSurovin.getSelectionModel().getSelectedIndex());
-		System.out.println(listNovychSurReceptu);
+		lzeJenUprvit();
 	}
 
 	// pripojit
@@ -198,6 +202,11 @@ public class UpravitReceptController extends Observable{
 		notifyObservers();
 
 		((Node)(event.getSource())).getScene().getWindow().hide();
+	}
+	
+	public void lzeJenUprvit(){
+		smazatBtn.setDisable(true);
+		menuBtn.setDisable(true);
 	}
 
 }

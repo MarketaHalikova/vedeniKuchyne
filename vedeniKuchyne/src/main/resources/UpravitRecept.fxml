@@ -18,9 +18,9 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="385.0" prefWidth="657.0" VBox.vgrow="ALWAYS">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddddd" height="162.0" layoutX="24.0" layoutY="153.0" stroke="BLACK" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="495.0" />
-            <TextField fx:id="receptNazev" layoutX="30.0" layoutY="61.0" prefHeight="27.0" prefWidth="191.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <TextField fx:id="postup" layoutX="265.0" layoutY="61.0" prefHeight="70.0" prefWidth="253.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <ComboBox fx:id="kategorie" layoutX="30.0" layoutY="104.0" prefHeight="27.0" prefWidth="191.0" promptText="Kategorie" style="-fx-background-radius: 1em; -fx-border-radius: 1em;">
+            <TextField onAction="#lzeJenUprvit" fx:id="receptNazev" layoutX="30.0" layoutY="61.0" prefHeight="27.0" prefWidth="191.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <TextField onAction="#lzeJenUprvit" fx:id="postup" layoutX="265.0" layoutY="61.0" prefHeight="70.0" prefWidth="253.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <ComboBox onAction="#lzeJenUprvit" fx:id="kategorie" layoutX="30.0" layoutY="104.0" prefHeight="27.0" prefWidth="191.0" promptText="Kategorie" style="-fx-background-radius: 1em; -fx-border-radius: 1em;">
             		<items>
                   		<FXCollections fx:factory="observableArrayList">
                   			<String fx:value="Předkrm" />
@@ -32,7 +32,7 @@
             <ListView fx:id="seznamSurovin" layoutX="192.0" layoutY="164.0" prefHeight="82.0" prefWidth="277.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em; -fx-padding: 0.5em;" />
             <TextField fx:id="surovinaNazev" layoutX="131.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
             <TextField fx:id="mnozstvi" layoutX="259.0" layoutY="275.0" prefHeight="27.0" prefWidth="119.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <Button onAction="#pridatReceptDoMenuBtn" layoutX="249.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Přidat recept do menu" />
+            <Button fx:id="menuBtn" onAction="#pridatReceptDoMenuBtn" layoutX="249.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Přidat recept do menu" />
             <Button layoutX="481.0" layoutY="275.0" mnemonicParsing="false" onAction="#pridejSurovinu" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="+" />
             <Label layoutX="46.0" layoutY="45.0" text="Název" />
             <Label layoutX="275.0" layoutY="46.0" text="Postup" />
@@ -49,7 +49,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Button onAction="#smazatReceptBtn" layoutX="422.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Smazat recept" />
+            <Button fx:id="smazatBtn" onAction="#smazatReceptBtn" layoutX="422.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Smazat recept" />
             <Button layoutX="72.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Upravit recept" />
             <Label layoutX="393.0" layoutY="258.0" onMouseClicked="#otevritNapoveda" text="Jednotka">
                <tooltip>
