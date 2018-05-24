@@ -43,6 +43,13 @@ public class Kuchyne extends Observable {
 		seznamSurovinReceptu.add(marijanka);
 		seznamSurovinReceptu.add(mrkev);
 		
+		Surovina lizatko = new Surovina("lízátko", Jednotka.ks, 25);
+		Surovina bonbon = new Surovina("bonbón", Jednotka.ks, 3);
+		List<Surovina> seznamSurovinReceptu2 = new ArrayList<>();
+		seznamSurovinReceptu2.add(lizatko);
+		seznamSurovinReceptu2.add(bonbon);
+
+		
 		seznamReceptu.vlozitRecept(new Recept("Svíčková", "Uvař svíčkovou.", "krm", seznamSurovinReceptu));
 		seznamReceptu.vlozitRecept(new Recept("Rajská polévka", "Udělej rajskou.", "predkrm", seznamSurovinReceptu));
 		seznamReceptu.vlozitRecept(new Recept("Tiramisu", "Udělej tiramisu.", "zakrm", seznamSurovinReceptu));
@@ -53,7 +60,7 @@ public class Kuchyne extends Observable {
 		sklad.vlozitSurovinu(new Surovina("vodka", Jednotka.l, 10));
 		
 		menu.vlozitRecept(new Recept("Sushi", "Zabij rybu, uvař rýži.", "krm", seznamSurovinReceptu ));
-		menu.vlozitRecept(new Recept("Losos", "Zabij rybu.", "krm", seznamSurovinReceptu ));
+		menu.vlozitRecept(new Recept("Losos", "Zabij rybu.", "krm", seznamSurovinReceptu2 ));
 
 		//System.out.println(srovnaniSurovinReceptuSeSkladem(new Recept("Svíčková", "Uvař svíčkovou.", "krm", seznamSurovinReceptu)));
 
@@ -119,7 +126,7 @@ public class Kuchyne extends Observable {
 		}
 		
 		nakupniSeznam.setSeznamSurovin(provizorniSeznam);
-		
+
 		//System.out.println("nakupni listek: " + nakupniSeznam.nakupniSeznamToString()); // 3 suroviny
 																	// suroviny a by melo byt jeden kus;
 																	// suroviny f 0.4g;
@@ -159,6 +166,7 @@ public class Kuchyne extends Observable {
 		}
 		
 		return SurovinyChybejiToString;
+
 	}
 	
 	/**

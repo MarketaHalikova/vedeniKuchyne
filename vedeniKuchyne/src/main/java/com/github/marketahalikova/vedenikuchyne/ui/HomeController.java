@@ -2,15 +2,12 @@ package com.github.marketahalikova.vedenikuchyne.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
 import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 import com.github.marketahalikova.vedenikuchyne.logika.Recept;
-import com.github.marketahalikova.vedenikuchyne.logika.SeznamReceptu;
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina;
 
 import javafx.collections.FXCollections;
@@ -55,7 +52,7 @@ public class HomeController extends GridPane implements Observer {
 		seznamPredkrmu.getItems().addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
 		seznamSklad.getItems().addAll(kuchyne.getAktualniSklad().getSkladAsString().keySet());
 		menuRecepty.getItems().addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
-		nakupniSeznam.getItems().addAll(porovnanySeznam());
+		nakupniSeznam.getItems().addAll(porovnanySeznamMenu());
 
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
 		kuchyne.getAktualniSklad().addObserver(this);
@@ -219,19 +216,10 @@ public class HomeController extends GridPane implements Observer {
 
 	}
 
-	//// budu dodelavat/////////////////////////////////////////////////////
-	public List<String> porovnanySeznam() {
 
-		List<Surovina> listSkladSurovin = kuchyne.getAktualniSklad().getSeznamSurovinSkladu();
-		List<Recept> listMenuReceptu = kuchyne.getAktualniMenu().getSeznamReceptu();
-		List<Surovina> listMenuSurovin = new ArrayList<>();
-
-		int len = listMenuReceptu.size();
-		for (int i = 0; i < len; i++) {
-			listMenuSurovin.addAll(listMenuReceptu.get(i).getSeznamSurovinReceptu());
-		}
-
-		return getSurovinyAsString(listMenuSurovin);
+	public List<String> porovnanySeznamMenu() {
+		kuchyne.srovnaniSurovinMenuSeSkladem();
+		return kuchyne.getAktualniNakupniSeznam().nakupniSeznamToString();
 
 	}
 
@@ -264,7 +252,8 @@ public class HomeController extends GridPane implements Observer {
 		menuList.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
 		menuRecepty.setItems(menuList);
 		ObservableList<String> nakupList = FXCollections.observableArrayList();
-		nakupList.addAll(porovnanySeznam());
+		nakupList.addAll(porovnanySeznamMenu());
 		nakupniSeznam.setItems(nakupList);
+
 	}
 }
