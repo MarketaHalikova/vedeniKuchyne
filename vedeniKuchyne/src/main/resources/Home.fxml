@@ -98,7 +98,7 @@
 										<Font size="10.0" />
 									</font>
 								</Button>
-								<Button layoutX="140.0" layoutY="287.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="65.0" style="-fx-background-radius: 1em;" text="Export">
+								<Button layoutX="140.0" layoutY="287.0" mnemonicParsing="false" onAction="#exportMenu" prefHeight="38.0" prefWidth="65.0" style="-fx-background-radius: 1em;" text="Export">
 									<font>
 										<Font size="10.0" />
 									</font>

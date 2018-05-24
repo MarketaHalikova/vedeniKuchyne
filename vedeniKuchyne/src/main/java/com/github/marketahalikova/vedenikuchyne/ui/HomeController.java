@@ -16,7 +16,6 @@ import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
 import com.github.marketahalikova.vedenikuchyne.logika.Recept;
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina;
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -290,6 +289,52 @@ public class HomeController extends GridPane implements Observer {
 		File vygenerovanyNakup = new File("NakupniSeznam.pdf");
         try {
 			Desktop.getDesktop().open(vygenerovanyNakup);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * Metoda vygeneruje PDF dokument s nabídkou aktuálního menu
+	 */
+	@FXML
+	public void exportMenu() throws DocumentException {
+
+		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+		
+		ArrayList<String> dostupneMenu = new ArrayList<String>();
+		dostupneMenu.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
+		String dostupneMenu1 = dostupneMenu.toString().replaceAll("\\,", "\n");
+		String dostupneMenu2 = dostupneMenu1.replaceAll("\\[", "");
+		String dostupneMenu3 = dostupneMenu2.replaceAll("\\]", "");
+		
+		Font nadpisFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 22, BaseColor.DARK_GRAY);
+		Font nakupFont = FontFactory.getFont(FontFactory.TIMES, 22, BaseColor.BLACK);
+		
+		Document nakup = new Document();
+		
+		try {
+			PdfWriter.getInstance(nakup, new FileOutputStream("Menu.pdf"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		 
+		nakup.open();
+		
+		nakup.add(new Paragraph("Menu ke dni " + datum + ":", nadpisFont));
+		nakup.add(new Paragraph("\n"));
+		nakup.add(new Paragraph("\n"));
+		Paragraph polozkyMenu = new Paragraph(dostupneMenu3, nakupFont);
+		polozkyMenu.setAlignment(Element.ALIGN_CENTER);
+		nakup.add(polozkyMenu);
+
+		nakup.close();
+		
+		File vygenerovaneMenu = new File("Menu.pdf");
+        try {
+			Desktop.getDesktop().open(vygenerovaneMenu);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
