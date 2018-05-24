@@ -11,7 +11,7 @@ public class Surovina {
 
 	private String nazev;
 	private Jednotka jednotka;
-	private int mnozstvi;
+	private double mnozstvi;
 
 	/**
 	 * Konstruktor třídy Surovina bez mnozstvi
@@ -31,7 +31,7 @@ public class Surovina {
 	 * @param jednotka
 	 * @param mnozstvi
 	 */
-	public Surovina(String nazev, Jednotka jednotka, int mnozstvi) {
+	public Surovina(String nazev, Jednotka jednotka, double mnozstvi) {
 		this.nazev = nazev;
 		this.jednotka = jednotka;
 		this.setMnozstvi(mnozstvi);
@@ -84,7 +84,7 @@ public class Surovina {
 	 * 
 	 * @return mnozstvi
 	 */
-	public int getMnozstvi() {
+	public double getMnozstvi() {
 		return mnozstvi;
 	}
 
@@ -93,7 +93,7 @@ public class Surovina {
 	 * 
 	 * @param mnozstvi
 	 */
-	public void setMnozstvi(int mnozstvi) {
+	public void setMnozstvi(double mnozstvi) {
 		this.mnozstvi = mnozstvi;
 	}
 

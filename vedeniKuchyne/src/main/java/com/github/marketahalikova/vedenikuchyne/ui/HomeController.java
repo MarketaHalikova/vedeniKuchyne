@@ -229,7 +229,6 @@ public class HomeController extends GridPane implements Observer {
 		int len = listMenuReceptu.size();
 		for (int i = 0; i < len; i++) {
 			listMenuSurovin.addAll(listMenuReceptu.get(i).getSeznamSurovinReceptu());
-			System.out.println(listMenuSurovin);
 		}
 
 		return getSurovinyAsString(listMenuSurovin);
