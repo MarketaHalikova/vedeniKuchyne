@@ -36,6 +36,7 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -364,6 +365,25 @@ public class HomeController extends GridPane implements Observer {
 			upravaSuroviny.setDisable(false);
 			smazaniSuroviny.setDisable(false);
 		}
+	}
+	
+	/*
+	 * Metoda otevře okno O Vývojářích
+	 */
+	@FXML
+	public void oVyvojarich() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/ONas.fxml"));
+		Parent root = loader.load();
+
+		Stage inventureStage = new Stage();
+		inventureStage.setTitle("O Vývojářích");
+		inventureStage.setScene(new Scene(root));
+		inventureStage.initModality(Modality.APPLICATION_MODAL);
+		inventureStage.centerOnScreen();
+		inventureStage.setAlwaysOnTop(true);
+		inventureStage.show();
+
 	}
 
 	@Override

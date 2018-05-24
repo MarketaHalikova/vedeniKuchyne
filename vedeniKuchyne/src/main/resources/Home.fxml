@@ -30,9 +30,9 @@
 	<children>
 		<MenuBar prefHeight="29.0" prefWidth="580.0" GridPane.columnSpan="2">
 			<menus>
-				<Menu mnemonicParsing="false" text="O aplikace">
+				<Menu mnemonicParsing="false" text="O aplikaci">
 					<items>
-						<MenuItem mnemonicParsing="false" text="Vývojáři" />
+						<MenuItem onAction="#oVyvojarich" mnemonicParsing="false" text="Vývojáři" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Pomoc">
