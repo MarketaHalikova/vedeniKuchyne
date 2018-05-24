@@ -50,7 +50,7 @@
                </font>
             </Label>
             <Button fx:id="smazatBtn" onAction="#smazatReceptBtn" layoutX="422.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Smazat recept" />
-            <Button onAction="#upravitReceptBtn" layoutX="72.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Upravit recept" />
+            <Button fx:id="upravitBtn" onAction="#upravitReceptBtn" layoutX="72.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Upravit recept" />
             <Label layoutX="393.0" layoutY="258.0" onMouseClicked="#otevritNapoveda" text="Jednotka">
                <tooltip>
                   <Tooltip text="Pro nápovědu jednotek klikněte" />

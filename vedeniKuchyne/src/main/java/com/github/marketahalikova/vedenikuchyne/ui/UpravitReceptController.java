@@ -58,6 +58,8 @@ public class UpravitReceptController extends Observable {
 	private Button smazatBtn;
 	@FXML
 	private Button menuBtn;
+	@FXML
+	private Button upravitBtn;
 
 	/**
 	 * Metoda otevření okna nápověda jednotek
@@ -98,6 +100,7 @@ public class UpravitReceptController extends Observable {
 		receptNazev.setTooltip(tooltip);
 
 		vypisRecept();
+		upravitBtn.setDisable(true);
 	}
 
 	/**
@@ -255,6 +258,7 @@ public class UpravitReceptController extends Observable {
 	public void lzeJenUprvit() {
 		smazatBtn.setDisable(true);
 		menuBtn.setDisable(true);
+		upravitBtn.setDisable(false);
 	}
 
 	/**
