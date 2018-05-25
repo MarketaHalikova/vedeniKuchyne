@@ -28,11 +28,11 @@
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<MenuBar prefHeight="29.0" prefWidth="580.0" GridPane.columnSpan="2">
+		<MenuBar accessibleRole="CHECK_MENU_ITEM" blendMode="HARD_LIGHT" pickOnBounds="false" prefHeight="29.0" prefWidth="531.0">
 			<menus>
 				<Menu mnemonicParsing="false" text="O aplikaci">
 					<items>
-						<MenuItem onAction="#oVyvojarich" mnemonicParsing="false" text="Vývojáři" />
+						<MenuItem mnemonicParsing="false" onAction="#oVyvojarich" text="Vývojáři" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Pomoc">
@@ -126,5 +126,6 @@
 				</Tab>
 			</tabs>
 		</TabPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="300.0" style="-fx-background-color: white;" text="Uložit změny" textAlignment="RIGHT" textFill="#ae6161" textOverrun="LEADING_ELLIPSIS" GridPane.columnIndex="1" />
 	</children>
 </GridPane>
