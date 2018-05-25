@@ -1,6 +1,5 @@
 package com.github.marketahalikova.vedenikuchyne.ui;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -26,7 +24,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -60,8 +57,6 @@ public class UpravitReceptController extends Observable {
 	private Button menuBtn;
 	@FXML
 	private Button upravitBtn;
-
-
 
 	/**
 	 * Metoda načte hodnotu vyběru (vybraný recept) z HomeControlleru.
@@ -117,7 +112,8 @@ public class UpravitReceptController extends Observable {
 	}
 
 	/**
-	 * Metoda přídá zadanou surovinu do seznamu surovin v receptu;
+	 * Metoda přidá zadanou surovinu do seznamu surovin v receptu a vypíše ji do
+	 * pole seznamu surovin
 	 */
 	public void pridejSurovinu() {
 
@@ -156,16 +152,13 @@ public class UpravitReceptController extends Observable {
 			maloInfo.showAndWait();
 		}
 
-		// update seznamu chybějících surovin na skladě
-		Recept aktualni = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
-		ObservableList<String> listChybejicich = FXCollections.observableArrayList();
-		listChybejicich.addAll(kuchyne.srovnaniSurovinReceptuSeSkladem(
-				new Recept(aktualni.getNazev(), aktualni.getPostup(), aktualni.getKategorie(), listNovychSurReceptu)));
-		chybejiciSuroviny.setItems(listChybejicich);
-
+		updateChybejicichSurPoZmene();
 		lzeJenUprvit();
 	}
 
+	/**
+	 * Metoda přídá zadanou surovinu do seznamu surovin v receptu;
+	 */
 	public void smazSurovinu() {
 		String vybranaSurovina = seznamSurovin.getSelectionModel().getSelectedItem();
 		String nazev = vybranaSurovina.split("\\,")[0];
@@ -175,9 +168,27 @@ public class UpravitReceptController extends Observable {
 
 		listNovychSurReceptu.remove(surovinaKeSmazani);
 		seznamSurovin.getItems().remove(seznamSurovin.getSelectionModel().getSelectedIndex());
+		updateChybejicichSurPoZmene();
 		lzeJenUprvit();
 	}
 
+	/**
+	 * Metoda obnoví seznam chybějících surovin na skladě
+	 */
+	public void updateChybejicichSurPoZmene() {
+		Recept aktualni = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
+		ObservableList<String> listChybejicich = FXCollections.observableArrayList();
+		listChybejicich.addAll(kuchyne.srovnaniSurovinReceptuSeSkladem(
+				new Recept(aktualni.getNazev(), aktualni.getPostup(), aktualni.getKategorie(), listNovychSurReceptu)));
+		chybejiciSuroviny.setItems(listChybejicich);
+	}
+
+	/**
+	 * Metoda načte všechny změny provedené v receptu a uloží je po stisknutí
+	 * buttonu
+	 * 
+	 * @param ActionEvent
+	 */
 	public void upravitReceptBtn(ActionEvent event) {
 
 		if (!(postup.getText().isEmpty() || receptNazev.getText().isEmpty())) {
@@ -217,6 +228,11 @@ public class UpravitReceptController extends Observable {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
+	/**
+	 * Metoda přidá aktuální recept do menu
+	 * 
+	 * @param ActionEvent
+	 */
 	public void pridatReceptDoMenuBtn(ActionEvent event) {
 		Recept receptNaMenu = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
 		receptNaMenu.setSeznamSurovinReceptu(listNovychSurReceptu);
@@ -227,6 +243,11 @@ public class UpravitReceptController extends Observable {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
+	/**
+	 * Metoda snaže aktuální recept ze seznamu receptů
+	 * 
+	 * @param ActionEvent
+	 */
 	public void smazatReceptBtn(ActionEvent event) {
 
 		Recept receptKOdstraneni = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
@@ -238,6 +259,9 @@ public class UpravitReceptController extends Observable {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
+	/**
+	 * Metoda mění klikatelnost buttonů
+	 */
 	public void lzeJenUprvit() {
 		smazatBtn.setDisable(true);
 		menuBtn.setDisable(true);
