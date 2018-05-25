@@ -15,6 +15,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Kontroler, který zprostředkovává komunikaci mezi logikou a oknem Přidat
+ * surovinu.
+ * 
+ * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
+ *
+ */
 public class NovaSurovinaController extends Observable {
 	
 	private Kuchyne kuchyne;
@@ -28,10 +35,21 @@ public class NovaSurovinaController extends Observable {
 	@FXML
 	private ComboBox jednotka;
 	
+	/**
+	 * Metoda načte současný stav kuchyně z HomeControlleru.
+	 * 
+	 * @param kuchyne
+	 */
 	public void inicializuj(Kuchyne kuchyne) {
 		this.kuchyne = kuchyne;
 	}
 	
+	/**
+	 * Metoda pro přidání suroviny po stisknutí talčítka "Přidat".
+	 * Surovina se zadaným množstvím, názvem a jednotkou se uloží na sklad.
+	 * Při chybějích nebo mylných udajích se zobrazí alert s nápovědou.
+	 * @param event
+	 */
 	public void pridejSurovinuBtn(ActionEvent event) {
 		String nazevSuroviny = nazev.getText();
 		String jedn = "" + jednotka.getSelectionModel().getSelectedItem();

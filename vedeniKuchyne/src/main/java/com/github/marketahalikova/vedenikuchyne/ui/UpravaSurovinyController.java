@@ -78,7 +78,7 @@ public class UpravaSurovinyController extends Observable {
 	
 	/**
 	 * Metoda pro akci spuštěnou talčítkem "Uložit". 
-	 * Surovina se změní podle zadaných kritérií a přepíše se v seznamu suorvin na skladě.
+	 * Surovina se změní podle zadaných kritérií a přepíše se v seznamu surovin na skladě.
 	 * Při chybějích nebo mylných udajích se zobrazí alert s nápovědou.
 	 * 
 	 * @param event
