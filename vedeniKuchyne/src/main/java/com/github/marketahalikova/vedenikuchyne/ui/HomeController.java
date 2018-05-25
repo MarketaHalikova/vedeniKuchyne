@@ -124,6 +124,10 @@ public class HomeController extends GridPane implements Observer {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/Inventura.fxml"));
 		Parent root = loader.load();
+		
+		InventuraController c5 = loader.<InventuraController>getController();
+		c5.inicializuj(kuchyne);
+		c5.addObserver(this);
 
 		Stage inventureStage = new Stage();
 		inventureStage.setTitle("Inventura");
