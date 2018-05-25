@@ -57,12 +57,11 @@ public class HomeController extends GridPane implements Observer {
 
 	@FXML
 	private TabPane tabs;
-	
+
 	@FXML
 	private Button upravaSuroviny;
 	@FXML
 	private Button smazaniSuroviny;
-	
 
 	private Kuchyne kuchyne;
 
@@ -79,11 +78,9 @@ public class HomeController extends GridPane implements Observer {
 		kuchyne.getAktualniSeznamReceptu().addObserver(this);
 		kuchyne.getAktualniSklad().addObserver(this);
 		kuchyne.getAktualniMenu().addObserver(this);
-		
+
 		upravaSuroviny.setDisable(true);
 		smazaniSuroviny.setDisable(true);
-		
-
 
 	}
 
@@ -97,6 +94,10 @@ public class HomeController extends GridPane implements Observer {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/PridatRecept.fxml"));
 		Parent root = loader.load();
+
+		PridatReceptController c2 = loader.<PridatReceptController>getController();
+		c2.inicializuj(kuchyne);
+		c2.addObserver(this);
 
 		Stage pridatReceptStage = new Stage();
 		pridatReceptStage.setTitle("Přidat Recept");
@@ -202,11 +203,11 @@ public class HomeController extends GridPane implements Observer {
 		seznamPredkrmu.getSelectionModel().clearSelection();
 		seznamKrmu.getSelectionModel().clearSelection();
 		seznamZakrmu.getSelectionModel().clearSelection();
-		
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/UpravitRecept.fxml"));
 		Parent root = loader.load();
-		
+
 		UpravitReceptController c1 = loader.<UpravitReceptController>getController();
 		c1.nactiHodnotu(vybrana, kuchyne);
 		c1.addObserver(this);
@@ -218,11 +219,8 @@ public class HomeController extends GridPane implements Observer {
 		UpravitReceptStage.centerOnScreen();
 		UpravitReceptStage.setAlwaysOnTop(true);
 		UpravitReceptStage.show();
-		
 
-		
 	}
-
 
 	public void pridatRecept() {
 		SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
@@ -244,7 +242,6 @@ public class HomeController extends GridPane implements Observer {
 
 	}
 
-
 	public List<String> porovnanySeznamMenu() {
 		kuchyne.srovnaniSurovinMenuSeSkladem();
 		return kuchyne.getAktualniNakupniSeznam().nakupniSeznamToString();
@@ -261,8 +258,7 @@ public class HomeController extends GridPane implements Observer {
 
 		return surovinyJakoString;
 	}
-	
-	
+
 	/*
 	 * Metoda vygeneruje PDF dokument s obsahem nákupního listu
 	 */
@@ -270,18 +266,18 @@ public class HomeController extends GridPane implements Observer {
 	public void exportNakup() throws DocumentException {
 
 		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-		
+
 		ArrayList<String> nakupniList = new ArrayList<String>();
 		nakupniList.addAll(porovnanySeznamMenu());
 		String nakupniList1 = nakupniList.toString().replaceAll("\\,", "\n");
 		String nakupniList2 = nakupniList1.replaceAll("\\[", "");
 		String nakupniList3 = nakupniList2.replaceAll("\\]", "");
-		
+
 		Font nadpisFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 22, BaseColor.DARK_GRAY);
 		Font nakupFont = FontFactory.getFont(FontFactory.TIMES, 20, BaseColor.BLACK);
-		
+
 		Document nakup = new Document();
-		
+
 		try {
 			PdfWriter.getInstance(nakup, new FileOutputStream("NakupniSeznam.pdf"));
 		} catch (FileNotFoundException e) {
@@ -289,23 +285,23 @@ public class HomeController extends GridPane implements Observer {
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
-		 
+
 		nakup.open();
-		
+
 		nakup.add(new Paragraph("Nákupní seznam ke dni " + datum + ":", nadpisFont));
 		nakup.add(new Paragraph("\n"));
 		nakup.add(new Paragraph(nakupniList3, nakupFont));
 
 		nakup.close();
-		
+
 		File vygenerovanyNakup = new File("NakupniSeznam.pdf");
-        try {
+		try {
 			Desktop.getDesktop().open(vygenerovanyNakup);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*
 	 * Metoda vygeneruje PDF dokument s nabídkou aktuálního menu
 	 */
@@ -313,18 +309,18 @@ public class HomeController extends GridPane implements Observer {
 	public void exportMenu() throws DocumentException {
 
 		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-		
+
 		ArrayList<String> dostupneMenu = new ArrayList<String>();
 		dostupneMenu.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
 		String dostupneMenu1 = dostupneMenu.toString().replaceAll("\\,", "\n");
 		String dostupneMenu2 = dostupneMenu1.replaceAll("\\[", "");
 		String dostupneMenu3 = dostupneMenu2.replaceAll("\\]", "");
-		
+
 		Font nadpisFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 22, BaseColor.DARK_GRAY);
 		Font nakupFont = FontFactory.getFont(FontFactory.TIMES, 22, BaseColor.BLACK);
-		
+
 		Document nakup = new Document();
-		
+
 		try {
 			PdfWriter.getInstance(nakup, new FileOutputStream("Menu.pdf"));
 		} catch (FileNotFoundException e) {
@@ -332,9 +328,9 @@ public class HomeController extends GridPane implements Observer {
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
-		 
+
 		nakup.open();
-		
+
 		nakup.add(new Paragraph("Menu ke dni " + datum + ":", nadpisFont));
 		nakup.add(new Paragraph("\n"));
 		nakup.add(new Paragraph("\n"));
@@ -343,15 +339,15 @@ public class HomeController extends GridPane implements Observer {
 		nakup.add(polozkyMenu);
 
 		nakup.close();
-		
+
 		File vygenerovaneMenu = new File("Menu.pdf");
-        try {
+		try {
 			Desktop.getDesktop().open(vygenerovaneMenu);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/*
 	 * Metoda nastavuje viditelnost buttonu
 	 */
@@ -366,7 +362,7 @@ public class HomeController extends GridPane implements Observer {
 			smazaniSuroviny.setDisable(false);
 		}
 	}
-	
+
 	/*
 	 * Metoda otevře okno O Vývojářích
 	 */
@@ -406,7 +402,6 @@ public class HomeController extends GridPane implements Observer {
 		ObservableList<String> nakupList = FXCollections.observableArrayList();
 		nakupList.addAll(porovnanySeznamMenu());
 		nakupniSeznam.setItems(nakupList);
-		
 
 	}
 }
