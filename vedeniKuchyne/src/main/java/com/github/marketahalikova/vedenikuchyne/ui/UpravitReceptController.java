@@ -214,6 +214,8 @@ public class UpravitReceptController extends Observable {
 
 			setChanged();
 			notifyObservers();
+			
+			((Node) (event.getSource())).getScene().getWindow().hide();
 
 		} else {
 			maloInfo = new Alert(AlertType.INFORMATION);
@@ -226,7 +228,7 @@ public class UpravitReceptController extends Observable {
 			maloInfo.showAndWait();
 		}
 
-		((Node) (event.getSource())).getScene().getWindow().hide();
+		
 	}
 
 	/**

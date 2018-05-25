@@ -14,7 +14,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="318.0" prefWidth="564.0" VBox.vgrow="ALWAYS">
          <children>
             <TextField fx:id="nazev" layoutX="134.0" layoutY="59.0" prefHeight="27.0" prefWidth="157.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <Button layoutX="70.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Uložit" />
+            <Button layoutX="70.0" layoutY="260.0" mnemonicParsing="false" onAction="#upravitSurovinuBtn" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Uložit" />
             <Label layoutX="193.0" layoutY="42.0" text="Název" />
             <Label layoutX="184.0" layoutY="113.0" text="Množství" />
             <Label layoutX="183.0" layoutY="186.0" text="Jednotka" />

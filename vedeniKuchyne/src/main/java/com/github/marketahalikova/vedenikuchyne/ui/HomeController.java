@@ -169,6 +169,7 @@ public class HomeController extends GridPane implements Observer {
 		
 		UpravaSurovinyController c3 = loader.<UpravaSurovinyController>getController();
 		c3.nactiHodnoty(kuchyne, vybrana);
+		c3.addObserver(this);
 
 		Stage UpravaSurovinyStage = new Stage();
 		UpravaSurovinyStage.setTitle("Upravit Surovinu");
