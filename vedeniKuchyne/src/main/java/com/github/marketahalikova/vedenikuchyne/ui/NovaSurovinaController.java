@@ -33,7 +33,7 @@ public class NovaSurovinaController extends Observable {
 	@FXML
 	private TextField mnozstvi;
 	@FXML
-	private ComboBox jednotka;
+	private ComboBox<String> jednotka;
 	
 	/**
 	 * Metoda načte současný stav kuchyně z HomeControlleru.

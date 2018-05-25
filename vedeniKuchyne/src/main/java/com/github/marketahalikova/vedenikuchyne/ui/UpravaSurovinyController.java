@@ -33,7 +33,7 @@ public class UpravaSurovinyController extends Observable {
 	@FXML
 	private TextField mnozstvi;
 	@FXML
-	private ComboBox jednotka;
+	private ComboBox<String> jednotka;
 	@FXML
 	private Alert maloInfo;
 
