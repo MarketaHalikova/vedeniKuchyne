@@ -161,9 +161,14 @@ public class HomeController extends GridPane implements Observer {
 	 */
 	@FXML
 	public void otevritUpravaSuroviny() throws IOException {
+		String vybrana = seznamSklad.getSelectionModel().getSelectedItem();
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/UpravaSuroviny.fxml"));
 		Parent root = loader.load();
+		
+		UpravaSurovinyController c3 = loader.<UpravaSurovinyController>getController();
+		c3.nactiHodnoty(kuchyne, vybrana);
 
 		Stage UpravaSurovinyStage = new Stage();
 		UpravaSurovinyStage.setTitle("Upravit Surovinu");

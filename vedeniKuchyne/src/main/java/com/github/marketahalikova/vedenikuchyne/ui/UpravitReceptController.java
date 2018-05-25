@@ -61,7 +61,8 @@ public class UpravitReceptController extends Observable {
 	/**
 	 * Metoda načte hodnotu vyběru (vybraný recept) z HomeControlleru.
 	 * 
-	 * @param vybrana
+	 * @param vybrany - vybrany recept
+	 * @param kuchyne - aktualni stav kuchyne
 	 */
 	public void nactiHodnotu(String vybrany, Kuchyne kuchyne) {
 		this.vybrany = vybrany;
