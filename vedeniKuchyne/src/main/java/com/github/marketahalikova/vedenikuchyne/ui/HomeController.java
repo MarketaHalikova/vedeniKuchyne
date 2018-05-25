@@ -144,6 +144,10 @@ public class HomeController extends GridPane implements Observer {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/NovaSurovina.fxml"));
 		Parent root = loader.load();
+		
+		NovaSurovinaController c4 = loader.<NovaSurovinaController>getController();
+		c4.inicializuj(kuchyne);
+		c4.addObserver(this);
 
 		Stage NovaSurovinaStage = new Stage();
 		NovaSurovinaStage.setTitle("Přidat Surovinu");
