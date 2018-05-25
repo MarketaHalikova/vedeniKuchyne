@@ -15,7 +15,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="318.0" prefWidth="564.0" VBox.vgrow="ALWAYS">
          <children>
             <TextField fx:id="nazevSuroviny" layoutX="27.0" layoutY="237.0" prefHeight="27.0" prefWidth="157.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
-            <Button layoutX="100.0" layoutY="294.0" mnemonicParsing="false" onAction="#zadejInventuru" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Zadat inventuru" />
+            <Button layoutX="100.0" layoutY="294.0" mnemonicParsing="false" onAction="#zadejInventuruBtn" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Zadat inventuru" />
             <Button layoutX="425.0" layoutY="237.0" mnemonicParsing="false" onAction="#pridejSurovinu" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="+" />
             <Label layoutX="37.0" layoutY="220.0" text="Název" />
             <TextField fx:id="mnozstvi" layoutX="193.0" layoutY="237.0" prefHeight="27.0" prefWidth="157.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />

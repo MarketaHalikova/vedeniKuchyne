@@ -18,6 +18,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Kontroler, který zprostředkovává komunikaci mezi logikou a oknem Inventura.
+ * 
+ * 
+ * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
+ *
+ */
 public class InventuraController extends Observable {
 	
 	private Kuchyne kuchyne;
@@ -33,11 +40,21 @@ public class InventuraController extends Observable {
 	@FXML
 	private Alert maloInfo;
 	
+	/**
+	 * Metoda předává kontroleru aktuální stav kuchyně.
+	 * 
+	 * @param kuchyne
+	 *            - aktuální stav kuchyně
+	 */
 	public void inicializuj(Kuchyne kuchyne) {
 		this.kuchyne = kuchyne;
 		seznamInventura = new ArrayList<>();
 	}
 	
+	/**
+	 * Metoda přidá zadanou surovinu do seznamu surovin v receptu a vypíše ji do
+	 * pole seznamu surovin. Při chybějích nebo mylných udajích se zobrazí alert s nápovědou.
+	 */
 	public void pridejSurovinu() {
 
 		String nazev = nazevSuroviny.getText();
@@ -78,7 +95,16 @@ public class InventuraController extends Observable {
 
 	}
 	
-	public void zadejInventuru(ActionEvent event) {
+	/**
+	 * Metoda pro akci spuštěnou talčítkem "Zadat inventuru". 
+	 * Přepíše aktuální seznam surovin na skladě za nově zadaný.
+	 * 
+	 * @param event
+	 */
+	public void zadejInventuruBtn(ActionEvent event) {
+		
+		//Přidat kontrolu prázdnosti seznamu vs možnost prázdného skladu??
+		
 		kuchyne.getAktualniSklad().getSeznamSurovinSkladu().clear();
 		kuchyne.getAktualniSklad().setSeznamSurovin(seznamInventura);
 		
