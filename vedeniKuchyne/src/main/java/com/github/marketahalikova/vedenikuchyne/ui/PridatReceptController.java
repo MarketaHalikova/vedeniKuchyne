@@ -19,6 +19,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+/**
+ * Kontroler, který zprostředkovává komunikaci mezi logikou a oknem Upravit
+ * recept.
+ * 
+ * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
+ *
+ */
 public class PridatReceptController extends Observable {
 
 	private Kuchyne kuchyne;
@@ -41,12 +48,24 @@ public class PridatReceptController extends Observable {
 	@FXML
 	private Alert maloInfo;
 
+	/**
+	 * Metoda předává kontroleru aktuální stav kuchyně.
+	 * 
+	 * @param kuchyne
+	 *            - aktuální stav kuchyně
+	 */
 	public void inicializuj(Kuchyne kuchyne) {
 		this.kuchyne = kuchyne;
 		listNovychSurReceptu = new ArrayList<>();
 		listNovychSurReceptu.clear();
 	}
 
+	/**
+	 * Metoda po přidání zadaného receptu (dle vyplněných polí) do seznamu receptů.
+	 * Pokud nejsou všechny potřebné položky (pole) vyplněné, recept není uložený a vypíše se alert.
+	 * 
+	 * @param event
+	 */
 	public void pridatRecpetBtn(ActionEvent event) {
 		if (!(postup.getText().isEmpty() || nazev.getText().isEmpty() || kategorie.getSelectionModel().isEmpty())) {
 			String kat = "" + kategorie.getSelectionModel().getSelectedItem();
@@ -67,8 +86,9 @@ public class PridatReceptController extends Observable {
 
 			setChanged();
 			notifyObservers();
-		}
-		else {
+
+			((Node) (event.getSource())).getScene().getWindow().hide();
+		} else {
 			maloInfo = new Alert(AlertType.INFORMATION);
 			maloInfo.setTitle("Pozor!");
 			maloInfo.setHeaderText(null);
@@ -79,7 +99,6 @@ public class PridatReceptController extends Observable {
 			maloInfo.showAndWait();
 		}
 
-		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
 	/**
