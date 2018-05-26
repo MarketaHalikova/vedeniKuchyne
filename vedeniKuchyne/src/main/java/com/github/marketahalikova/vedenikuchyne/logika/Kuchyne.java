@@ -200,9 +200,9 @@ public class Kuchyne extends Observable {
 			receptyData.writeObject(seznamReceptu);
 			receptyData.close();
 
-			ObjectOutputStream menuData = new ObjectOutputStream(new FileOutputStream("data/menu.txt"));
-			menuData.writeObject(menu);
-			menuData.close();
+			//ObjectOutputStream menuData = new ObjectOutputStream(new FileOutputStream("data/menu.txt"));
+			//menuData.writeObject(menu);
+			//menuData.close();
 
 		}
 
@@ -239,9 +239,9 @@ public class Kuchyne extends Observable {
 			seznamReceptu = (SeznamReceptu) receptyData.readObject();
 			receptyData.close();
 
-			ObjectInputStream menuData = new ObjectInputStream(new FileInputStream("data/menu.txt"));
-			menu = (Menu) menuData.readObject();
-			menuData.close();
+			//ObjectInputStream menuData = new ObjectInputStream(new FileInputStream("data/menu.txt"));
+			//menu = (Menu) menuData.readObject();
+			//menuData.close();
 		}
 
 		catch(FileNotFoundException e) {
