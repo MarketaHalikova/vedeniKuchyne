@@ -192,15 +192,15 @@ public class Kuchyne extends Observable {
 	 */
 	public void ulozData() {
 		try {
-			ObjectOutputStream surovinyData = new ObjectOutputStream(new FileOutputStream("suroviny.txt"));
+			ObjectOutputStream surovinyData = new ObjectOutputStream(new FileOutputStream("data/suroviny.txt"));
 			surovinyData.writeObject(sklad);
 			surovinyData.close();
 
-			ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream("recepty.txt"));
+			ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream("data/recepty.txt"));
 			receptyData.writeObject(seznamReceptu);
 			receptyData.close();
 
-			ObjectOutputStream menuData = new ObjectOutputStream(new FileOutputStream("menu.txt"));
+			ObjectOutputStream menuData = new ObjectOutputStream(new FileOutputStream("data/menu.txt"));
 			menuData.writeObject(menu);
 			menuData.close();
 
@@ -231,15 +231,15 @@ public class Kuchyne extends Observable {
 	 */
 	public void nactiData() {
 		try {
-			ObjectInputStream surovinyData = new ObjectInputStream(new FileInputStream("suroviny.txt"));
+			ObjectInputStream surovinyData = new ObjectInputStream(new FileInputStream("data/suroviny.txt"));
 			sklad = (Sklad) surovinyData.readObject();
 			surovinyData.close();
 
-			ObjectInputStream receptyData = new ObjectInputStream(new FileInputStream("recepty.txt"));
+			ObjectInputStream receptyData = new ObjectInputStream(new FileInputStream("data/recepty.txt"));
 			seznamReceptu = (SeznamReceptu) receptyData.readObject();
 			receptyData.close();
 
-			ObjectInputStream menuData = new ObjectInputStream(new FileInputStream("menu.txt"));
+			ObjectInputStream menuData = new ObjectInputStream(new FileInputStream("data/menu.txt"));
 			menu = (Menu) menuData.readObject();
 			menuData.close();
 		}
