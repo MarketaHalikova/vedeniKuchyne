@@ -300,16 +300,18 @@ public class HomeController extends GridPane implements Observer {
 	@FXML
 	public void exportNakup() throws DocumentException {
 
-		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+		String datum = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+		String cas = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(new Date());
 
 		ArrayList < String > nakupniList = new ArrayList < String > ();
 		nakupniList.addAll(porovnanySeznamMenu());
 		String nakupniList1 = nakupniList.toString().replaceAll("\\,", "\n");
-		String nakupniList2 = nakupniList1.replaceAll("\\[", "");
+		String nakupniList2 = nakupniList1.replaceAll("\\[", " ");
 		String nakupniList3 = nakupniList2.replaceAll("\\]", "");
 
-		Font nadpisFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 22, BaseColor.DARK_GRAY);
-		Font nakupFont = FontFactory.getFont(FontFactory.TIMES, 20, BaseColor.BLACK);
+		Font nadpisFont = FontFactory.getFont(FontFactory.HELVETICA, 25, BaseColor.BLACK);
+		Font nakupFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 25, BaseColor.BLACK);
+		Font miniFont = FontFactory.getFont(FontFactory.HELVETICA, 11, BaseColor.LIGHT_GRAY);
 
 		Document nakup = new Document();
 
@@ -322,6 +324,11 @@ public class HomeController extends GridPane implements Observer {
 		}
 
 		nakup.open();
+		
+		Paragraph malyNadpisMenu = new Paragraph("Tento dokument byl vygenerovaný aplikací MaKitch " + cas, miniFont);
+		malyNadpisMenu.setAlignment(Element.ALIGN_RIGHT);
+		nakup.add(malyNadpisMenu);
+		nakup.add(new Paragraph("\n"));
 
 		nakup.add(new Paragraph("Nákupní seznam ke dni " + datum + ":", nadpisFont));
 		nakup.add(new Paragraph("\n"));
@@ -343,16 +350,18 @@ public class HomeController extends GridPane implements Observer {
 	@FXML
 	public void exportMenu() throws DocumentException {
 
-		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+		String datum = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+		String cas = new SimpleDateFormat("dd.MM.yyyy-HH:mm:ss").format(new Date());
 
 		ArrayList < String > dostupneMenu = new ArrayList < String > ();
 		dostupneMenu.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
 		String dostupneMenu1 = dostupneMenu.toString().replaceAll("\\,", "\n");
-		String dostupneMenu2 = dostupneMenu1.replaceAll("\\[", "");
+		String dostupneMenu2 = dostupneMenu1.replaceAll("\\[", " ");
 		String dostupneMenu3 = dostupneMenu2.replaceAll("\\]", "");
 
-		Font nadpisFont = FontFactory.getFont(FontFactory.TIMES_BOLD, 22, BaseColor.DARK_GRAY);
-		Font nakupFont = FontFactory.getFont(FontFactory.TIMES, 22, BaseColor.BLACK);
+		Font nadpisFont = FontFactory.getFont(FontFactory.HELVETICA, 25, BaseColor.BLACK);
+		Font nakupFont = FontFactory.getFont(FontFactory.HELVETICA_BOLDOBLIQUE, 28, BaseColor.BLACK);
+		Font miniFont = FontFactory.getFont(FontFactory.HELVETICA, 11, BaseColor.LIGHT_GRAY);
 
 		Document nakup = new Document();
 
@@ -365,10 +374,16 @@ public class HomeController extends GridPane implements Observer {
 		}
 
 		nakup.open();
+		
+		Paragraph malyNadpisMenu = new Paragraph("Tento dokument byl vygenerovaný aplikací MaKitch " + cas, miniFont);
+		malyNadpisMenu.setAlignment(Element.ALIGN_RIGHT);
+		nakup.add(malyNadpisMenu);
+		nakup.add(new Paragraph("\n"));
 
 		nakup.add(new Paragraph("Menu ke dni " + datum + ":", nadpisFont));
 		nakup.add(new Paragraph("\n"));
 		nakup.add(new Paragraph("\n"));
+		
 		Paragraph polozkyMenu = new Paragraph(dostupneMenu3, nakupFont);
 		polozkyMenu.setAlignment(Element.ALIGN_CENTER);
 		nakup.add(polozkyMenu);
