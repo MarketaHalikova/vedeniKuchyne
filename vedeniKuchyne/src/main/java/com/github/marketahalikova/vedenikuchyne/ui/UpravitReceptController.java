@@ -68,6 +68,7 @@ public class UpravitReceptController extends Observable {
 	 * 
 	 * @param vybrany - vybrany recept
 	 * @param kuchyne - aktualni stav kuchyne
+	 * @param tabs - záložky v HomeControlleru
 	 */
 	public void nactiHodnotu(String vybrany, Kuchyne kuchyne, TabPane tabs) {
 		this.vybrany = vybrany;
