@@ -22,6 +22,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
@@ -57,16 +60,20 @@ public class UpravitReceptController extends Observable {
 	private Button menuBtn;
 	@FXML
 	private Button upravitBtn;
+	@FXML
+	private TabPane tabs;
 
 	/**
 	 * Metoda načte hodnotu vyběru (vybraný recept) z HomeControlleru.
 	 * 
 	 * @param vybrany - vybrany recept
 	 * @param kuchyne - aktualni stav kuchyne
+	 * @param tabs - záložky v HomeControlleru
 	 */
-	public void nactiHodnotu(String vybrany, Kuchyne kuchyne) {
+	public void nactiHodnotu(String vybrany, Kuchyne kuchyne, TabPane tabs) {
 		this.vybrany = vybrany;
 		this.kuchyne = kuchyne;
+		this.tabs = tabs;
 
 		this.listNovychSurReceptu = new ArrayList<>();
 		listNovychSurReceptu.clear();
@@ -243,6 +250,9 @@ public class UpravitReceptController extends Observable {
 		kuchyne.getAktualniMenu().vlozitRecept(receptNaMenu);
 		setChanged();
 		notifyObservers();
+		SingleSelectionModel < Tab > selectionModel = tabs.getSelectionModel();
+		selectionModel.select(2);
+		
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 

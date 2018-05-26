@@ -224,7 +224,7 @@ public class HomeController extends GridPane implements Observer {
 		Parent root = loader.load();
 
 		UpravitReceptController c1 = loader. < UpravitReceptController > getController();
-		c1.nactiHodnotu(vybrana, kuchyne);
+		c1.nactiHodnotu(vybrana, kuchyne, tabs);
 		c1.addObserver(this);
 
 		Stage UpravitReceptStage = new Stage();
