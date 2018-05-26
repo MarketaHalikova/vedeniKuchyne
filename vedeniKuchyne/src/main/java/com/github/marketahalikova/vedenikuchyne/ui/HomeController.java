@@ -47,33 +47,30 @@ import javafx.stage.Stage;
 public class HomeController extends GridPane implements Observer {
 
 	@FXML
-	private ListView<String> seznamPredkrmu;
-	@FXML
-	private ListView<String> seznamKrmu;
-	@FXML
-	private ListView<String> seznamZakrmu;
-	@FXML
-	private ListView<String> seznamSklad;
-	@FXML
-	private ListView<String> menuRecepty;
-	@FXML
-	private ListView<String> nakupniSeznam;
+	private ListView < String > seznamPredkrmu;@FXML
+	private ListView < String > seznamKrmu;@FXML
+	private ListView < String > seznamZakrmu;@FXML
+	private ListView < String > seznamSklad;@FXML
+	private ListView < String > menuRecepty;@FXML
+	private ListView < String > nakupniSeznam;
 
 	@FXML
 	private TabPane tabs;
 
 	@FXML
-	private Button upravaSuroviny;
-	@FXML
+	private Button upravaSuroviny;@FXML
 	private Button smazaniSuroviny;
-	
+
 	@FXML
-	private Alert chybaUlozeni;
-	@FXML
+	private Alert chybaUlozeni;@FXML
 	private Alert spravneUlozeni;
 
 	private Kuchyne kuchyne;
 
+	/**
+	 * Metoda předává data kontroleru a nastavuje základní nastavení
+	 * 
+	 */
 	public void inicializuj(Kuchyne kuchyne) {
 		this.kuchyne = kuchyne;
 
@@ -104,7 +101,7 @@ public class HomeController extends GridPane implements Observer {
 		loader.setLocation(getClass().getResource("/PridatRecept.fxml"));
 		Parent root = loader.load();
 
-		PridatReceptController c2 = loader.<PridatReceptController>getController();
+		PridatReceptController c2 = loader. < PridatReceptController > getController();
 		c2.inicializuj(kuchyne);
 		c2.addObserver(this);
 
@@ -117,12 +114,6 @@ public class HomeController extends GridPane implements Observer {
 		pridatReceptStage.show();
 	}
 
-	/*
-	 * public void novyRecept() { // to do
-	 * kuchyne.getAktualniSeznamReceptu().vlozitRecept(new Recept("Smažáček",
-	 * "Hmmm...dezertíček", "zakrm")); }
-	 */
-
 	/**
 	 * Metoda otevření nového okna Inventura
 	 * 
@@ -133,8 +124,8 @@ public class HomeController extends GridPane implements Observer {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/Inventura.fxml"));
 		Parent root = loader.load();
-		
-		InventuraController c5 = loader.<InventuraController>getController();
+
+		InventuraController c5 = loader. < InventuraController > getController();
 		c5.inicializuj(kuchyne);
 		c5.addObserver(this);
 
@@ -157,8 +148,8 @@ public class HomeController extends GridPane implements Observer {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/NovaSurovina.fxml"));
 		Parent root = loader.load();
-		
-		NovaSurovinaController c4 = loader.<NovaSurovinaController>getController();
+
+		NovaSurovinaController c4 = loader. < NovaSurovinaController > getController();
 		c4.inicializuj(kuchyne);
 		c4.addObserver(this);
 
@@ -179,12 +170,12 @@ public class HomeController extends GridPane implements Observer {
 	@FXML
 	public void otevritUpravaSuroviny() throws IOException {
 		String vybrana = seznamSklad.getSelectionModel().getSelectedItem();
-		
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/UpravaSuroviny.fxml"));
 		Parent root = loader.load();
-		
-		UpravaSurovinyController c3 = loader.<UpravaSurovinyController>getController();
+
+		UpravaSurovinyController c3 = loader. < UpravaSurovinyController > getController();
 		c3.nactiHodnoty(kuchyne, vybrana);
 		c3.addObserver(this);
 
@@ -231,7 +222,7 @@ public class HomeController extends GridPane implements Observer {
 		loader.setLocation(getClass().getResource("/UpravitRecept.fxml"));
 		Parent root = loader.load();
 
-		UpravitReceptController c1 = loader.<UpravitReceptController>getController();
+		UpravitReceptController c1 = loader. < UpravitReceptController > getController();
 		c1.nactiHodnotu(vybrana, kuchyne);
 		c1.addObserver(this);
 
@@ -245,11 +236,19 @@ public class HomeController extends GridPane implements Observer {
 
 	}
 
+	/**
+	 * Metoda odkazuje na záložku Přidat recept
+	 * 
+	 */
 	public void pridatRecept() {
-		SingleSelectionModel<Tab> selectionModel = tabs.getSelectionModel();
+		SingleSelectionModel < Tab > selectionModel = tabs.getSelectionModel();
 		selectionModel.select(0);
 	}
 
+	/**
+	 * Metoda odstraňuje surovinu ze skladu
+	 * 
+	 */
 	public void odstranSurovinu() {
 		String vybrana = seznamSklad.getSelectionModel().getSelectedItem();
 		Surovina hledana = kuchyne.getAktualniSklad().najdiSurovinu(vybrana);
@@ -258,6 +257,10 @@ public class HomeController extends GridPane implements Observer {
 		// to do
 	}
 
+	/**
+	 * Metoda odstraňuje recept z menu
+	 * 
+	 */
 	public void odstranMenuRecept() {
 		String vybrana = menuRecepty.getSelectionModel().getSelectedItem();
 		Recept hledany = kuchyne.getAktualniMenu().najdiRecept(vybrana);
@@ -265,16 +268,24 @@ public class HomeController extends GridPane implements Observer {
 
 	}
 
-	public List<String> porovnanySeznamMenu() {
+	/**
+	 * Metoda vrací aktuální nakupní seznam jako String
+	 * 
+	 */
+	public List < String > porovnanySeznamMenu() {
 		kuchyne.srovnaniSurovinMenuSeSkladem();
 		return kuchyne.getAktualniNakupniSeznam().nakupniSeznamToString();
 
 	}
 
-	public List<String> getSurovinyAsString(List<Surovina> listSurovin) {
-		List<String> surovinyJakoString = new ArrayList<>();
+	/**
+	 * Metoda získá pole surovin jako String
+	 * 
+	 */
+	public List < String > getSurovinyAsString(List < Surovina > listSurovin) {
+		List < String > surovinyJakoString = new ArrayList < >();
 
-		for (Surovina surovina : listSurovin) {
+		for (Surovina surovina: listSurovin) {
 			String retezec = surovina.getNazev() + ", " + surovina.getMnozstvi() + ", " + surovina.getJednotka();
 			surovinyJakoString.add(retezec);
 		}
@@ -282,7 +293,7 @@ public class HomeController extends GridPane implements Observer {
 		return surovinyJakoString;
 	}
 
-	/*
+	/**
 	 * Metoda vygeneruje PDF dokument s obsahem nákupního listu
 	 */
 	@FXML
@@ -290,7 +301,7 @@ public class HomeController extends GridPane implements Observer {
 
 		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
-		ArrayList<String> nakupniList = new ArrayList<String>();
+		ArrayList < String > nakupniList = new ArrayList < String > ();
 		nakupniList.addAll(porovnanySeznamMenu());
 		String nakupniList1 = nakupniList.toString().replaceAll("\\,", "\n");
 		String nakupniList2 = nakupniList1.replaceAll("\\[", "");
@@ -303,9 +314,9 @@ public class HomeController extends GridPane implements Observer {
 
 		try {
 			PdfWriter.getInstance(nakup, new FileOutputStream("NakupniSeznam.pdf"));
-		} catch (FileNotFoundException e) {
+		} catch(FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (DocumentException e) {
+		} catch(DocumentException e) {
 			e.printStackTrace();
 		}
 
@@ -320,12 +331,12 @@ public class HomeController extends GridPane implements Observer {
 		File vygenerovanyNakup = new File("NakupniSeznam.pdf");
 		try {
 			Desktop.getDesktop().open(vygenerovanyNakup);
-		} catch (IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	/*
+	/**
 	 * Metoda vygeneruje PDF dokument s nabídkou aktuálního menu
 	 */
 	@FXML
@@ -333,7 +344,7 @@ public class HomeController extends GridPane implements Observer {
 
 		String datum = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
-		ArrayList<String> dostupneMenu = new ArrayList<String>();
+		ArrayList < String > dostupneMenu = new ArrayList < String > ();
 		dostupneMenu.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
 		String dostupneMenu1 = dostupneMenu.toString().replaceAll("\\,", "\n");
 		String dostupneMenu2 = dostupneMenu1.replaceAll("\\[", "");
@@ -346,9 +357,9 @@ public class HomeController extends GridPane implements Observer {
 
 		try {
 			PdfWriter.getInstance(nakup, new FileOutputStream("Menu.pdf"));
-		} catch (FileNotFoundException e) {
+		} catch(FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (DocumentException e) {
+		} catch(DocumentException e) {
 			e.printStackTrace();
 		}
 
@@ -366,12 +377,12 @@ public class HomeController extends GridPane implements Observer {
 		File vygenerovaneMenu = new File("Menu.pdf");
 		try {
 			Desktop.getDesktop().open(vygenerovaneMenu);
-		} catch (IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	/*
+	/**
 	 * Metoda nastavuje viditelnost buttonu
 	 */
 	@FXML
@@ -386,7 +397,7 @@ public class HomeController extends GridPane implements Observer {
 		}
 	}
 
-	/*
+	/**
 	 * Metoda otevře okno O Vývojářích
 	 */
 	@FXML
@@ -404,61 +415,67 @@ public class HomeController extends GridPane implements Observer {
 		inventureStage.show();
 
 	}
-	
+
+	/**
+	 * Metoda, která volá metodu na uložení dat do souborů
+	 * a upozornění pro uživatele, jestli se uložení zdařilo či nikoli
+	 * 
+	 */
 	@FXML
 	public void ulozZmeny() {
-		  try { 
-			  kuchyne.ulozData();
-			  
-			  spravneUlozeni = new Alert(AlertType.INFORMATION);
-			  spravneUlozeni.setTitle("Uložení se zdařilo!");
-			  spravneUlozeni.setHeaderText(null);
-			  spravneUlozeni.setContentText(
-						"Data úspěšně uložena!");
-				Stage stage = (Stage) spravneUlozeni.getDialogPane().getScene().getWindow();
-				stage.setAlwaysOnTop(true);
-				spravneUlozeni.showAndWait();
-		   } catch (Exception e) {
-			    chybaUlozeni = new Alert(AlertType.INFORMATION);
-			    chybaUlozeni.setTitle("Uložení se nezdařilo!");
-			    chybaUlozeni.setHeaderText(null);
-			    chybaUlozeni.setContentText(
-						"Omlouváme se, ale uložení dat se nezdařilo. Obraťte se, prosím, na vývojáře.");
-				Stage stage = (Stage) chybaUlozeni.getDialogPane().getScene().getWindow();
-				stage.setAlwaysOnTop(true);
-				chybaUlozeni.showAndWait();
-		   } 
+		try {
+			kuchyne.ulozData();
+
+			spravneUlozeni = new Alert(AlertType.INFORMATION);
+			spravneUlozeni.setTitle("Uložení se zdařilo!");
+			spravneUlozeni.setHeaderText(null);
+			spravneUlozeni.setContentText("Data úspěšně uložena!");
+			Stage stage = (Stage) spravneUlozeni.getDialogPane().getScene().getWindow();
+			stage.setAlwaysOnTop(true);
+			spravneUlozeni.showAndWait();
+		} catch(Exception e) {
+			chybaUlozeni = new Alert(AlertType.INFORMATION);
+			chybaUlozeni.setTitle("Uložení se nezdařilo!");
+			chybaUlozeni.setHeaderText(null);
+			chybaUlozeni.setContentText("Omlouváme se, ale uložení dat se nezdařilo. Obraťte se, prosím, na vývojáře.");
+			Stage stage = (Stage) chybaUlozeni.getDialogPane().getScene().getWindow();
+			stage.setAlwaysOnTop(true);
+			chybaUlozeni.showAndWait();
+		}
 	}
-	
+
+	/**
+	 * Metoda otevření dokumentace aplikace na githubu v prohlížeči
+	 * 
+	 */
 	@FXML
 	public void odkazDokumentace() {
 		Desktop desktop = Desktop.getDesktop();
-        try {
-            desktop.browse(new URI("https://github.com/MarketaHalikova/vedeniKuchyne/wiki"));
-        } catch (IOException | URISyntaxException e2) {
-            e2.printStackTrace();
-        }
+		try {
+			desktop.browse(new URI("https://github.com/MarketaHalikova/vedeniKuchyne/wiki"));
+		} catch(IOException | URISyntaxException e2) {
+			e2.printStackTrace();
+		}
 	}
-	
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		ObservableList<String> predkrmyList = FXCollections.observableArrayList();
+		ObservableList < String > predkrmyList = FXCollections.observableArrayList();
 		predkrmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("predkrm"));
 		seznamPredkrmu.setItems(predkrmyList);
-		ObservableList<String> krmyList = FXCollections.observableArrayList();
+		ObservableList < String > krmyList = FXCollections.observableArrayList();
 		krmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("krm"));
 		seznamKrmu.setItems(krmyList);
-		ObservableList<String> zakrmyList = FXCollections.observableArrayList();
+		ObservableList < String > zakrmyList = FXCollections.observableArrayList();
 		zakrmyList.addAll(kuchyne.getAktualniSeznamReceptu().getPodleKategorie("zakrm"));
 		seznamZakrmu.setItems(zakrmyList);
-		ObservableList<String> skladList = FXCollections.observableArrayList();
+		ObservableList < String > skladList = FXCollections.observableArrayList();
 		skladList.addAll(kuchyne.getAktualniSklad().getSkladAsString().keySet());
 		seznamSklad.setItems(skladList);
-		ObservableList<String> menuList = FXCollections.observableArrayList();
+		ObservableList < String > menuList = FXCollections.observableArrayList();
 		menuList.addAll(kuchyne.getAktualniMenu().getNazvyReceptu());
 		menuRecepty.setItems(menuList);
-		ObservableList<String> nakupList = FXCollections.observableArrayList();
+		ObservableList < String > nakupList = FXCollections.observableArrayList();
 		nakupList.addAll(porovnanySeznamMenu());
 		nakupniSeznam.setItems(nakupList);
 
