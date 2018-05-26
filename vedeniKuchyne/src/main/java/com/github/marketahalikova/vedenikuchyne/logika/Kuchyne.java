@@ -1,11 +1,14 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InvalidClassException;
 import java.io.NotSerializableException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -36,7 +39,9 @@ public class Kuchyne extends Observable {
 
 		naplneniDaty();
 		
-		ulozData();
+		//nactiData();
+		
+		//ulozData();
 	}
 
 	private void naplneniDaty() {
@@ -228,6 +233,44 @@ public class Kuchyne extends Observable {
 		      return;
 
 		}
+	}
+	
+	/**
+	 * Metoda načte data tříd ze souborů
+	 * 
+	 */
+	public void nactiData() {
+		try {
+			ObjectInputStream surovinyData = new ObjectInputStream(new FileInputStream("suroviny.txt"));
+			sklad = (Sklad)surovinyData.readObject();
+			surovinyData.close();
+			
+			ObjectInputStream receptyData = new ObjectInputStream(new FileInputStream("recepty.txt"));
+			seznamReceptu = (SeznamReceptu)receptyData.readObject();
+			receptyData.close();
+			
+			ObjectInputStream menuData = new ObjectInputStream(new FileInputStream("menu.txt"));
+			menu = (Menu)menuData.readObject();
+			menuData.close();
+		}
+			
+			catch (FileNotFoundException e) {
+			       System.out.println("Nepodařilo se otevřít soubory s daty.");
+			       return;
+			   }
+			   catch (StreamCorruptedException e) {
+			       System.out.println("Chybná struktura souborů s daty.");
+			       return;
+			   }
+			   catch (IOException e) {
+			       System.out.println("Chyba při čtení ze souborů s uloženými objekty.");
+			       return;
+			   }
+			   catch (ClassNotFoundException e) {
+			       System.out.println("V souborech nejsou data.");
+			       return;
+		}
+	
 	}
 	
 
