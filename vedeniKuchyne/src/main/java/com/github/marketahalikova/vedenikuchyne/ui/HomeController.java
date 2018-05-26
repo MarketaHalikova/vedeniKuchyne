@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -426,6 +428,16 @@ public class HomeController extends GridPane implements Observer {
 				stage.setAlwaysOnTop(true);
 				chybaUlozeni.showAndWait();
 		   } 
+	}
+	
+	@FXML
+	public void odkazDokumentace() {
+		Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.browse(new URI("https://github.com/MarketaHalikova/vedeniKuchyne/wiki"));
+        } catch (IOException | URISyntaxException e2) {
+            e2.printStackTrace();
+        }
 	}
 	
 

@@ -33,6 +33,7 @@
 				<Menu mnemonicParsing="false" text="O aplikaci">
 					<items>
 						<MenuItem mnemonicParsing="false" onAction="#oVyvojarich" text="Vývojáři" />
+                  <MenuItem mnemonicParsing="false" onAction="#odkazDokumentace" text="Dokumentace" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Pomoc">
