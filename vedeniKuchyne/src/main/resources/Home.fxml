@@ -28,7 +28,7 @@
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<MenuBar accessibleRole="CHECK_MENU_ITEM" blendMode="HARD_LIGHT" pickOnBounds="false" prefHeight="29.0" prefWidth="531.0">
+		<MenuBar accessibleRole="CHECK_MENU_ITEM" pickOnBounds="false" prefHeight="29.0" prefWidth="531.0" style="-fx-background-color: white;">
 			<menus>
 				<Menu mnemonicParsing="false" text="O aplikaci">
 					<items>
@@ -126,6 +126,11 @@
 				</Tab>
 			</tabs>
 		</TabPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#ulozZmeny" prefHeight="34.0" prefWidth="300.0" style="-fx-background-color: white;" text="Uložit změny" textAlignment="RIGHT" textFill="#ae6161" textOverrun="LEADING_ELLIPSIS" GridPane.columnIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#ulozZmeny" prefHeight="28.0" prefWidth="300.0" style="-fx-background-color: white;" textAlignment="RIGHT" textFill="#ae6161" textOverrun="LEADING_ELLIPSIS" />
+            <Button defaultButton="true" layoutX="116.0" layoutY="1.0" lineSpacing="30.0" mnemonicParsing="false" onAction="#ulozZmeny" prefHeight="16.0" prefWidth="184.0" style="-fx-border-radius: 1em; -fx-background-radius: 1em;" text="Uložit změny" />
+         </children>
+      </AnchorPane>
 	</children>
 </GridPane>
