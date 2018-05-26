@@ -126,6 +126,6 @@
 				</Tab>
 			</tabs>
 		</TabPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="300.0" style="-fx-background-color: white;" text="Uložit změny" textAlignment="RIGHT" textFill="#ae6161" textOverrun="LEADING_ELLIPSIS" GridPane.columnIndex="1" />
+      <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#ulozZmeny" prefHeight="34.0" prefWidth="300.0" style="-fx-background-color: white;" text="Uložit změny" textAlignment="RIGHT" textFill="#ae6161" textOverrun="LEADING_ELLIPSIS" GridPane.columnIndex="1" />
 	</children>
 </GridPane>

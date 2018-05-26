@@ -37,9 +37,9 @@ public class Kuchyne extends Observable {
 		this.sklad = new Sklad();
 		this.seznamReceptu = new SeznamReceptu();
 
-		naplneniDaty();
+		//naplneniDaty();
 		
-		//nactiData();
+		nactiData();
 		
 		//ulozData();
 	}

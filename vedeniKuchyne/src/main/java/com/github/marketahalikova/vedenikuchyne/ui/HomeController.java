@@ -30,11 +30,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
@@ -62,6 +64,11 @@ public class HomeController extends GridPane implements Observer {
 	private Button upravaSuroviny;
 	@FXML
 	private Button smazaniSuroviny;
+	
+	@FXML
+	private Alert chybaUlozeni;
+	@FXML
+	private Alert spravneUlozeni;
 
 	private Kuchyne kuchyne;
 
@@ -397,8 +404,28 @@ public class HomeController extends GridPane implements Observer {
 	}
 	
 	@FXML
-	public void ulozitZmeny() {
-		
+	public void ulozZmeny() {
+		  try { 
+			  kuchyne.ulozData();
+			  
+			  spravneUlozeni = new Alert(AlertType.INFORMATION);
+			  spravneUlozeni.setTitle("Uložení se zdařilo!");
+			  spravneUlozeni.setHeaderText(null);
+			  spravneUlozeni.setContentText(
+						"Data úspěšně uložena!");
+				Stage stage = (Stage) spravneUlozeni.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				spravneUlozeni.showAndWait();
+		   } catch (Exception e) {
+			    chybaUlozeni = new Alert(AlertType.INFORMATION);
+			    chybaUlozeni.setTitle("Uložení se nezdařilo!");
+			    chybaUlozeni.setHeaderText(null);
+			    chybaUlozeni.setContentText(
+						"Omlouváme se, ale uložení dat se nezdařilo. Obraťte se, prosím, na vývojáře.");
+				Stage stage = (Stage) chybaUlozeni.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				chybaUlozeni.showAndWait();
+		   } 
 	}
 	
 
