@@ -1,5 +1,11 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InvalidClassException;
+import java.io.NotSerializableException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -29,6 +35,8 @@ public class Kuchyne extends Observable {
 		this.seznamReceptu = new SeznamReceptu();
 
 		naplneniDaty();
+		
+		ulozData();
 	}
 
 	private void naplneniDaty() {
@@ -181,6 +189,45 @@ public class Kuchyne extends Observable {
 	private static double round (double value, int precision) {
 	    int scale = (int) Math.pow(10, precision);
 	    return (double) Math.round(value * scale) / scale;
+	}
+	
+	/**
+	 * Metoda uloží data tříd do souborů
+	 * 
+	 */
+	public void ulozData() {
+		try {
+			ObjectOutputStream surovinyData = new ObjectOutputStream(new FileOutputStream("suroviny.txt"));
+			surovinyData.writeObject(sklad);
+		    surovinyData.close();
+		    
+		    ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream("recepty.txt"));
+		    receptyData.writeObject(seznamReceptu);
+		    receptyData.close();
+		    
+		    ObjectOutputStream menuData = new ObjectOutputStream(new FileOutputStream("menu.txt"));
+		    menuData.writeObject(menu);
+		    menuData.close();
+			
+		}
+			
+		catch (FileNotFoundException e) {
+		      System.out.println("Nepodařilo se otevřít vstupní soubory.");
+		      return;
+		   }
+		catch (InvalidClassException e) {
+		      System.out.println("Chyba ve třídách určené k serializaci.");
+		      return;
+		   }
+		catch (NotSerializableException e) {
+		      System.out.println("Neserializované objekty.");
+		      return;
+		   }
+		catch (IOException e) {
+		      System.out.println("Nepodařilo se uložit do souborů.");
+		      return;
+
+		}
 	}
 	
 

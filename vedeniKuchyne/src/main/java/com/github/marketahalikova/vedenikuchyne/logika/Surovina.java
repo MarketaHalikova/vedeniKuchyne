@@ -1,5 +1,7 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
@@ -7,8 +9,10 @@ package com.github.marketahalikova.vedenikuchyne.logika;
  *         Třída znázorňující jednotlivou surovinu, uchovávající její název a
  *         příslušnou jednotku.
  */
-public class Surovina {
+public class Surovina implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
 	private String nazev;
 	private Jednotka jednotka;
 	private double mnozstvi;

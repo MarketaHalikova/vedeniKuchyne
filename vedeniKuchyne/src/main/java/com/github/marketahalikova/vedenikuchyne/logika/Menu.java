@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -9,8 +10,10 @@ import java.util.Observable;
  * @author Markéta Halíková, Johanna Švugorevá, Martin Weisser
  *
  */
-public class Menu extends Observable {
+public class Menu extends Observable implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
 	private List<Recept> seznamReceptuMenu;
 	private List<String> seznamNazvuReceptu;
 	public List<Surovina> seznamVsechSurovinMenu;

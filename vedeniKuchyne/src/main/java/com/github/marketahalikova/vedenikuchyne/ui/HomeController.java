@@ -395,6 +395,12 @@ public class HomeController extends GridPane implements Observer {
 		inventureStage.show();
 
 	}
+	
+	@FXML
+	public void ulozitZmeny() {
+		
+	}
+	
 
 	@Override
 	public void update(Observable arg0, Object arg1) {

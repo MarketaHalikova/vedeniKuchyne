@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +12,10 @@ import java.util.Observable;
  * @author Johanna Švugerová, Markéta Halíková, Martin Weisser
  *
  */
-public class Sklad extends Observable {
+public class Sklad extends Observable implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
 	private List<Surovina> seznamSurovinSkladu;
 	private Map<String, Surovina> skladJakoString;
 
