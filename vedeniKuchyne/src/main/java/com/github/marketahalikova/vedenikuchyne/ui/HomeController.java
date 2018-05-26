@@ -295,7 +295,9 @@ public class HomeController extends GridPane implements Observer {
 	}
 
 	/**
-	 * Metoda vygeneruje PDF dokument s obsahem nákupního listu
+	 * Metoda vygeneruje PDF dokument s obsahem nákupního seznamu
+	 * 
+	 * @throws DocumentException
 	 */
 	@FXML
 	public void exportNakup() throws DocumentException {
@@ -346,6 +348,8 @@ public class HomeController extends GridPane implements Observer {
 
 	/**
 	 * Metoda vygeneruje PDF dokument s nabídkou aktuálního menu
+	 * 
+	 * @throws DocumentException
 	 */
 	@FXML
 	public void exportMenu() throws DocumentException {
