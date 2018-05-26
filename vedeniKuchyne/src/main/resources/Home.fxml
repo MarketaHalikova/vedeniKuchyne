@@ -38,7 +38,7 @@
 				</Menu>
 				<Menu mnemonicParsing="false" text="Pomoc">
 					<items>
-						<MenuItem mnemonicParsing="false" text="Nápověda" />
+						<MenuItem mnemonicParsing="false" onAction="#napoveda" text="Nápověda" />
 					</items>
 				</Menu>
 			</menus>

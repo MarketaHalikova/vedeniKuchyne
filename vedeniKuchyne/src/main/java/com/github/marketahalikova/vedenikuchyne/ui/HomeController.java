@@ -40,7 +40,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -457,6 +458,27 @@ public class HomeController extends GridPane implements Observer {
 			e2.printStackTrace();
 		}
 	}
+	
+	
+	/**
+	 * Metoda otevření HTML souboru nápovědy
+	 * 
+	 */
+	@FXML
+	public void napoveda() {
+		Stage stage = new Stage();
+        stage.setTitle("Nápověda");
+        
+        WebView view = new WebView();
+        WebEngine napoveda = view.getEngine();
+
+        napoveda.load(getClass().getResource("/napoveda.html").toExternalForm());
+
+        stage.setScene(new Scene(view, 500, 500));
+        stage.show();
+	}
+	
+	
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
