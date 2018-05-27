@@ -3,6 +3,7 @@ package com.github.marketahalikova.vedenikuchyne.ui;
 import java.util.Observable;
 
 import com.github.marketahalikova.vedenikuchyne.logika.Kuchyne;
+import com.github.marketahalikova.vedenikuchyne.logika.Recept;
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina;
 import com.github.marketahalikova.vedenikuchyne.logika.Surovina.Jednotka;
 
@@ -84,6 +85,29 @@ public class UpravaSurovinyController extends Observable {
 	 * @param event
 	 */
 	public void upravitSurovinuBtn(ActionEvent event) {
+		
+		Surovina nalezena = kuchyne.getAktualniSklad().najdiSurovinu(vybrana);
+
+		// nelze přidat recept, který již v databázi je
+		for (Surovina surovina: kuchyne.getAktualniSklad().getSeznamSurovinSkladu()) {
+			
+			if(nazev.getText().trim().toLowerCase().equals(surovina.getNazev().trim().toLowerCase()) && !surovina.equals(nalezena)){
+				maloInfo = new Alert(AlertType.INFORMATION);
+				maloInfo.setTitle("Pozor!");
+				maloInfo.setHeaderText(null);
+				maloInfo.setContentText(
+						"Surovina s tímto názvem již na skladě je. Upravte její množství.");
+				Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				maloInfo.showAndWait();
+				return;
+			} 
+		}
+		
+		
+		
+		
+		
 		double mnoz = 0;
 		String regexDecimal = "\\d{0,2}\\.\\d{1,2}";
 		String regexInteger = "\\d+";
