@@ -51,6 +51,24 @@ public class NovaSurovinaController extends Observable {
 	 * @param event
 	 */
 	public void pridejSurovinuBtn(ActionEvent event) {
+		
+
+		// nelze přidat surovinu s názvem, který již na skladě je
+		for (Surovina surovina: kuchyne.getAktualniSklad().getSeznamSurovinSkladu()) {
+			
+			if(nazev.getText().trim().toLowerCase().equals(surovina.getNazev().trim().toLowerCase())){
+				maloInfo = new Alert(AlertType.INFORMATION);
+				maloInfo.setTitle("Pozor!");
+				maloInfo.setHeaderText(null);
+				maloInfo.setContentText(
+						"Surovina s tímto názvem již na skladě je. Upravte její množství.");
+				Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				maloInfo.showAndWait();
+				return;
+			} 
+		}
+		
 		String nazevSuroviny = nazev.getText();
 		String jedn = "" + jednotka.getSelectionModel().getSelectedItem();
 		double mnoz = 0;
