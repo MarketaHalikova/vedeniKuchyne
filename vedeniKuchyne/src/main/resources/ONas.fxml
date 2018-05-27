@@ -16,7 +16,7 @@
                   <Image url="@/kuchař_logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="110.0" layoutY="267.0" prefHeight="107.0" prefWidth="315.0" text="MaKitch">
+            <Label layoutX="110.0" layoutY="267.0" prefHeight="107.0" prefWidth="350.0" text="MaKitch">
                <font>
                   <Font name="Bodoni 72 Book" size="96.0" />
                </font>
