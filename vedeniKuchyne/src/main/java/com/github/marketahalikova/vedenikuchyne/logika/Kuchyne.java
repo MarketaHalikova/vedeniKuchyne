@@ -1,5 +1,6 @@
 package com.github.marketahalikova.vedenikuchyne.logika;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,6 +10,7 @@ import java.io.NotSerializableException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -41,7 +43,12 @@ public class Kuchyne extends Observable {
 		this.sklad = new Sklad();
 		this.seznamReceptu = new SeznamReceptu();
 
-		nactiData();
+		try {
+			nactiData();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -156,15 +163,16 @@ public class Kuchyne extends Observable {
 	 * Metoda serializuje data tříd a uloží do souborů
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
+	 * @throws URISyntaxException 
 	 * 
 	 */
-	public void ulozData() throws FileNotFoundException, IOException {
+	public void ulozData() throws FileNotFoundException, IOException, URISyntaxException {
 		
-		ObjectOutputStream surovinyData = new ObjectOutputStream(new FileOutputStream("data/suroviny.txt"));
+		ObjectOutputStream surovinyData = new ObjectOutputStream(new FileOutputStream(new File(getClass().getResource("/suroviny.txt").toURI())));
 		surovinyData.writeObject(sklad);
 		surovinyData.close();
 
-		ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream("data/recepty.txt"));
+		ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream(new File(getClass().getResource("/recepty.txt").toURI())));
 		receptyData.writeObject(seznamReceptu);
 		receptyData.close();
 
@@ -172,15 +180,16 @@ public class Kuchyne extends Observable {
 
 	/**
 	 * Metoda načte data tříd ze souborů a deserializuje je
+	 * @throws URISyntaxException 
 	 * 
 	 */
-	public void nactiData() {
+	public void nactiData() throws URISyntaxException {
 		try {
-			ObjectInputStream surovinyData = new ObjectInputStream(new FileInputStream("data/suroviny.txt"));
+			ObjectInputStream surovinyData = new ObjectInputStream(new FileInputStream(new File(getClass().getResource("/suroviny.txt").toURI())));
 			sklad = (Sklad) surovinyData.readObject();
 			surovinyData.close();
 
-			ObjectInputStream receptyData = new ObjectInputStream(new FileInputStream("data/recepty.txt"));
+			ObjectInputStream receptyData = new ObjectInputStream(new FileInputStream(new File(getClass().getResource("/recepty.txt").toURI())));
 			seznamReceptu = (SeznamReceptu) receptyData.readObject();
 			receptyData.close();
 
