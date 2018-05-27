@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class Recept implements Serializable {
 
-	
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 9066672598984451474L;
 
 	private String nazev;
 

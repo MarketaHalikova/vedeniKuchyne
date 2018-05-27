@@ -11,8 +11,8 @@ import java.io.Serializable;
  */
 public class Surovina implements Serializable {
 
-	
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -914687629813799760L;
 	private String nazev;
 	private Jednotka jednotka;
 	private double mnozstvi;

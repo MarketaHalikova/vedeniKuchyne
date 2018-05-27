@@ -14,7 +14,7 @@ import java.util.List;
 public class SeznamReceptu extends Observable implements Serializable {
 
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8727940934649255447L;
 	private List<Recept> seznamReceptu;
 	private List<String> seznamKategorie;
 

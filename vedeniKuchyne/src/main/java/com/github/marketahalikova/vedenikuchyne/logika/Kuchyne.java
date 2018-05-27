@@ -46,9 +46,9 @@ public class Kuchyne extends Observable {
 	private void naplneniDaty() {
 
 		// tady bude naplneni provizornimi daty
-		Surovina knedlik = new Surovina("knedlík", Jednotka.ks, 3);
-		Surovina marijanka = new Surovina("marijanka", Jednotka.kg, 25);
-		Surovina mrkev = new Surovina("mrkev", Jednotka.ks, 3);
+		Surovina knedlik = new Surovina("tomato", Jednotka.kg, 3);
+		Surovina marijanka = new Surovina("brambory", Jednotka.kg, 50);
+		Surovina mrkev = new Surovina("mrkev", Jednotka.ks, 4);
 		List < Surovina > seznamSurovinReceptu = new ArrayList < >();
 		seznamSurovinReceptu.add(knedlik);
 		seznamSurovinReceptu.add(marijanka);

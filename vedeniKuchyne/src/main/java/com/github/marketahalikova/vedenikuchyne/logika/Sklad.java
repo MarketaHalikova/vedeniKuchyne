@@ -14,8 +14,8 @@ import java.util.Observable;
  */
 public class Sklad extends Observable implements Serializable {
 
-	
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -2178455883758627460L;
 	private List<Surovina> seznamSurovinSkladu;
 	private Map<String, Surovina> skladJakoString;
 
