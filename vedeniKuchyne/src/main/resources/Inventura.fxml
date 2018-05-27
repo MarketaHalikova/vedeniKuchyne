@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="348.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.marketahalikova.vedenikuchyne.ui.InventuraController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="318.0" prefWidth="564.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TextField fx:id="nazevSuroviny" layoutX="27.0" layoutY="237.0" prefHeight="27.0" prefWidth="199.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <Button layoutX="100.0" layoutY="294.0" mnemonicParsing="false" onAction="#zadejInventuruBtn" prefHeight="40.0" prefWidth="285.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="Zadat inventuru" />
+            <Button layoutX="425.0" layoutY="237.0" mnemonicParsing="false" onAction="#pridejSurovinu" prefHeight="27.0" prefWidth="27.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" text="+" />
+            <Label layoutX="37.0" layoutY="220.0" text="Název" />
+            <TextField fx:id="mnozstvi" layoutX="237.0" layoutY="237.0" prefHeight="27.0" prefWidth="84.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em;" />
+            <Label layoutX="243.0" layoutY="220.0" text="Množství" />
+            <Label layoutX="345.0" layoutY="220.0" text="Jednotka" />
+            <ListView fx:id="inventura" layoutX="28.0" layoutY="27.0" prefHeight="176.0" prefWidth="428.0" style="-fx-background-radius: 1em; -fx-border-radius: 1em; -fx-padding: 0.5em;" />
+            <ComboBox fx:id="jednotka" layoutX="331.0" layoutY="237.0" prefHeight="27.0" prefWidth="84.0" style="-fx-border-radius: 1em; -fx-background-radius: 1em;">
+            <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="kg" />
+                     <String fx:value="ks" />
+                     <String fx:value="l" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

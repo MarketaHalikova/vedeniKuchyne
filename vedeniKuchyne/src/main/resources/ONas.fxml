@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="403.0" prefWidth="600.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="154.0" layoutX="425.0" layoutY="186.0">
+               <image>
+                  <Image url="@/kuchař_logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="110.0" layoutY="267.0" prefHeight="107.0" prefWidth="350.0" text="MaKitch">
+               <font>
+                  <Font name="Bodoni 72 Book" size="96.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="64.0" prefHeight="136.0" prefWidth="345.0" text="developed by Makys, Johnny and Vajcík&#10;version 450.5&#10;&#10;copyright (c) 2018 ">
+               <font>
+                  <Font name="Bodoni 72 Book" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -21,6 +21,11 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itextpdf</artifactId>
+    <version>5.5.13</version>
+</dependency>
   </dependencies>
   
   <build>
@@ -45,7 +50,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<mainClass>
-	com.github.marketahalikova.vedenikuchyne.main.Start</mainClass>
+	com.github.marketahalikova.vedenikuchyne.main.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
