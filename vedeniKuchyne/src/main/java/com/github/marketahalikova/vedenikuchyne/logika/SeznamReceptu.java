@@ -6,24 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class SeznamRceptu eviduje seznam všech receptů
+ * Tříde SeznamReceptu
+ * 
+ * Tato třída eviduje seznam všech receptů
  * 
  * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
  *
  */
 public class SeznamReceptu extends Observable implements Serializable {
 
-	
 	private static final long serialVersionUID = -8727940934649255447L;
-	private List<Recept> seznamReceptu;
-	private List<String> seznamKategorie;
+	private List < Recept > seznamReceptu;
+	private List < String > seznamKategorie;
 
 	/**
 	 * Konstruktor třídy SeznamRecpetu
 	 */
 	public SeznamReceptu() {
-		seznamReceptu = new ArrayList<>();
-		seznamKategorie = new ArrayList<>();
+		seznamReceptu = new ArrayList < >();
+		seznamKategorie = new ArrayList < >();
 	}
 
 	/**
@@ -31,7 +32,7 @@ public class SeznamReceptu extends Observable implements Serializable {
 	 * 
 	 * @return List<Recept>
 	 */
-	public List<Recept> getSeznamReceptu() {
+	public List < Recept > getSeznamReceptu() {
 		return seznamReceptu;
 	}
 
@@ -40,7 +41,7 @@ public class SeznamReceptu extends Observable implements Serializable {
 	 * 
 	 * @param List<Recept>
 	 */
-	public void setSeznamReceptu(List<Recept> seznamReceptu) {
+	public void setSeznamReceptu(List < Recept > seznamReceptu) {
 		this.seznamReceptu = seznamReceptu;
 	}
 
@@ -54,18 +55,17 @@ public class SeznamReceptu extends Observable implements Serializable {
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	/** 
 	 * Metoda najde recept dle zadaného názvu.
 	 * @param nazev
 	 */
 	public Recept najdiRecept(String nazev) {
 		Recept hledany = null;
-		for(Recept recept : seznamReceptu) {
-			if(recept.getNazev().equals(nazev))
-				hledany = recept;
+		for (Recept recept: seznamReceptu) {
+			if (recept.getNazev().equals(nazev)) hledany = recept;
 		}
-		
+
 		return hledany;
 
 	}
@@ -77,9 +77,9 @@ public class SeznamReceptu extends Observable implements Serializable {
 	 * @param kategorie
 	 * @return List<Recept>
 	 */
-	public List<String> getPodleKategorie(String kategorie) {
+	public List < String > getPodleKategorie(String kategorie) {
 		seznamKategorie.clear();
-		for (Recept recept : seznamReceptu) {
+		for (Recept recept: seznamReceptu) {
 			if (recept.getKategorie().equals(kategorie)) {
 				seznamKategorie.add(recept.getNazev());
 			}

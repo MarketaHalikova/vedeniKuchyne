@@ -28,18 +28,18 @@ import javafx.stage.Stage;
 public class PridatReceptController extends Observable {
 
 	private Kuchyne kuchyne;
-	private List<Surovina> listNovychSurReceptu;
+	private List < Surovina > listNovychSurReceptu;
 
 	@FXML
-	private ComboBox<Jednotka> jednotka;
+	private ComboBox < Jednotka > jednotka;
 	@FXML
-	private ComboBox<String> kategorie;
+	private ComboBox < String > kategorie;
 	@FXML
 	private TextField nazev;
 	@FXML
 	private TextField postup;
 	@FXML
-	private ListView<String> seznamSurovin;
+	private ListView < String > seznamSurovin;
 	@FXML
 	private TextField nazevSuroviny;
 	@FXML
@@ -55,7 +55,7 @@ public class PridatReceptController extends Observable {
 	 */
 	public void inicializuj(Kuchyne kuchyne) {
 		this.kuchyne = kuchyne;
-		listNovychSurReceptu = new ArrayList<>();
+		listNovychSurReceptu = new ArrayList < >();
 		listNovychSurReceptu.clear();
 	}
 
@@ -69,7 +69,7 @@ public class PridatReceptController extends Observable {
 	public void pridatRecpetBtn(ActionEvent event) {
 
 		// nelze přidat recept, který již v databázi je
-		for (Recept recept : kuchyne.getAktualniSeznamReceptu().getSeznamReceptu()) {
+		for (Recept recept: kuchyne.getAktualniSeznamReceptu().getSeznamReceptu()) {
 
 			if (nazev.getText().trim().toLowerCase().equals(recept.getNazev().trim().toLowerCase())) {
 				maloInfo = new Alert(AlertType.INFORMATION);
@@ -84,7 +84,7 @@ public class PridatReceptController extends Observable {
 		}
 
 		// uložení nového receptu
-		if (!(postup.getText().isEmpty() || nazev.getText().isEmpty() || kategorie.getSelectionModel().isEmpty())) {
+		if (! (postup.getText().isEmpty() || nazev.getText().isEmpty() || kategorie.getSelectionModel().isEmpty())) {
 			String kat = "" + kategorie.getSelectionModel().getSelectedItem();
 			String newKat = null;
 			switch (kat) {
@@ -104,13 +104,12 @@ public class PridatReceptController extends Observable {
 			setChanged();
 			notifyObservers();
 
-			((Node) (event.getSource())).getScene().getWindow().hide();
+			((Node)(event.getSource())).getScene().getWindow().hide();
 		} else {
 			maloInfo = new Alert(AlertType.INFORMATION);
 			maloInfo.setTitle("Pozor!");
 			maloInfo.setHeaderText(null);
-			maloInfo.setContentText(
-					"U suroviny musí být zadaný název, množství i jednotka a musí být vybraná kategorie! Množství musí být zadané jako celé nebo desetinné číslo!");
+			maloInfo.setContentText("U suroviny musí být zadaný název, množství i jednotka a musí být vybraná kategorie! Množství musí být zadané jako celé nebo desetinné číslo!");
 			Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();
@@ -134,12 +133,9 @@ public class PridatReceptController extends Observable {
 			mnoz = Double.parseDouble(mnozstvi.getText());
 		}
 
-		if (!(nazevSuroviny.getText().isEmpty() || mnozstvi.getText().isEmpty()
-				|| jednotka.getSelectionModel().isEmpty()
-				|| !mnozstvi.getText().matches(regexDecimal + "|" + regexInteger))) {
+		if (! (nazevSuroviny.getText().isEmpty() || mnozstvi.getText().isEmpty() || jednotka.getSelectionModel().isEmpty() || !mnozstvi.getText().matches(regexDecimal + "|" + regexInteger))) {
 
-			seznamSurovin.getItems().add(nazevSuroviny.getText() + ", " + mnozstvi.getText() + ", "
-					+ jednotka.getSelectionModel().getSelectedItem());
+			seznamSurovin.getItems().add(nazevSuroviny.getText() + ", " + mnozstvi.getText() + ", " + jednotka.getSelectionModel().getSelectedItem());
 
 			nazevSuroviny.clear();
 			mnozstvi.clear();
@@ -152,8 +148,7 @@ public class PridatReceptController extends Observable {
 			maloInfo = new Alert(AlertType.INFORMATION);
 			maloInfo.setTitle("Pozor!");
 			maloInfo.setHeaderText(null);
-			maloInfo.setContentText(
-					"U suroviny musí být zadaný název, množství i jednotka! Množství musé být zadané jako celé nebo desetinné číslo!");
+			maloInfo.setContentText("U suroviny musí být zadaný název, množství i jednotka! Množství musé být zadané jako celé nebo desetinné číslo!");
 			Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();

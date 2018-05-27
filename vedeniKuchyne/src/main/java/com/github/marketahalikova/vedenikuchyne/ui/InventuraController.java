@@ -30,15 +30,15 @@ import javafx.stage.Stage;
 public class InventuraController extends Observable {
 
 	private Kuchyne kuchyne;
-	private List<Surovina> seznamInventura;
+	private List < Surovina > seznamInventura;
 	@FXML
 	private TextField nazevSuroviny;
 	@FXML
 	private TextField mnozstvi;
 	@FXML
-	private ComboBox<Jednotka> jednotka;
+	private ComboBox < Jednotka > jednotka;
 	@FXML
-	private ListView<String> inventura;
+	private ListView < String > inventura;
 	@FXML
 	private Alert maloInfo;
 
@@ -50,7 +50,7 @@ public class InventuraController extends Observable {
 	 */
 	public void inicializuj(Kuchyne kuchyne) {
 		this.kuchyne = kuchyne;
-		seznamInventura = new ArrayList<>();
+		seznamInventura = new ArrayList < >();
 	}
 
 	/**
@@ -70,12 +70,9 @@ public class InventuraController extends Observable {
 			mnoz = Double.parseDouble(mnozstvi.getText());
 		}
 
-		if (!(nazevSuroviny.getText().isEmpty() || mnozstvi.getText().isEmpty()
-				|| jednotka.getSelectionModel().isEmpty()
-				|| !mnozstvi.getText().matches(regexDecimal + "|" + regexInteger))) {
+		if (! (nazevSuroviny.getText().isEmpty() || mnozstvi.getText().isEmpty() || jednotka.getSelectionModel().isEmpty() || !mnozstvi.getText().matches(regexDecimal + "|" + regexInteger))) {
 
-			inventura.getItems().add(nazevSuroviny.getText() + ", " + mnozstvi.getText() + ", "
-					+ jednotka.getSelectionModel().getSelectedItem());
+			inventura.getItems().add(nazevSuroviny.getText() + ", " + mnozstvi.getText() + ", " + jednotka.getSelectionModel().getSelectedItem());
 
 			Surovina surovina = new Surovina(nazevSuroviny.getText(), Jednotka.valueOf(jedn), mnoz);
 			seznamInventura.add(surovina);
@@ -88,8 +85,7 @@ public class InventuraController extends Observable {
 			maloInfo = new Alert(AlertType.INFORMATION);
 			maloInfo.setTitle("Pozor!");
 			maloInfo.setHeaderText(null);
-			maloInfo.setContentText(
-					"U suroviny musí být zadaný název, množství i jednotka! Množství musé být zadané jako celé nebo desetinné číslo!");
+			maloInfo.setContentText("U suroviny musí být zadaný název, množství i jednotka! Množství musé být zadané jako celé nebo desetinné číslo!");
 			Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();
@@ -115,7 +111,7 @@ public class InventuraController extends Observable {
 			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 			stage.setAlwaysOnTop(true);
 
-			Optional<ButtonType> result = alert.showAndWait();
+			Optional < ButtonType > result = alert.showAndWait();
 			if (result.get() == ButtonType.OK) {
 				kuchyne.getAktualniSklad().getSeznamSurovinSkladu().clear();
 				kuchyne.getAktualniSklad().setSeznamSurovin(seznamInventura);
@@ -123,7 +119,7 @@ public class InventuraController extends Observable {
 				setChanged();
 				notifyObservers();
 
-				((Node) (event.getSource())).getScene().getWindow().hide();
+				((Node)(event.getSource())).getScene().getWindow().hide();
 			}
 		} else {
 
@@ -133,7 +129,7 @@ public class InventuraController extends Observable {
 			setChanged();
 			notifyObservers();
 
-			((Node) (event.getSource())).getScene().getWindow().hide();
+			((Node)(event.getSource())).getScene().getWindow().hide();
 		}
 	}
 }

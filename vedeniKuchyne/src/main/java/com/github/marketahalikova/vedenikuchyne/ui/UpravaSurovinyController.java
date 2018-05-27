@@ -33,7 +33,7 @@ public class UpravaSurovinyController extends Observable {
 	@FXML
 	private TextField mnozstvi;
 	@FXML
-	private ComboBox<String> jednotka;
+	private ComboBox < String > jednotka;
 	@FXML
 	private Alert maloInfo;
 
@@ -83,10 +83,9 @@ public class UpravaSurovinyController extends Observable {
 		Surovina nalezena = kuchyne.getAktualniSklad().najdiSurovinu(vybrana);
 
 		// nelze přidat surovinu s názvem, který již na skladě je
-		for (Surovina surovina : kuchyne.getAktualniSklad().getSeznamSurovinSkladu()) {
+		for (Surovina surovina: kuchyne.getAktualniSklad().getSeznamSurovinSkladu()) {
 
-			if (nazev.getText().trim().toLowerCase().equals(surovina.getNazev().trim().toLowerCase())
-					&& !surovina.equals(nalezena)) {
+			if (nazev.getText().trim().toLowerCase().equals(surovina.getNazev().trim().toLowerCase()) && !surovina.equals(nalezena)) {
 				maloInfo = new Alert(AlertType.INFORMATION);
 				maloInfo.setTitle("Pozor!");
 				maloInfo.setHeaderText(null);
@@ -107,8 +106,7 @@ public class UpravaSurovinyController extends Observable {
 			mnoz = Double.parseDouble(mnozstvi.getText());
 		}
 
-		if (!(nazev.getText().isEmpty() || mnozstvi.getText().isEmpty() || jednotka.getSelectionModel().isEmpty()
-				|| !mnozstvi.getText().matches(regexDecimal + "|" + regexInteger))) {
+		if (! (nazev.getText().isEmpty() || mnozstvi.getText().isEmpty() || jednotka.getSelectionModel().isEmpty() || !mnozstvi.getText().matches(regexDecimal + "|" + regexInteger))) {
 
 			Surovina nova = new Surovina(nazev.getText(), Jednotka.valueOf(jedn), mnoz);
 			kuchyne.getAktualniSklad().odstranSurovinu(surovina);
@@ -117,13 +115,12 @@ public class UpravaSurovinyController extends Observable {
 			setChanged();
 			notifyObservers();
 
-			((Node) (event.getSource())).getScene().getWindow().hide();
+			((Node)(event.getSource())).getScene().getWindow().hide();
 		} else {
 			maloInfo = new Alert(AlertType.INFORMATION);
 			maloInfo.setTitle("Pozor!");
 			maloInfo.setHeaderText(null);
-			maloInfo.setContentText(
-					"U suroviny musí být zadaný název, množství i jednotka! Množství musé být zadané jako celé nebo desetinné číslo!");
+			maloInfo.setContentText("U suroviny musí být zadaný název, množství i jednotka! Množství musé být zadané jako celé nebo desetinné číslo!");
 			Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();

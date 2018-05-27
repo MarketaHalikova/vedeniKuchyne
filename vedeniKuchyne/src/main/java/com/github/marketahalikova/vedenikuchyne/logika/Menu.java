@@ -6,39 +6,55 @@ import java.util.List;
 import java.util.Observable;
 
 /**
+ * Třida Menu
+ * 
+ * Tato třída spravuje, přidává a odebírá recepty menu
  * 
  * @author Markéta Halíková, Johanna Švugorevá, Martin Weisser
  *
  */
-public class Menu extends Observable /*implements Serializable*/ {
+public class Menu extends Observable {
 
-	
-	//private static final long serialVersionUID = 1L;
-	private List<Recept> seznamReceptuMenu;
-	private List<String> seznamNazvuReceptu;
-	public List<Surovina> seznamVsechSurovinMenu;
+	private List < Recept > seznamReceptuMenu;
+	private List < String > seznamNazvuReceptu;
+	public List < Surovina > seznamVsechSurovinMenu;
 
+	/**
+	 * Konstruktor třídy Menu
+	 */
 	public Menu() {
-		seznamReceptuMenu = new ArrayList<>();
-		seznamNazvuReceptu = new ArrayList<>();
-		seznamVsechSurovinMenu = new ArrayList<>();
+		seznamReceptuMenu = new ArrayList < >();
+		seznamNazvuReceptu = new ArrayList < >();
+		seznamVsechSurovinMenu = new ArrayList < >();
 	}
 
-	public List<Recept> getSeznamReceptu() {
+	/**
+	 * Metoda vrátí list receptů menu
+	 */
+	public List < Recept > getSeznamReceptu() {
 		return seznamReceptuMenu;
 	}
 
-	public void setSeznamReceptu(List<Recept> seznamReceptuMenu) {
+	/**
+	 * Metoda nastaví seznam receptů menu
+	 */
+	public void setSeznamReceptu(List < Recept > seznamReceptuMenu) {
 		this.seznamReceptuMenu = seznamReceptuMenu;
 	}
 
+	/**
+	 * Metoda vloží recept do menu
+	 */
 	public void vlozitRecept(Recept recept) {
 		seznamReceptuMenu.add(recept);
 	}
 
-	public List<String> getNazvyReceptu() {
+	/**
+	 * Metoda vrátí názvy receptů
+	 */
+	public List < String > getNazvyReceptu() {
 		seznamNazvuReceptu.clear();
-		for (Recept recept : seznamReceptuMenu) {
+		for (Recept recept: seznamReceptuMenu) {
 			seznamNazvuReceptu.add(recept.getNazev());
 		}
 
@@ -56,6 +72,9 @@ public class Menu extends Observable /*implements Serializable*/ {
 		notifyObservers();
 	}
 
+	/**
+	 * Metoda slouží pro vyhledání konkrétního receptu
+	 */
 	public Recept najdiRecept(String hledanyRetezec) {
 		Recept hledany = null;
 
@@ -77,20 +96,19 @@ public class Menu extends Observable /*implements Serializable*/ {
 	 * 
 	 * @retun List<Surovina>
 	 */
-	public List<Surovina> vytvoreniSeznamuSurovinMenu() {
+	public List < Surovina > vytvoreniSeznamuSurovinMenu() {
 		seznamVsechSurovinMenu.clear();
-		List<Surovina> seznamSurovinMenuNesetrideny = new ArrayList<>();
+		List < Surovina > seznamSurovinMenuNesetrideny = new ArrayList < >();
 
 		// Vytvoření nesetříděného seznamu
-		for (Recept recept : seznamReceptuMenu) {
-			for (Surovina surovinaReceptu : recept.getSeznamSurovinReceptu()) {
+		for (Recept recept: seznamReceptuMenu) {
+			for (Surovina surovinaReceptu: recept.getSeznamSurovinReceptu()) {
 				seznamSurovinMenuNesetrideny.add(surovinaReceptu);
 			}
 		}
 
-
 		// Vytvoření setříděného seznamu
-		for (Surovina surovinaMenuNetridena : seznamSurovinMenuNesetrideny) {
+		for (Surovina surovinaMenuNetridena: seznamSurovinMenuNesetrideny) {
 			if (seznamVsechSurovinMenu.contains(surovinaMenuNetridena)) {
 				Surovina sur = seznamVsechSurovinMenu.get(seznamVsechSurovinMenu.indexOf(surovinaMenuNetridena));
 				sur.setMnozstvi(round(sur.getMnozstvi() + surovinaMenuNetridena.getMnozstvi(), 1));

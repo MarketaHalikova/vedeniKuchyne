@@ -3,14 +3,15 @@ package com.github.marketahalikova.vedenikuchyne.logika;
 import java.io.Serializable;
 
 /**
+ * Třída Surovina
+ * 
+ * Třída znázorňující jednotlivou surovinu, uchovávající její název a
+ * příslušnou jednotku.
  * 
  * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
  *
- *         Třída znázorňující jednotlivou surovinu, uchovávající její název a
- *         příslušnou jednotku.
  */
 public class Surovina implements Serializable {
-
 
 	private static final long serialVersionUID = -914687629813799760L;
 	private String nazev;
@@ -41,11 +42,15 @@ public class Surovina implements Serializable {
 		this.setMnozstvi(mnozstvi);
 	}
 
-	
+	/**
+	 * Metoda definujicí enumerace Jednotka
+	 */
 	public enum Jednotka {
-	    kg, l, ks, 
+		kg,
+		l,
+		ks,
 	}
-	
+
 	/**
 	 * Metoda získávající název suroviny.
 	 * 
@@ -100,22 +105,25 @@ public class Surovina implements Serializable {
 	public void setMnozstvi(double mnozstvi) {
 		this.mnozstvi = mnozstvi;
 	}
-	
+
+	/**
+	 * Metoda přepisuje funkci equals
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) 
 			return true;
-		if (obj == null)
+		if (obj == null) 
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != obj.getClass()) 
 			return false;
 		Surovina other = (Surovina) obj;
-		if (jednotka != other.jednotka)
+		if (jednotka != other.jednotka) 
 			return false;
 		if (nazev == null) {
-			if (other.nazev != null)
+			if (other.nazev != null) 
 				return false;
-		} else if (!nazev.equals(other.nazev))
+		} else if (!nazev.equals(other.nazev)) 
 			return false;
 		return true;
 	}

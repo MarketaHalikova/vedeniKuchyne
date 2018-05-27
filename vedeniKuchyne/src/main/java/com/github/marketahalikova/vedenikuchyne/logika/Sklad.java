@@ -8,33 +8,45 @@ import java.util.Map;
 import java.util.Observable;
 
 /**
+ * Třidá Sklad
+ * 
+ * Zde se spravují, přidávají a odebírají surovinu skladu
  * 
  * @author Johanna Švugerová, Markéta Halíková, Martin Weisser
  *
  */
 public class Sklad extends Observable implements Serializable {
 
-
 	private static final long serialVersionUID = -2178455883758627460L;
-	private List<Surovina> seznamSurovinSkladu;
-	private Map<String, Surovina> skladJakoString;
+	private List < Surovina > seznamSurovinSkladu;
+	private Map < String,
+	Surovina > skladJakoString;
 
 	/**
 	 * Konstruktor třídy Sklad
 	 */
 	public Sklad() {
-		seznamSurovinSkladu = new ArrayList<>();
-		skladJakoString = new HashMap<>();
+		seznamSurovinSkladu = new ArrayList < >();
+		skladJakoString = new HashMap < >();
 	}
 
-	public List<Surovina> getSeznamSurovinSkladu() {
+	/**
+	 * Metoda vrátí seznam surovin skladu
+	 */
+	public List < Surovina > getSeznamSurovinSkladu() {
 		return seznamSurovinSkladu;
 	}
 
-	public void setSeznamSurovin(List<Surovina> seznamSurovinSkladu) {
+	/**
+	 * Metoda nastaví seznam surovin skladu
+	 */
+	public void setSeznamSurovin(List < Surovina > seznamSurovinSkladu) {
 		this.seznamSurovinSkladu = seznamSurovinSkladu;
 	}
 
+	/**
+	 * Metoda vloží surovinu do skladu
+	 */
 	public void vlozitSurovinu(Surovina surovina) {
 		seznamSurovinSkladu.add(surovina);
 	}
@@ -56,9 +68,10 @@ public class Sklad extends Observable implements Serializable {
 	 * 
 	 * @return Map<String, String>
 	 */
-	public Map<String, Surovina> getSkladAsString() {
+	public Map < String,
+	Surovina > getSkladAsString() {
 		skladJakoString.clear();
-		for (Surovina surovina : seznamSurovinSkladu) {
+		for (Surovina surovina: seznamSurovinSkladu) {
 			String retezec = surovina.getNazev() + ", " + surovina.getMnozstvi() + ", " + surovina.getJednotka();
 			skladJakoString.put(retezec, surovina);
 		}

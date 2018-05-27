@@ -13,11 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import com.github.marketahalikova.vedenikuchyne.logika.Surovina.Jednotka;
-
 /**
- * Class Kuchyne
+ * Třída Kuchyne
  * 
+ * Hlavní třída aplikace.
+ * Slouží pro vrácení hodnot skladu, menu, nákupního seznamu i receptů.
+ * Také se tu ukládají data do souborů a zároveň se z těchto souborů i čtou.
  * 
  *
  * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
@@ -30,6 +31,9 @@ public class Kuchyne extends Observable {
 	public Sklad sklad;
 	public SeznamReceptu seznamReceptu;
 
+	/**
+	 * Konstruktor třídy Kuchyne
+	 */
 	public Kuchyne() {
 
 		this.menu = new Menu();
@@ -37,41 +41,7 @@ public class Kuchyne extends Observable {
 		this.sklad = new Sklad();
 		this.seznamReceptu = new SeznamReceptu();
 
-		//naplneniDaty();
 		nactiData();
-
-		//ulozData();
-	}
-
-	private void naplneniDaty() {
-
-		// tady bude naplneni provizornimi daty
-		Surovina knedlik = new Surovina("tomato", Jednotka.kg, 3);
-		Surovina marijanka = new Surovina("brambory", Jednotka.kg, 50);
-		Surovina mrkev = new Surovina("mrkev", Jednotka.ks, 4);
-		List < Surovina > seznamSurovinReceptu = new ArrayList < >();
-		seznamSurovinReceptu.add(knedlik);
-		seznamSurovinReceptu.add(marijanka);
-		seznamSurovinReceptu.add(mrkev);
-
-		Surovina lizatko = new Surovina("lízátko", Jednotka.ks, 25);
-		Surovina bonbon = new Surovina("bonbón", Jednotka.ks, 3);
-		List < Surovina > seznamSurovinReceptu2 = new ArrayList < >();
-		seznamSurovinReceptu2.add(lizatko);
-		seznamSurovinReceptu2.add(bonbon);
-
-		seznamReceptu.vlozitRecept(new Recept("Svíčková", "Uvař svíčkovou.", "krm", seznamSurovinReceptu));
-		seznamReceptu.vlozitRecept(new Recept("Rajská polévka", "Udělej rajskou.", "predkrm", seznamSurovinReceptu));
-		seznamReceptu.vlozitRecept(new Recept("Tiramisu", "Udělej tiramisu.", "zakrm", seznamSurovinReceptu));
-
-		sklad.vlozitSurovinu(new Surovina("jablko", Jednotka.kg, 3));
-		sklad.vlozitSurovinu(new Surovina("marijanka", Jednotka.kg, 20));
-		sklad.vlozitSurovinu(new Surovina("vodka", Jednotka.l, 10));
-
-		menu.vlozitRecept(new Recept("Sushi", "Zabij rybu, uvař rýži.", "krm", seznamSurovinReceptu));
-		menu.vlozitRecept(new Recept("Losos", "Zabij rybu.", "krm", seznamSurovinReceptu2));
-
-		//System.out.println(srovnaniSurovinReceptuSeSkladem(new Recept("Svíčková", "Uvař svíčkovou.", "krm", seznamSurovinReceptu)));
 	}
 
 	/**
@@ -133,10 +103,6 @@ public class Kuchyne extends Observable {
 
 		nakupniSeznam.setSeznamSurovin(provizorniSeznam);
 
-		//System.out.println("nakupni listek: " + nakupniSeznam.nakupniSeznamToString()); // 3 suroviny
-		// suroviny a by melo byt jeden kus;
-		// suroviny f 0.4g;
-		// suroviny d 4ks
 	}
 
 	/**
@@ -187,7 +153,7 @@ public class Kuchyne extends Observable {
 	}
 
 	/**
-	 * Metoda uloží data tříd do souborů
+	 * Metoda serializuje data tříd a uloží do souborů
 	 * 
 	 */
 	public void ulozData() {
@@ -199,10 +165,6 @@ public class Kuchyne extends Observable {
 			ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream("data/recepty.txt"));
 			receptyData.writeObject(seznamReceptu);
 			receptyData.close();
-
-			//ObjectOutputStream menuData = new ObjectOutputStream(new FileOutputStream("data/menu.txt"));
-			//menuData.writeObject(menu);
-			//menuData.close();
 
 		}
 
@@ -226,7 +188,7 @@ public class Kuchyne extends Observable {
 	}
 
 	/**
-	 * Metoda načte data tříd ze souborů
+	 * Metoda načte data tříd ze souborů a deserializuje je
 	 * 
 	 */
 	public void nactiData() {
@@ -239,9 +201,6 @@ public class Kuchyne extends Observable {
 			seznamReceptu = (SeznamReceptu) receptyData.readObject();
 			receptyData.close();
 
-			//ObjectInputStream menuData = new ObjectInputStream(new FileInputStream("data/menu.txt"));
-			//menu = (Menu) menuData.readObject();
-			//menuData.close();
 		}
 
 		catch(FileNotFoundException e) {

@@ -48,22 +48,29 @@ import javafx.stage.Stage;
 public class HomeController extends GridPane implements Observer {
 
 	@FXML
-	private ListView < String > seznamPredkrmu;@FXML
-	private ListView < String > seznamKrmu;@FXML
-	private ListView < String > seznamZakrmu;@FXML
-	private ListView < String > seznamSklad;@FXML
-	private ListView < String > menuRecepty;@FXML
+	private ListView < String > seznamPredkrmu;
+	@FXML
+	private ListView < String > seznamKrmu;
+	@FXML
+	private ListView < String > seznamZakrmu;
+	@FXML
+	private ListView < String > seznamSklad;
+	@FXML
+	private ListView < String > menuRecepty;
+	@FXML
 	private ListView < String > nakupniSeznam;
 
 	@FXML
 	private TabPane tabs;
 
 	@FXML
-	private Button upravaSuroviny;@FXML
+	private Button upravaSuroviny;
+	@FXML
 	private Button smazaniSuroviny;
 
 	@FXML
-	private Alert chybaUlozeni;@FXML
+	private Alert chybaUlozeni;
+	@FXML
 	private Alert spravneUlozeni;
 
 	private Kuchyne kuchyne;
@@ -326,7 +333,7 @@ public class HomeController extends GridPane implements Observer {
 		}
 
 		nakup.open();
-		
+
 		Paragraph malyNadpisMenu = new Paragraph("Tento dokument byl vygenerovaný aplikací MaKitch " + cas, miniFont);
 		malyNadpisMenu.setAlignment(Element.ALIGN_RIGHT);
 		nakup.add(malyNadpisMenu);
@@ -378,7 +385,7 @@ public class HomeController extends GridPane implements Observer {
 		}
 
 		nakup.open();
-		
+
 		Paragraph malyNadpisMenu = new Paragraph("Tento dokument byl vygenerovaný aplikací MaKitch " + cas, miniFont);
 		malyNadpisMenu.setAlignment(Element.ALIGN_RIGHT);
 		nakup.add(malyNadpisMenu);
@@ -387,7 +394,7 @@ public class HomeController extends GridPane implements Observer {
 		nakup.add(new Paragraph("Menu ke dni " + datum + ":", nadpisFont));
 		nakup.add(new Paragraph("\n"));
 		nakup.add(new Paragraph("\n"));
-		
+
 		Paragraph polozkyMenu = new Paragraph(dostupneMenu3, nakupFont);
 		polozkyMenu.setAlignment(Element.ALIGN_CENTER);
 		nakup.add(polozkyMenu);
@@ -477,8 +484,7 @@ public class HomeController extends GridPane implements Observer {
 			e2.printStackTrace();
 		}
 	}
-	
-	
+
 	/**
 	 * Metoda otevření HTML souboru nápovědy
 	 * 
@@ -486,19 +492,21 @@ public class HomeController extends GridPane implements Observer {
 	@FXML
 	public void napoveda() {
 		Stage stage = new Stage();
-        stage.setTitle("Nápověda");
-        
-        WebView view = new WebView();
-        WebEngine napoveda = view.getEngine();
+		stage.setTitle("Nápověda");
 
-        napoveda.load(getClass().getResource("/napoveda.html").toExternalForm());
+		WebView view = new WebView();
+		WebEngine napoveda = view.getEngine();
 
-        stage.setScene(new Scene(view, 500, 500));
-        stage.show();
+		napoveda.load(getClass().getResource("/napoveda.html").toExternalForm());
+
+		stage.setScene(new Scene(view, 500, 500));
+		stage.show();
 	}
-	
-	
 
+	/**
+	 * Metoda slouží k aktualizaci dat v aplikaci
+	 * 
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		ObservableList < String > predkrmyList = FXCollections.observableArrayList();
