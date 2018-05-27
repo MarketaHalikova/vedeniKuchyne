@@ -30,6 +30,13 @@ import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Kontroler, který zprostředkovává komunikaci mezi logikou a oknem Upravit
+ * recept.
+ * 
+ * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
+ *
+ */
 public class UpravitReceptController extends Observable {
 
 	private String vybrany;
@@ -199,6 +206,25 @@ public class UpravitReceptController extends Observable {
 	 */
 	public void upravitReceptBtn(ActionEvent event) {
 
+		Recept nalezeny = kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany);
+
+		// nelze přidat recept, který již v databázi je
+		for (Recept recept: kuchyne.getAktualniSeznamReceptu().getSeznamReceptu()) {
+			
+			if(receptNazev.getText().trim().toLowerCase().equals(recept.getNazev().trim().toLowerCase()) && !recept.equals(nalezeny)){
+				maloInfo = new Alert(AlertType.INFORMATION);
+				maloInfo.setTitle("Pozor!");
+				maloInfo.setHeaderText(null);
+				maloInfo.setContentText(
+						"Recept s tímto názvem již v databázi receptů je. Zvolte jiný název.");
+				Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				maloInfo.showAndWait();
+				return;
+			} 
+		}
+		
+		
 		if (!(postup.getText().isEmpty() || receptNazev.getText().isEmpty())) {
 
 			String kat = "" + kategorie.getSelectionModel().getSelectedItem();
@@ -217,6 +243,8 @@ public class UpravitReceptController extends Observable {
 			Recept upraveny = new Recept(receptNazev.getText(), postup.getText(), newKat, listNovychSurReceptu);
 			kuchyne.getAktualniSeznamReceptu().getSeznamReceptu()
 					.remove(kuchyne.getAktualniSeznamReceptu().najdiRecept(vybrany));
+			
+			
 			kuchyne.getAktualniSeznamReceptu().vlozitRecept(upraveny);
 
 			setChanged();

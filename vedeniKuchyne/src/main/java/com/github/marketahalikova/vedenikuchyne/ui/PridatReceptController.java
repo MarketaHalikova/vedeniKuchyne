@@ -20,8 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
- * Kontroler, který zprostředkovává komunikaci mezi logikou a oknem Upravit
- * recept.
+ * Kontroler, který zprostředkovává komunikaci mezi logikou a oknem Nový recept.
  * 
  * @author Markéta Halíková, Johanna Švugerová, Martin Weisser
  *
@@ -61,12 +60,30 @@ public class PridatReceptController extends Observable {
 	}
 
 	/**
-	 * Metoda po přidání zadaného receptu (dle vyplněných polí) do seznamu receptů.
-	 * Pokud nejsou všechny potřebné položky (pole) vyplněné, recept není uložený a vypíše se alert.
+	 * Metoda po přidání zadaného receptu (dle vyplněných polí) do seznamu
+	 * receptů. Pokud nejsou všechny potřebné položky (pole) vyplněné, recept
+	 * není uložený a vypíše se alert.
 	 * 
 	 * @param event
 	 */
 	public void pridatRecpetBtn(ActionEvent event) {
+
+		// nelze přidat recept, který již v databázi je
+		for (Recept recept : kuchyne.getAktualniSeznamReceptu().getSeznamReceptu()) {
+
+			if (nazev.getText().trim().toLowerCase().equals(recept.getNazev().trim().toLowerCase())) {
+				maloInfo = new Alert(AlertType.INFORMATION);
+				maloInfo.setTitle("Pozor!");
+				maloInfo.setHeaderText(null);
+				maloInfo.setContentText("Recept s tímto názvem již v databázi receptů je. Zvolte jiný název.");
+				Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				maloInfo.showAndWait();
+				return;
+			}
+		}
+
+		// uložení nového receptu
 		if (!(postup.getText().isEmpty() || nazev.getText().isEmpty() || kategorie.getSelectionModel().isEmpty())) {
 			String kat = "" + kategorie.getSelectionModel().getSelectedItem();
 			String newKat = null;
@@ -93,7 +110,7 @@ public class PridatReceptController extends Observable {
 			maloInfo.setTitle("Pozor!");
 			maloInfo.setHeaderText(null);
 			maloInfo.setContentText(
-					"U suroviny musí být zadaný název, množství i jednotka a musí být vybraná kategorie! Množství musé být zadané jako celé nebo desetinné číslo!");
+					"U suroviny musí být zadaný název, množství i jednotka a musí být vybraná kategorie! Množství musí být zadané jako celé nebo desetinné číslo!");
 			Stage stage = (Stage) maloInfo.getDialogPane().getScene().getWindow();
 			stage.setAlwaysOnTop(true);
 			maloInfo.showAndWait();
