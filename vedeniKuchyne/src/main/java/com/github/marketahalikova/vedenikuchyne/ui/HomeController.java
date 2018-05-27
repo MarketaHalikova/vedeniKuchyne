@@ -450,24 +450,32 @@ public class HomeController extends GridPane implements Observer {
 	 */
 	@FXML
 	public void ulozZmeny() {
-		try {
-			kuchyne.ulozData();
-
-			spravneUlozeni = new Alert(AlertType.INFORMATION);
-			spravneUlozeni.setTitle("Uložení se zdařilo!");
-			spravneUlozeni.setHeaderText(null);
-			spravneUlozeni.setContentText("Data úspěšně uložena!");
-			Stage stage = (Stage) spravneUlozeni.getDialogPane().getScene().getWindow();
-			stage.setAlwaysOnTop(true);
-			spravneUlozeni.showAndWait();
-		} catch(Exception e) {
-			chybaUlozeni = new Alert(AlertType.INFORMATION);
-			chybaUlozeni.setTitle("Uložení se nezdařilo!");
-			chybaUlozeni.setHeaderText(null);
-			chybaUlozeni.setContentText("Omlouváme se, ale uložení dat se nezdařilo. Obraťte se, prosím, na vývojáře.");
-			Stage stage = (Stage) chybaUlozeni.getDialogPane().getScene().getWindow();
-			stage.setAlwaysOnTop(true);
-			chybaUlozeni.showAndWait();
+		
+		boolean ulozeno = false;
+		
+		try {		
+			kuchyne.ulozData();		
+			ulozeno = true;		
+		} catch(Exception e) {		
+			ulozeno = false;					
+		} finally {		
+			if (ulozeno = true) {
+				spravneUlozeni = new Alert(AlertType.INFORMATION);
+				spravneUlozeni.setTitle("Uložení se zdařilo!");
+				spravneUlozeni.setHeaderText(null);
+				spravneUlozeni.setContentText("Data úspěšně uložena!");
+				Stage stage = (Stage) spravneUlozeni.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				spravneUlozeni.showAndWait();
+			} else {
+				chybaUlozeni = new Alert(AlertType.INFORMATION);
+				chybaUlozeni.setTitle("Uložení se nezdařilo!");
+				chybaUlozeni.setHeaderText(null);
+				chybaUlozeni.setContentText("Omlouváme se, ale uložení dat se nezdařilo. Obraťte se, prosím, na vývojáře.");
+				Stage stage = (Stage) chybaUlozeni.getDialogPane().getScene().getWindow();
+				stage.setAlwaysOnTop(true);
+				chybaUlozeni.showAndWait();		
+			}
 		}
 	}
 

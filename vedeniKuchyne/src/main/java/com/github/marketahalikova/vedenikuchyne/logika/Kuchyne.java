@@ -154,37 +154,20 @@ public class Kuchyne extends Observable {
 
 	/**
 	 * Metoda serializuje data tříd a uloží do souborů
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 * 
 	 */
-	public void ulozData() {
-		try {
-			ObjectOutputStream surovinyData = new ObjectOutputStream(new FileOutputStream("data/suroviny.txt"));
-			surovinyData.writeObject(sklad);
-			surovinyData.close();
+	public void ulozData() throws FileNotFoundException, IOException {
+		
+		ObjectOutputStream surovinyData = new ObjectOutputStream(new FileOutputStream("data/suroviny.txt"));
+		surovinyData.writeObject(sklad);
+		surovinyData.close();
 
-			ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream("data/recepty.txt"));
-			receptyData.writeObject(seznamReceptu);
-			receptyData.close();
+		ObjectOutputStream receptyData = new ObjectOutputStream(new FileOutputStream("data/recepty.txt"));
+		receptyData.writeObject(seznamReceptu);
+		receptyData.close();
 
-		}
-
-		catch(FileNotFoundException e) {
-			System.out.println("Nepodařilo se otevřít vstupní soubory.");
-			return;
-		}
-		catch(InvalidClassException e) {
-			System.out.println("Chyba ve třídách určené k serializaci.");
-			return;
-		}
-		catch(NotSerializableException e) {
-			System.out.println("Neserializované objekty.");
-			return;
-		}
-		catch(IOException e) {
-			System.out.println("Nepodařilo se uložit do souborů.");
-			return;
-
-		}
 	}
 
 	/**
